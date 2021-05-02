@@ -1,0 +1,57 @@
+<!--FORMULARIO PARA EL REGISTRO DE LA EMPRESA-->
+<div class="card" style="width: 45rem;">
+  <div class="card-body">
+    <div>
+        <form [formGroup]="form" (ngSubmit)=" OnSubmit()">
+          <div class="mb-3">
+            <label for="exampleInputNombreEmpresa1" class="form-label">Ingrese el nombre del negocio</label>
+            <input formControlName="nombreEmpresa" type="text" class="form-control" id="exampleInputNombreEmpresa1">
+            <small id="exampleInputNombreEmpresa2"></small>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputTipoEmpresa" class="form-label">Ingrese el tipo de empresa:  &nbsp;&nbsp;</label>
+            <select id="card" class="form-select" aria-label="Default select example" formControlName="tipoEmpresa">
+              <option value="">-</option>
+              <option value="ropa">Ropa</option>
+              <option value="alimentos">Alimentos</option>
+              <option value="artesania">Artesania</option>
+              <option value="electrodomesticos">Electrodomesticos</option>
+              <option value="otro">Otro</option>
+          </select>
+          <small id="exampleInputTipoEmpresa2"></small>
+          </div>
+          <div class="mb-3">
+            <label for="Empresa1" class="form-label">Ingrese la Direccion</label>
+            <input type="text" class="form-control" id="DireccionEmpresa" formControlName="DireccionEmpresa" >
+            <small id="DireccionEmpresa2"></small>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputNumeroTele1" class="form-label">Ingrese el primer numero telefonico</label>
+            <input type="tel" class="form-control" id="NumeroEmpresa0" formControlName="NumeroEmpresa">
+            <small id="NumeroEmpresa1"></small>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputNumeroTele2" class="form-label">Ingrese el segundo numero telefonico(opcional)</label>
+            <input type="tel" class="form-control" id="NumeroEmpresa2" formControlName="NumeroSecundario">
+            <small id="NumeroEmpresa3"></small>
+          </div>
+          <div class="mb-3">
+            <label for="Empresa1" class="form-label">Horario el horario de trabajo</label>
+            <input type="text" class="form-control" id="Horario" formControlName="Horario">
+            <small id="Horario2"></small>
+          </div>
+          <div class="mb-3">
+            <label for="Empresa1" class="form-label">Ingrese el logo</label>
+            <input type="file" class="form-control" id="logo" formControlName="logo" >
+            <small id="logo2"></small>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Ingrese el Email </label>
+            <input type="email" class="form-control" id="EmailEmpresa1" aria-describedby="emailHelp" formControlName="emailEmpresa">
+            <div id="emailHelp" class="form-text">Puedes ingresar el correo personas ,pero te recomendamos que coloques un email solo para tu.</div>
+            <small id="EmailEmpresa2"></small>
+          </div>
+          <button type="submit" class="btn btn-primary">Guardar</button>
+        </form>
+  </div>
+</div>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-//import { ClientService } from '../Services/client.service';
+import { ClientService } from '../servicios/client.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -15,7 +15,8 @@ export class FormularioPedidoComponent implements OnInit {
   constructor(
     //public client: ClientService,
     private fb: FormBuilder,
-    private route: Router
+    private route: Router,
+    private client : ClientService
   ) { }
   /*Se validan los datos insertados en el frontend*/
   ngOnInit(): void {
@@ -30,7 +31,7 @@ export class FormularioPedidoComponent implements OnInit {
   /*Envio de datos al backend*/
   onSubmit() {
     if (this.form.valid) {
-      //this.client.postRequestFormularioPedido('http://localhost:5000/api/v01/pedido',{
+      this.client.postRequestFormularioPedido('http://localhost:5000/api/v01/pedido',{
         nombres: this.form.value.nombres,
         apellidos: this.form.value.apellidos,
         telefono: this.form.value.telefono,
