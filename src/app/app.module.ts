@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavComponent } from './nav/nav.component';
 import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
@@ -12,6 +12,7 @@ import { NegociosComponent } from './negocios/negocios.component';
 import { CarritoComponent } from './carrito/carrito.component';
 import { DetallesPedidoComponent } from './detalles-pedido/detalles-pedido.component';
 import { FormularioPedidoComponent } from './formulario-pedido/formulario-pedido.component';
+import { RegistrarEmpresaComponent } from './registrar-empresa/registrar-empresa.component';
 
 @NgModule({
   declarations: [
@@ -23,9 +24,12 @@ import { FormularioPedidoComponent } from './formulario-pedido/formulario-pedido
     FooterComponent,
     NosotrosComponent,
     DetallesPedidoComponent,
-    FormularioPedidoComponent
+    FormularioPedidoComponent,
+    RegistrarEmpresaComponent
   ],
   imports: [
+    FormsModule,
+    ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule

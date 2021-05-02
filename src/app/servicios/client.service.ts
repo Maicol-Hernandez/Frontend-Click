@@ -34,4 +34,11 @@ export class ClientService {
 
     return this.http.post(route, data, config);
   }
+  postRequestFormularioEmpresa(route: string ,data? :any){
+    let config:any = {
+      responseType: "json"
+    }
+    return this.http.post(route,data,config);
+
+  }
 }
