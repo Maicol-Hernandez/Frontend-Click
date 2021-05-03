@@ -1,3 +1,6 @@
+<div class="logo">
+  <img src="../../static/Logoclick125x124.png" alt="">
+</div>
 <section>
   <h3 class="titulo">
     Detalles del pedido
@@ -33,5 +36,10 @@
       </tr>
     </tbody>
   </table>
-  <button type="button" class="btn btn-secondary btn-lg">Seguir Comprando</button><button type="submit" class="btn btn-secondary btn-lg" [routerLink]="['/pedido']">Continuar</button>
+  <div class="boton1">
+    <button type="button" class="btn btn-secondary btn-lg" id="boton1">Seguir Comprando</button>
+  </div>
+  <div class="boton2">
+    <button type="submit" class="btn btn-secondary btn-lg" [routerLink]="['/pedido']" id="boton2">Continuar</button>
+  </div>
 </section>
