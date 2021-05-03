@@ -9,54 +9,37 @@
 /*perfil*/
 
 
-
-.seccion-perfil-usuario .perfil-usuario-avatar {
-   
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 0 15px rgba(0, 0, 0, .2);
-    position: absolute;
-    bottom: 0px;
-    width: 1170px;
-    height: 560px;
-    left: calc(8% - 90px);
-    z-index: 1;
-    border-radius: 20px 20px 20px 20px;
-
-}
-
-
-.datos-img{
+.datos-img .card-img-top {
     width: 600px;
-    margin: 20px;    
+    margin: 20px;
+    height: 500px;
+    border-radius: 20px 20px 20px 20px;
+    
 }
 
 
 .datos-negocio {
-
     margin-bottom: 300px;
     font: oblique bold 120% cursive;
     box-shadow: 0 0 15px #da340a33;
     position: absolute;
-    bottom: 40px;
-    width: 500px;
-    height: 200px;
+    bottom: 47px;
+    width: 515px;
     left: calc(61% - 80px); 
     border-radius: 20px 20px 20px 20px;
-
 
 }
 
 
-.seccion-perfil-usuario .perfil-usuario-body,
-.seccion-perfil-usuario {
+.seccion-perfil-empresa .perfil-usuario-body,
+.seccion-perfil-empresa {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
     align-items: center;
 }
 
-.seccion-perfil-usuario .perfil-usuario-header {
+.seccion-perfil-empresa .perfil-empresa-header {
     width: 100%;
     display: flex;
     justify-content: left;
@@ -65,7 +48,7 @@
     
 }
 
-.seccion-perfil-usuario .perfil-usuario-portada {
+.seccion-perfil-empresa .perfil-empresa-portada {
     display: block;
     position: relative;
     width: 100%;
@@ -76,8 +59,8 @@
 }
 
 
-.seccion-perfil-usuario .perfil-usuario-footer,
-.seccion-perfil-usuario .perfil-usuario-bio {
+.seccion-perfil-empresa .perfil-usuario-footer,
+.seccion-perfil-empresa .perfil-usuario-bio {
     display: flex;
     flex-wrap: wrap;
     padding: 1.5rem 2rem;

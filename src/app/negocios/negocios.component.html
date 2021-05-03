@@ -1,19 +1,18 @@
-<section class="seccion-perfil-usuario">
-    <div class="perfil-usuario-header">
-        <div class="perfil-usuario-portada">
-            <div class="perfil-usuario-avatar">
-                <div class="datos-img">
-                    <img src="./static/restaurante.jpg" class="card-img-top"  alt="">
+<section class="seccion-perfil-empresa">
+    <div class="perfil-empresa-header">
+        <div class="perfil-empresa-portada">
+            <div *ngFor="let empresa of dataEmpresa">
+                <div  class="datos-img">
+                    <img  [src]="empresa.imgLogo" class="card-img-top"  alt=""></div>    
+                <div  class="datos-negocio">
+                    <div>Nombre del negocio: {{ empresa.nombre }}</div>
+                    <div>Tipo de negocio: {{ empresa.tipo }} </div>
+                    <div>Direccion: {{ empresa.direccion }}</div>
+                    <div>Horarios: {{ empresa.horarios }} </div>
+                    <div>Telefono1: {{ empresa.telefono1 }}</div>
+                    <div>Telefono2: {{ empresa.telefono2 }}</div>
+                    <div>Correo: {{ empresa.correo }}</div>
                 </div>
-            </div>
-            <div *ngFor="let empresa of dataEmpresa" class="datos-negocio">
-                <div>Nombre del negocio: {{ empresa.nombre }}</div>
-                <div>Tipo de negocio: {{ empresa.tipo }} </div>
-                <div>Direccion: {{ empresa.direccion }}</div>
-                <div>Horarios: {{ empresa.horarios }} </div>
-                <div>Telefono1: {{ empresa.telefono1 }}</div>
-                <div>Telefono2: {{ empresa.telefono2 }}</div>
-                <div>Correo: {{ empresa.correo }}</div>
             </div>
         </div>
     </div>
@@ -22,101 +21,27 @@
     <h1>Productos</h1>
     <div class="store-wrapper">
         <section class="products-list">
-            
-            <div class="product-item" category="lacteos">
+            <div *ngFor="let producto of dataProducto" class="product-item" category="lacteos">
                 <div class="card">
-                <img src="https://s1.eestatic.com/2019/07/02/cocinillas/actualidad-gastronomica/actualidad_gastronomica_410720427_127098320_1280x1280.jpg" class="card-img-top" alt="">
-                <div class="card-body">
-                    <h5 class="card-title">Helado</h5>
-                    <p class="card-text"><small class="text-muted">precio: $1.500</small></p>
-
-                    <button type="button" class="btn btn-danger ml-4">Pedir producto</button>
-                </div>
-            </div>
-            </div>
-
-            <div class="product-item" category="lactaos">
-                <div class="card">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRU9D8uE6wcGL_YZrnv17Ef0Xl0Xn1syHLkWg&usqp=CAU" class="card-img-top" alt="">
-                <div class="card-body">
-                    <h5 class="card-title">Queso</h5>
-                    <p class="card-text"><small class="text-muted">Precio: $5.000 </small></p>
-
-                    <button type="button" class="btn btn-danger ml-4">Pedir producto</button>
-                </div>
-            </div>
-            </div>
-            
-            <div class="product-item" category="lacteos ">
-                <div class="card">
-                <img src="https://comercialgalera.com/wp-content/uploads/2015/06/0320-1.jpg" class="card-img-top" alt="">
-                <div class="card-body">
-                    <h5 class="card-title">Queso</h5>
-                    <p class="card-text"><small class="text-muted">Precio: $8.000</small></p>
-
-                    <button type="button" class="btn btn-danger ml-4">Pedir Producto</button>
-
-                </div>
-            </div>
-            </div>
-        
-            <div class="product-item" category="lacteos ">
-                <div class="card">
-                <img src="https://comercialgalera.com/wp-content/uploads/2015/06/0320-1.jpg" class="card-img-top" alt="">
-                <div class="card-body">
-                    <h5 class="card-title">Queso</h5>
-                    <p class="card-text"><small class="text-muted">Precio: $8.000</small></p>
-    
-                    <button type="button" class="btn btn-danger ml-4">Pedir Producto</button>
-    
-                </div>
-            </div>
-            </div>
-            
-            <div class="product-item" category="lacteos">
-                <div class="card">
-                    <img src="https://jumbocolombiafood.vteximg.com.br/arquivos/ids/238190-1000-1000/7707192032385.jpg?v=636379816442470000" class="card-img-top" alt="">
+                    <img [src]="producto.foto" class="card-img-top" alt="">
                     <div class="card-body">
-                        <h5 class="card-title">Leche</h5>
-                        <p class="card-text"><small class="text-muted">Precio: $3.000</small></p>
+                        <h5 class="card-title">{{ producto.nombre }}</h5>
+                        <p class="card-text"><small class="text-muted">precio: ${{ producto.precio }}</small></p>
                         
-                    <button type="button" class="btn btn-danger ml-4">Perdir producto</button>
+                        <button type="button" type="submit" class="btn btn-danger ml-4"  [routerLink]="['/detallesproducto', producto.id]">Pedir producto {{ producto.id }}</button>
+                    </div>
                 </div>
             </div>
-            </div>
-
-            <div class="product-item" category="lacteos">
+            
+            
+            <div  class="product-item" category="lacteos">
                 <div class="card">
-                <img src="https://s1.eestatic.com/2019/07/02/cocinillas/actualidad-gastronomica/actualidad_gastronomica_410720427_127098320_1280x1280.jpg" class="card-img-top" alt="">
+                <img src="https://admin.consumo.com.co/backend/admin/backend/web/archivosDelCliente/items/images/20200720084729-Lacteos-Refrigerados-Y-Congelados-Margarinas-y-Mantequillas-ESPARCIBLE-CAMPI-X-500-GR-PAISA-142202007200847293199.jpg" class="card-img-top" alt="">
                 <div class="card-body">
-                    <h5 class="card-title">Helado</h5>
-                    <p class="card-text"><small class="text-muted">precio: $1.500</small></p>
+                    <h5 class="card-title">Yogur</h5>
+                    <p class="card-text"><small class="text-muted">precio: $2.500</small></p>
 
-                    <button type="button" class="btn btn-danger ml-4">Pedir producto</button>
-                </div>
-            </div>
-            </div>
-
-            <div class="product-item" category="lactaos">
-                <div class="card">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRU9D8uE6wcGL_YZrnv17Ef0Xl0Xn1syHLkWg&usqp=CAU" class="card-img-top" alt="">
-                <div class="card-body">
-                    <h5 class="card-title">Queso</h5>
-                    <p class="card-text"><small class="text-muted">Precio: $5.000 </small></p>
-
-                    <button type="button" class="btn btn-danger ml-4">Pedir producto</button>
-                </div>
-            </div>
-            </div>
-            <div class="product-item" category="lacteos ">
-                <div class="card">
-                <img src="https://comercialgalera.com/wp-content/uploads/2015/06/0320-1.jpg" class="card-img-top" alt="">
-                <div class="card-body">
-                    <h5 class="card-title">Queso</h5>
-                    <p class="card-text"><small class="text-muted">Precio: $8.000</small></p>
-    
-                    <button type="button" class="btn btn-danger ml-4">Pedir Producto</button>
-    
+                    <button type="button" class="btn btn-danger ml-4" >Pedir producto </button>
                 </div>
             </div>
             </div>

@@ -20,7 +20,30 @@ export class ClientService {
       config['herders'] = heder
     }
 
+    return this.http.get(route, config);
+  }
+
+  getRequestProductoEmpresa(route: string, token?: string){
+    let config:any = {
+      responseType: "json"
+    }
+
+    if(token){
+      const herder = new HttpHeaders().set('Authorization', `Bearer ${token}`)
+      config['herders'] = herder
+    }
 
     return this.http.get(route, config);
+  }
+
+  postRequestId(route:string, id:any, token?:string) {
+    let config:any = {
+      responseType: "json"
+    }
+    if(token) {
+      const herder = new Headers().set('Authorization', `Bearer ${token}`)
+      config['herder'] = herder;
+    }
+    return this.http.post(route, id, config);
   }
 }
