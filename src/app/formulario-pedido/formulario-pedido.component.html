@@ -1,40 +1,32 @@
-<body>
+<div class="logo">
+  <img src="../../static/Logoclick125x124.png" alt="logo">
+</div>
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
-
-    <h1>Porfavor complete los datos del registros</h1>
+    <h1>Porfavor complete los datos del pedido</h1>
     <p>Asegurese de que la informacion sea correcta</p>
     <section>
-      <p>
-        <label for="nombres">
-            <span>Nombres:</span>
-        </label>
-        <input formControlName="nombres" type="text" id="name" name="nombres">
-      </p>
-      <p>
-        <label for="apellidos">
-            <span>apellidos:</span>
-        </label>
-        <input formControlName="apellidos" type="text" id="name" name="apellidos">
-      </p>
-      <p>
-        <label for="telefono">
-          <span>Telefono:</span>
-        </label>
-        <input formControlName="telefono" type="number" id="name" name="telefono">
-      </p>
-      <p>
-        <label for="correo electronico">
-          <span>Correo electronico:</span>
-        </label>
-        <input formControlName="correo" type="email" id="name" name="correo">
-      </p>
-      <p>
-        <label for="direccion">
-            <span>Direccion:</span>
-        </label>
-        <input formControlName="direccion" type="text" id="name" name="direccion">
-      </p>
-      <p><button type="submit">Comprar</button></p>
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Nombres</label>
+        <input formControlName="nombres" name="nombres" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Ingrese sus nombres">
+      </div>
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Apellidos</label>
+        <input formControlName="apellidos" name="apellidos" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Ingrese sus apellidos">
+      </div>
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Telefono</label>
+        <input formControlName="telefono" name="telefono" type="number" class="form-control" id="exampleFormControlInput1" placeholder="Ingrese su telefono">
+      </div>
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Correo electronico</label>
+        <input formControlName="correo" name="correo" type="email" class="form-control" id="exampleFormControlInput1" placeholder="Ingrese su correo electronico">
+      </div>
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Direccion</label>
+        <input formControlName="direccion" name="direccion" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Ingrese la direccion de su casa">
+      </div>
+      <div class="boton1">
+        <button type="button" class="btn btn-secondary btn-lg" id="boton1">Comprar</button>
+      </div>
     </section>
   </form>
-</body>
