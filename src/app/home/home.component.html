@@ -10,17 +10,19 @@
   </div>
 
 
-  <div class="card border-dark mb-3" id="efecto" style="width: 18rem;">
+  <div *ngFor="let datos of dataEmpresa" class="card border-dark mb-3" id="efecto" style="width: 18rem;">
     <div class="c-img">
-    <img src="./static/restaurante.jpg" class="rounded float-start" alt="..."width="200px" height="200px">
+    <img [src]="datos.imgLogo" class="rounded float-start" alt="..."width="200px" height="200px">
     </div>
     <div class="capat">
     <div class="card-body" >
-        <p class="card-text"> El buen sazon </p>
-        <p class="card-text"> Comida</p>
-        <p class="card-text"> La patria 86#18</p>
-        <p class="card-text"> 8:00am - 8:00pm</p>
-        <a href="#" class="btn btn">Comprar</a>
+        <p> {{ datos.id }} </p> 
+        <p class="card-text"> {{ datos.nombre }} </p>
+       
+        <p class="card-text"> {{ datos.tipo }} </p>
+        <p class="card-text"> {{ datos.direccion }} </p>
+        <p class="card-text"> {{ datos.horarios }} </p>
+        <a href="#" [routerLink]="['/vernegocio']" class="btn btn">Comprar</a>
       </div>
     </div>
 </div>

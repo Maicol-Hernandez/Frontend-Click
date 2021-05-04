@@ -47,7 +47,7 @@ export class FormularioPedidoComponent implements OnInit {
           console.log(localStorage.getItem('nombres'));
           console.log(localStorage.getItem('apellidos'));
 
-          this.route.navigate(['/inicio'])
+          this.route.navigate(['/'])
         },
         (error) => {
           console.log(error.status)

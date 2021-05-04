@@ -1,10 +1,11 @@
+<app-nav></app-nav>
 <div class="logo">
-  <img src="../../static/Logoclick125x124.png" alt="logo">
+  <img src="../static/Logoclick125x124.png" alt="logo">
 </div>
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <h1>Porfavor complete los datos del pedido</h1>
     <p>Asegurese de que la informacion sea correcta</p>
-    <section>
+    <section class="section">
       <div class="mb-3">
         <label for="exampleFormControlInput1" class="form-label">Nombres</label>
         <input formControlName="nombres" name="nombres" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Ingrese sus nombres">
@@ -26,7 +27,9 @@
         <input formControlName="direccion" name="direccion" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Ingrese la direccion de su casa">
       </div>
       <div class="boton1">
-        <button type="button" class="btn btn-secondary btn-lg" id="boton1">Comprar</button>
+        <button type="submit" class="btn btn-secondary btn-lg" id="boton1">Comprar</button>
       </div>
     </section>
   </form>
+
+<app-footer></app-footer>

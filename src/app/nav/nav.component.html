@@ -1,6 +1,6 @@
 <nav class=" bg-light navbar navbar-expand-lg navbar-light" id="nav" >
     <div class="container-fluid " >
-        <img src="../../assets/Logoclick.png" alt="" width="54px">
+        <img src="./static/Logoclick.png" [routerLink]="['/']" alt="" width="54px">
       
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -15,6 +15,7 @@
           </li>
         </ul>
         <a href="#"  id="botonini" class="btn btn">Iniciar Sesion</a>
+        <a href="#"  [routerLink]="['/registrarEmpresa']" id="botonini" class="btn btn">Registrar Empresa</a>
       </div>
     </div>
   </nav>
