@@ -4,21 +4,32 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from'@angular/forms';
 import { AppComponent } from './app.component';
-
-
+import { NavComponent } from './nav/nav.component';
+import { HomeComponent } from './home/home.component';
+import { FooterComponent } from './footer/footer.component';
+import { NosotrosComponent } from './nosotros/nosotros.component';
 import { NegociosComponent } from './negocios/negocios.component';
 import { CarritoComponent } from './carrito/carrito.component';
 import { DetalleproductoComponent } from './detalleproducto/detalleproducto.component';
+import { FormularioPedidoComponent } from './formulario-pedido/formulario-pedido.component';
+import { RegistrarEmpresaComponent } from './registrar-empresa/registrar-empresa.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NegociosComponent,
     CarritoComponent,
-    DetalleproductoComponent
-   
+    DetalleproductoComponent,
+    NavComponent,
+    HomeComponent,
+    FooterComponent,
+    NosotrosComponent,
+    FormularioPedidoComponent,
+    RegistrarEmpresaComponent
   ],
   imports: [
+    FormsModule,
+    ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,

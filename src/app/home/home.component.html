@@ -1,0 +1,32 @@
+<app-nav></app-nav>
+
+  <div class=" card  border-dark mb-3 text-center " id="presentacion">
+    <div class="card-body">
+      <img id="ilu1" src="./static/ilu.png" class="rounded float-start" alt="..."width="300px" height="300px">
+      <p class="card-text">Encuentra los mejores productos a un click </p>
+       <!--<a href="#" class="btn btn-dark">Crea tu negocio en nuestra plataforma</a>-->
+
+    </div>
+  </div>
+
+
+  <div *ngFor="let datos of dataEmpresa" class="card border-dark mb-3" id="efecto" style="width: 18rem;">
+    <div class="c-img">
+    <img [src]="datos.imgLogo" class="rounded float-start" alt="..."width="200px" height="200px">
+    </div>
+    <div class="capat">
+    <div class="card-body" >
+        <p> {{ datos.id }} </p> 
+        <p class="card-text"> {{ datos.nombre }} </p>
+       
+        <p class="card-text"> {{ datos.tipo }} </p>
+        <p class="card-text"> {{ datos.direccion }} </p>
+        <p class="card-text"> {{ datos.horarios }} </p>
+        <a href="#" [routerLink]="['/vernegocio']" class="btn btn">Comprar</a>
+      </div>
+    </div>
+</div>
+
+
+
+<app-footer></app-footer>

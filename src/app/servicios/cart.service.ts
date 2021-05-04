@@ -3,7 +3,7 @@ import { BehaviorSubject } from 'rxjs';
 import { IItem } from '../interfaces/item.interface';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class CartService {
 
