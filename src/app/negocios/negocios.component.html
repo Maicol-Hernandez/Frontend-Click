@@ -28,25 +28,16 @@
                     <div class="card-body">
                         <h5 class="card-title">{{ producto.nombre }}</h5>
                         <p class="card-text"><small class="text-muted">precio: ${{ producto.precio }}</small></p>
-                        
-                        <button type="button" type="submit" class="btn btn-danger ml-4"  [routerLink]="['/detallesproducto', producto.id]">Pedir producto {{ producto.id }}</button>
+                        <form [formGroup]="form" (ngSubmit)="OnSubmit(producto.id)">
+                            <!--El minimo es de un 1 producto-->
+                            <input type="number" min="1" formControlName="cantidad">
+                            <button type="submit"  class="btn btn-danger ml-4">Pedir producto {{ producto.id }}</button>
+                        </form>
+                        <button type="button" (click)="delente(producto.id)">Eliminar</button>
+                       
                     </div>
                 </div>
             </div>
-            
-            
-            <div  class="product-item" category="lacteos">
-                <div class="card">
-                <img src="https://admin.consumo.com.co/backend/admin/backend/web/archivosDelCliente/items/images/20200720084729-Lacteos-Refrigerados-Y-Congelados-Margarinas-y-Mantequillas-ESPARCIBLE-CAMPI-X-500-GR-PAISA-142202007200847293199.jpg" class="card-img-top" alt="">
-                <div class="card-body">
-                    <h5 class="card-title">Yogur</h5>
-                    <p class="card-text"><small class="text-muted">precio: $2.500</small></p>
-
-                    <button type="button" class="btn btn-danger ml-4" >Pedir producto </button>
-                </div>
-            </div>
-            </div>
-
     </section>
 
 </div>

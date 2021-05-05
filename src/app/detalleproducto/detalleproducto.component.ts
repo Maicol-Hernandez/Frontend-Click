@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Data, ParamMap } from '@angular/router';
 import { ClientService } from '../servicios/client.service';
+import {AuthService} from '../servicios/auth.service';
 
 @Component({
   selector: 'app-detalleproducto',
@@ -14,38 +15,15 @@ export class DetalleproductoComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute, 
-    private client: ClientService
-    
+    private client: ClientService,
+    public auth : AuthService
     ){}
 
   ngOnInit(): void {
-    
-    this.route.paramMap.subscribe((params: ParamMap) => {
-      this.id += params.get('id'); 
-      let data = {"id" : this.id}   
-      this.client.postRequestId('http://localhost:5000/api/v01/user/productosid',data).subscribe(
-      (data): any => {
-        this.id = data['data']
-        console.log("DATOS QUE LLEGAN", data['data'])
-      },
-
-      )
-
-    })
-    
-  }
-
-  productoId(): void  {
-    this.route.paramMap.subscribe((params: ParamMap) => {
-      this.id += params.get('id');    
-      this.client.postRequestId('http://localhost:5000/api/v01/user/productosid', this.id).subscribe(
-        (data): any =>{
-          this.id = data['data']
-        }      
-      )
-    })
-  }
-    
+    //Variable que trae la informacion del localStorage
+    var data = JSON.parse(this.auth.getPedidos());
+    console.log("Este son detalles ",data); 
+  }   
   }
 
 
