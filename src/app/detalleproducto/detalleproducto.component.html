@@ -20,6 +20,7 @@
       </tr>
     </thead>
     <tbody>
+      <!--Estos datos debe traerlos desde localStorage-->
       <tr *ngFor="let producto of id">
         <th scope="row" {{ producto.id }}>1</th>
         <th scope="row"><img [src]="producto.foto" class="img-productos" alt="productos"></th>
@@ -29,18 +30,7 @@
         <td>{{ producto.precio }}</td>
         
       </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Torta de naranja</td>
-        <td>2</td>
-        <td>3.000</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>capuccino</td>
-        <td>2</td>
-        <td>6.000</td>
-      </tr>
+
     </tbody>
   </table>
   <div class="boton1">

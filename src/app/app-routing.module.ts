@@ -15,7 +15,7 @@ const routes: Routes = [
   { path:'',component:HomeComponent},
   { path:'nosotros',component:NosotrosComponent},
   { path: 'registrarEmpresa',component:RegistrarEmpresaComponent},
-  { path: 'detallesproducto/:id', component:DetalleproductoComponent },
+  { path: 'detallesproducto', component:DetalleproductoComponent },
   { path: 'formulario-pedido', component: FormularioPedidoComponent}
 ];
 
