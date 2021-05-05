@@ -1,13 +1,39 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, from } from 'rxjs';
 import { IItem } from '../interfaces/item.interface';
-
+import { map } from 'rxjs/operators';
 @Injectable({
     providedIn: 'root'
 })
 export class CartService {
 
+  acumulador;
 
+  estadoInicial = JSON.parse(localStorage.getItem('carrito')) || []
+  
+  cart = new BehaviorSubject<IItem[]>(this.estadoInicial)
+  total = this.cart.pipe(
+  map(items => items.reduce(this.acumulador, 0))    
+  );
+/*
+  totalForeach = this.cart.pipe(
+    map(items => {
+      let acumulado = 0;
+      items.forEach(current => {
+        acumulado = acumulado + (current.product.price * current.quantity);
+      });
+      return acumulado;
+    })
+  );
+  
+  acumulador(acumuladorVar: number, currentItem: IItem): number {
+    return acumuladorVar + (currentItem.product.price * currentItem.quantity);
+  }
+*/
+
+
+
+  
   private carrito = new BehaviorSubject<Array<IItem>>(null); //Definimos nuestro BehaviorSubject, este debe tener un valor inicial siempre
   public datoCarrito = this.carrito.asObservable(); //Tenemos un observable con el valor actual del BehaviourSubject
   constructor() { }
