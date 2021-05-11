@@ -13,6 +13,9 @@ import { CarritoComponent } from './carrito/carrito.component';
 import { DetalleproductoComponent } from './detalleproducto/detalleproducto.component';
 import { FormularioPedidoComponent } from './formulario-pedido/formulario-pedido.component';
 import { RegistrarEmpresaComponent } from './registrar-empresa/registrar-empresa.component';
+import { LoginComponent } from './login/login.component';
+import { RegistroUsuarioComponent } from './registro-usuario/registro-usuario.component';
+import { FacturaComponent } from './factura/factura.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,10 @@ import { RegistrarEmpresaComponent } from './registrar-empresa/registrar-empresa
     FooterComponent,
     NosotrosComponent,
     FormularioPedidoComponent,
-    RegistrarEmpresaComponent
+    RegistrarEmpresaComponent,
+    LoginComponent,
+    RegistroUsuarioComponent,
+    FacturaComponent
   ],
   imports: [
     FormsModule,

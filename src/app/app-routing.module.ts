@@ -7,8 +7,10 @@ import { NegociosComponent } from './negocios/negocios.component'
 import { HomeComponent } from '../app/home/home.component';
 import { NosotrosComponent } from '../app/nosotros/nosotros.component';
 import { RegistrarEmpresaComponent } from '../app/registrar-empresa/registrar-empresa.component';
-import { FormularioPedidoComponent } from './formulario-pedido/formulario-pedido.component'
-
+import { FormularioPedidoComponent } from './formulario-pedido/formulario-pedido.component';
+import {LoginComponent} from './login/login.component';
+import {RegistroUsuarioComponent} from './registro-usuario/registro-usuario.component';
+import {FacturaComponent} from './factura/factura.component'
 const routes: Routes = [
   { path: 'vernegocio', component:NegociosComponent },
   { path: 'carrito', component:CarritoComponent },
@@ -16,7 +18,11 @@ const routes: Routes = [
   { path:'nosotros',component:NosotrosComponent},
   { path: 'registrarEmpresa',component:RegistrarEmpresaComponent},
   { path: 'detallesproducto', component:DetalleproductoComponent },
-  { path: 'formulario-pedido', component: FormularioPedidoComponent}
+  { path: 'formulario-pedido', component: FormularioPedidoComponent},
+  { path: 'login', component:LoginComponent},
+  { path: 'registro-usuario', component:RegistroUsuarioComponent},
+  { path: 'factura', component:FacturaComponent}
+
 ];
 
 @NgModule({
