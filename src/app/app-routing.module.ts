@@ -10,6 +10,9 @@ import { RegistrarEmpresaComponent } from '../app/registrar-empresa/registrar-em
 import { FormularioPedidoComponent } from './formulario-pedido/formulario-pedido.component'
 import { CrearProductosComponent } from'../app/crear-productos/crear-productos.component';
 
+import {LoginComponent} from './login/login.component';
+import {RegistroUsuarioComponent} from './registro-usuario/registro-usuario.component';
+import {FacturaComponent} from './factura/factura.component'
 
 const routes: Routes = [
   { path: 'vernegocio', component:NegociosComponent },
@@ -20,7 +23,11 @@ const routes: Routes = [
   { path: 'detallesproducto/:id', component:DetalleproductoComponent },
   { path: 'crearproducto', component:CrearProductosComponent },
   { path: 'detallesproducto', component:DetalleproductoComponent },
-  { path: 'formulario-pedido', component: FormularioPedidoComponent}
+  { path: 'formulario-pedido', component: FormularioPedidoComponent},
+  { path: 'login', component:LoginComponent},
+  { path: 'registro-usuario', component:RegistroUsuarioComponent},
+  { path: 'factura', component:FacturaComponent}
+
 ];
 
 @NgModule({

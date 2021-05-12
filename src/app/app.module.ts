@@ -13,7 +13,13 @@ import { CarritoComponent } from './carrito/carrito.component';
 import { DetalleproductoComponent } from './detalleproducto/detalleproducto.component';
 import { FormularioPedidoComponent } from './formulario-pedido/formulario-pedido.component';
 import { RegistrarEmpresaComponent } from './registrar-empresa/registrar-empresa.component';
+
 import { CrearProductosComponent } from './crear-productos/crear-productos.component';
+
+import { LoginComponent } from './login/login.component';
+import { RegistroUsuarioComponent } from './registro-usuario/registro-usuario.component';
+import { FacturaComponent } from './factura/factura.component';
+
 
 @NgModule({
   declarations: [
@@ -27,8 +33,10 @@ import { CrearProductosComponent } from './crear-productos/crear-productos.compo
     NosotrosComponent,
     FormularioPedidoComponent,
     RegistrarEmpresaComponent,
-    CrearProductosComponent
-  
+    CrearProductosComponent,
+    LoginComponent,
+    RegistroUsuarioComponent,
+    FacturaComponent
   ],
   imports: [
     FormsModule,

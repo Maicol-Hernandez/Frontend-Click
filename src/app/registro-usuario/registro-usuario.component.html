@@ -1,0 +1,63 @@
+<app-nav></app-nav>
+
+
+<div class="card"  id="formulario" style="width: 40rem;">
+    <div class="card-body">
+      <h3>¡Crea tu cuenta en click!</h3><br>
+      <div>
+        <form >
+            <!--Nombres -->
+            <div class="mb-3">
+              <label for="exampleInputNombres" class="form-label">Nombre</label>
+              <input formControlName="nombres" type="text" class="form-control" id="exampleInputNombres">
+              <small id="exampleInputNombres"></small>
+            </div>
+            <!-- Apellidos -->
+            <div class="mb-3">
+                <label for="exampleInputApellidos" class="form-label"> Apellido</label>
+                <input formControlName="apellidos" type="text" class="form-control" id="exampleInputApellidos">
+                <small id="exampleInputApellidos"></small>
+              </div>
+            <!--Tipo de doumento -->
+            <div class="mb-3">
+              <label for="exampleInputTipoDocumento" class="form-label">Tipo de documento:  &nbsp;&nbsp;</label>
+              <select id="card" class="form-select" aria-label="Default select example" formControlName="tipodocumento">
+                <option value="">-</option>
+                <option value="ropa">CC</option>
+                <option value="alimentos">RC</option>
+                <option value="otro">Otro</option>
+            </select>
+            <small id="exampleInputTipoDocumento"></small>
+            </div>
+            <!--Numero Telefonico -->
+            <div class="mb-3">
+              <label for="exampleInputNumeroTel" class="form-label">Numero telefonico</label>
+              <input type="tel" class="form-control" id="NumeroTel" formControlName="NumeroTel">
+              <small id="NumeroTel"></small>
+            </div>
+            <!-- correo electronico -->
+            <div class="mb-3">
+              <label for="exampleInputEmail" class="form-label">Correo electronico </label>
+              <input type="email" class="form-control" id="Email" aria-describedby="emailHelp" formControlName="email">
+              <div id="emailHelp" class="form-text">Puedes ingresar el correo personal ,pero te recomendamos que coloques un email solo para ti.</div>
+              <small id="Email"></small>
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+                <input formControlName="password" type="password" class="form-control" >
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword2" class="form-label"> Confirmar contraseña</label>
+                <input formControlName="password" type="password" class="form-control" >
+            </div>
+
+            <!--Boton -->
+            <button  id="boton" type="submit" class="btn btn">Guardar</button>
+          </form>
+
+
+    </div>
+    </div>
+</div>
+
+<app-footer></app-footer>

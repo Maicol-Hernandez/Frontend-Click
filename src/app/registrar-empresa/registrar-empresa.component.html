@@ -1,8 +1,13 @@
 <app-nav></app-nav>
 <!--FORMULARIO PARA EL REGISTRO DE LA EMPRESA-->
-<div class="card" style="width: 45rem;">
+
+<img id="ilu3" src="../../static/ilu3.png" class="rounded float-end" alt="..."width="400px" height="476px">
+
+<div class="card"  id="formulario" style="width: 40rem;">
   <div class="card-body">
+    <h3>¡Crea tu negocio en click!</h3><br>
     <div>
+      
         <form [formGroup]="form" (ngSubmit)=" OnSubmit()">
           <div class="mb-3">
             <label for="exampleInputNombreEmpresa1" class="form-label">Ingrese el nombre del negocio</label>
@@ -37,7 +42,7 @@
             <small id="NumeroEmpresa3"></small>
           </div>
           <div class="mb-3">
-            <label for="Empresa1" class="form-label">Horario el horario de trabajo</label>
+            <label for="Empresa1" class="form-label">Horario de trabajo</label>
             <input type="text" class="form-control" id="Horario" formControlName="Horario">
             <small id="Horario2"></small>
           </div>
@@ -49,11 +54,16 @@
           <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Ingrese el Email </label>
             <input type="email" class="form-control" id="EmailEmpresa1" aria-describedby="emailHelp" formControlName="emailEmpresa">
-            <div id="emailHelp" class="form-text">Puedes ingresar el correo personas ,pero te recomendamos que coloques un email solo para tu.</div>
+            <div id="emailHelp" class="form-text">Puedes ingresar el correo personal ,pero te recomendamos que coloques un email solo para tu.</div>
             <small id="EmailEmpresa2"></small>
           </div>
-          <button type="submit" class="btn btn-primary">Guardar</button>
+          <button type="submit" class="btn btn">Guardar</button>
         </form>
   </div>
-</div>
-<app-footer></app-footer>
+ </div>
+
+
+
+ 
+    
+ 
