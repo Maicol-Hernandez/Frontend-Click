@@ -28,6 +28,7 @@ import { CrearProductosComponent } from './crear-productos/crear-productos.compo
     FormularioPedidoComponent,
     RegistrarEmpresaComponent,
     CrearProductosComponent
+  
   ],
   imports: [
     FormsModule,

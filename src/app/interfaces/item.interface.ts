@@ -4,5 +4,9 @@ export interface IItem {
     img:string,
     nombre:string,
     precio:number,
-    cantidad:number
+    cantidad:number,
+
+
 }
+
+

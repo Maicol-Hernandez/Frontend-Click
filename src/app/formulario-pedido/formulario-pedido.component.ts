@@ -37,6 +37,7 @@ export class FormularioPedidoComponent implements OnInit {
         telefono: this.form.value.telefono,
         correo: this.form.value.correo,
         direccion: this.form.value.direccion,
+        //carrito: {{{ }} }
       }).subscribe(
         (response: any) => {
           console.log(response);

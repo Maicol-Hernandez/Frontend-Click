@@ -1,4 +1,4 @@
-import { Component, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { DetalleproductoComponent } from './detalleproducto/detalleproducto.component';
@@ -12,13 +12,14 @@ import { CrearProductosComponent } from'../app/crear-productos/crear-productos.c
 
 
 const routes: Routes = [
-  { path: 'vernegocio/id', component:NegociosComponent },
+  { path: 'vernegocio', component:NegociosComponent },
   { path: 'carrito', component:CarritoComponent },
-  { path:'',component:HomeComponent},
+  { path:'',component:HomeComponent}, 
   { path:'nosotros',component:NosotrosComponent},
   { path: 'registrarEmpresa',component:RegistrarEmpresaComponent},
   { path: 'detallesproducto/:id', component:DetalleproductoComponent },
   { path: 'crearproducto', component:CrearProductosComponent },
+  { path: 'detallesproducto', component:DetalleproductoComponent },
   { path: 'formulario-pedido', component: FormularioPedidoComponent}
 ];
 

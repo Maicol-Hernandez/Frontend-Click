@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ClientService } from '../servicios/client.service'
-import { CartService } from '../servicios/cart.service'
-import { IItem } from '../interfaces/item.interface';
-
+import { ClientService } from '../servicios/client.service';
+import { CartService } from '../servicios/cart.service';
+//import { IItem } from '../interfaces/item.interface';
+import { DetalleproductoComponent } from '../detalleproducto/detalleproducto.component';
 
 @Component({
   selector: 'app-carrito',
@@ -11,11 +11,13 @@ import { IItem } from '../interfaces/item.interface';
 })
 export class CarritoComponent implements OnInit {
 
-  public items: Array<IItem>
+  public items: Array<DetalleproductoComponent>
   public totalPrecio:number = 0;
   public totalCantidad:number = 0;
   constructor(private cartService:CartService, private client: ClientService ) { }
 
+  ngOnInit() {}
+  /*
   ngOnInit() {
     this.cartService.datoCarrito.subscribe(dato=>{
       if(dato)
@@ -26,15 +28,15 @@ export class CarritoComponent implements OnInit {
       }
     })
   }
-
+*/
   comprar(){
 
     //this.client.postRequest("",producto).subscribe()
   }
 
-  
-  public remover(producto:IItem){
-    this.cartService.removerElementoCarrito(producto);
-  }
+  /*
+  public remover(producto:DetalleproductoComponent){
+    this.cartService.removerElementosCarrito(producto);
+  }*/
   
 }

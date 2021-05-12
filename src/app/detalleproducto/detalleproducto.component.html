@@ -7,47 +7,40 @@
   <h3 class="titulo">
     Detalles del pedido
   </h3>
+  <span class="main-color-text">${{precioTotal}}</span>
   <table class="table">
     <thead>
       <tr>
-        <th scope="col"></th>
-        <th scope="col">img</th>
          
         <th scope="col">Producto</th>
+        <th scope="col">Nombre</th>
         <th scope="col">Cantidad</th>
         <th scope="col">Precio</th>
         <th scope="col">Total</th>
+        <th scope="col"></th>
       </tr>
     </thead>
+
     <tbody>
-      <tr *ngFor="let producto of id">
-        <th scope="row" {{ producto.id }}>1</th>
-        <th scope="row"><img [src]="producto.foto" class="img-productos" alt="productos"></th>
-         
-        <td> {{ producto.nombre }}Pastel de chocolate</td>
-        <td>4</td>
-        <td>{{ producto.precio }}</td>
+      <!--Estos datos debe traerlos desde localStorage-->
+      <tr *ngFor="let producto of data">
         
+        <th scope="row"><img [src]="producto.foto" class="img-productos" alt="productos"></th>     
+        <td> {{ producto.nombre }} </td>
+        <td> {{ producto.cantidad }} </td>
+        <td> {{ producto.precio }} </td>
+        <td> {{ producto.id }}  </td>
+        <td>  <button type="button" (click)="onRemoverItem(producto.id)">Eliminar</button> </td>
       </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Torta de naranja</td>
-        <td>2</td>
-        <td>3.000</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>capuccino</td>
-        <td>2</td>
-        <td>6.000</td>
-      </tr>
+
+
     </tbody>
   </table>
   <div class="boton1">
     <button type="button" class="btn btn-secondary btn-lg" id="boton1" [routerLink]="['/vernegocio']">Seguir Comprando</button>
   </div>
   <div class="boton2">
-    <button type="submit" class="btn btn-secondary btn-lg" [routerLink]="['/formulario-pedido']" id="boton2">Continuar</button>
+    <button type="submit" class="btn btn-secondary btn-lg" [routerLink]="['/formulario-pedido']" id="boton2" (click)="enviarPruductos()" >Continuar</button>
   </div>
 </section>
 

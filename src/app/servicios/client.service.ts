@@ -79,4 +79,18 @@ export class ClientService {
 
 
   }
+
+  
+  postRequestEnviarProductos(route:string, id:any, token?:string) {
+    let config:any = {
+      responseType: "json"
+    }
+    if(token) {
+      const herder = new Headers().set('Authorization',  `Bearer ${token}`)
+      config['herder'] = herder;
+    }
+    return this.http.post(route, id, config);
+  }
+
+
 }
