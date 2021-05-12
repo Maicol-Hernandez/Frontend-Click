@@ -17,6 +17,10 @@
             </div>
         </div>
     </div>
+
+    <ul class="carrito">
+        <button type="button" class="cart" [routerLink]="['/detallesproducto']"><a><i class="fa fa-shopping-cart"></i>Carrito</a></button>
+    </ul>
     
 <div class="wrap">
     <h1>Productos</h1>
@@ -26,21 +30,24 @@
                 <div class="card">
                     <img [src]="producto.foto" class="card-img-top" alt="">
                     <div class="card-body">
-                        <h5 class="card-title">{{ producto.nombre }}</h5>
+                        <h5 class="card-title">{{ producto.nombre }}  {{producto.id}} </h5>
                         <p class="card-text"><small class="text-muted">precio: ${{ producto.precio }}</small></p>
-                        <form [formGroup]="form" (ngSubmit)="OnSubmit(producto.id)">
+                        <!--(ngSubmit)="OnSubmit(producto.id)"-->
+                        <form [formGroup]="form" (ngSubmit)="OnSubmit(producto.id)" >
                             <!--El minimo es de un 1 producto-->
                             <input type="number" min="1" formControlName="cantidad">
-                            <button type="submit"  class="btn btn-danger ml-4">Pedir producto {{ producto.id }}</button>
+                            <button type="submit" class="btn btn-danger ml-4">Pedir producto {{ producto.id }}</button>
                         </form>
-                        <button type="button" (click)="delente(producto.id)">Eliminar</button>
                        
                     </div>
                 </div>
             </div>
-    </section>
 
+        </section>
+        <app-carrito *ngIf="abrirCart"></app-carrito>
 </div>
 </div>
+
+
 
 <app-footer class="footer"></app-footer>
