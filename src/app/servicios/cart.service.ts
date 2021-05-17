@@ -10,9 +10,9 @@ export class CartService {
 
   estadoInicial = JSON.parse(localStorage.getItem('pedido')) || []
   
-  private carrito = new BehaviorSubject<Array<IItem>>(this.estadoInicial)
+   carrito = new BehaviorSubject<Array<IItem>>(this.estadoInicial)
 
-  public datoCarrito = this.carrito.asObservable()
+  //public datoCarrito = this.carrito.asObservable()
   
 
   
@@ -53,7 +53,7 @@ export class CartService {
     //Obtenemos el valor actual
     let listCarrito = this.carrito.getValue();
     console.log('listaCarrito:',listCarrito)
-    console.log("datoCarrito", this.datoCarrito)
+    //console.log("datoCarrito", this.datoCarrito)
     //localStorage.setItem('pedido',JSON.stringify(pedido))
     //Si no es el primer item del carrito
     if(listCarrito){
@@ -61,10 +61,9 @@ export class CartService {
       let objIndex = listCarrito.findIndex((obj => obj.id === detallesFact.id));
       //Si ya cargamos uno aumentamos su cantidad
       console.log("objIndex: ", objIndex)
-      if(objIndex != -1){
-
-      listCarrito[objIndex].cantidad += 1;
-      console.log('listCarrito[objIndex].cantidad += 1:', listCarrito[objIndex].cantidad += 1)    
+      if(objIndex > -1){
+        listCarrito[objIndex].cantidad += 1;
+      console.log('listCarrito[objIndex].cantidad += 1:')    
       
     }
 
@@ -83,10 +82,35 @@ carrito["arroz"] = carrito["arroz"]  + 1
       listCarrito = [];
       listCarrito.push(detallesFact);
     }
-    this.carrito.next(listCarrito); //Enviamos el valor a todos los Observers que estan escuchando nuestro Observable
+
     localStorage.setItem('pedido',JSON.stringify(detallesFact))
+    this.carrito.next(listCarrito); //Enviamos el valor a todos los Observers que estan escuchando nuestro Observable
   
   
+  }
+
+  addItem(currentItem: any) {
+
+    // Obteniendo estado del carrito
+    const items = [...this.carrito.value];
+    console.log("items: ", items)
+
+    // Saber si existe el item, si no existe el index es -1
+    const itemIndex = items.findIndex(item => item.id === currentItem.product.id);
+
+    // Si el indice es mayor de -1, el item existe dentro del carrito.
+    if (itemIndex > -1) {
+      const itemCarritoExistente = items[itemIndex];
+      itemCarritoExistente.cantidad = itemCarritoExistente.cantidad + currentItem.cantidad;
+      items[itemIndex] = itemCarritoExistente;
+    } else {
+      // Agregando un item al carrito
+      items.push(currentItem);
+    }
+
+    // Actualizando el estado del contenedor de carrito, para que le notifique a sus observadores subscritos.
+    this.carrito.next(items);
+    localStorage.setItem('peidodo', JSON.stringify(items));
   }
 
 

@@ -14,6 +14,8 @@ import { DetalleproductoComponent } from './detalleproducto/detalleproducto.comp
 import { FormularioPedidoComponent } from './formulario-pedido/formulario-pedido.component';
 import { RegistrarEmpresaComponent } from './registrar-empresa/registrar-empresa.component';
 import { CrearProductosComponent } from './crear-productos/crear-productos.component';
+import { LoginComponent } from './login/login.component';
+import { RegistroComponent } from './registro/registro.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { CrearProductosComponent } from './crear-productos/crear-productos.compo
     NosotrosComponent,
     FormularioPedidoComponent,
     RegistrarEmpresaComponent,
-    CrearProductosComponent
+    CrearProductosComponent,
+    LoginComponent,
+    RegistroComponent
   
   ],
   imports: [

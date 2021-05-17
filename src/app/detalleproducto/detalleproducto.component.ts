@@ -27,6 +27,7 @@ export class DetalleproductoComponent implements OnInit {
     ){}
 
   ngOnInit() {
+/*
     console.log("Se imprime public items: Array<IItem>: ", this.items)
     this.cartService.datoCarrito.subscribe(dato => {
       if(dato){
@@ -35,7 +36,7 @@ export class DetalleproductoComponent implements OnInit {
         this.precioTotal = dato.reduce((sum, articulo) => sum + (articulo.precio * articulo.cantidad), 0)
         
       }
-    });
+    });*/
 
     //Variable que trae la informacion del localStorage
     this.data = JSON.parse(this.cartService.getPedidos());

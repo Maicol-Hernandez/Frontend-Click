@@ -9,18 +9,23 @@ import { NosotrosComponent } from '../app/nosotros/nosotros.component';
 import { RegistrarEmpresaComponent } from '../app/registrar-empresa/registrar-empresa.component';
 import { FormularioPedidoComponent } from './formulario-pedido/formulario-pedido.component'
 import { CrearProductosComponent } from'../app/crear-productos/crear-productos.component';
-
+import { LoginComponent } from '../app/login/login.component';
+import { RegistroComponent } from '../app/registro/registro.component';
 
 const routes: Routes = [
   { path: 'vernegocio', component:NegociosComponent },
   { path: 'carrito', component:CarritoComponent },
-  { path:'',component:HomeComponent}, 
-  { path:'nosotros',component:NosotrosComponent},
-  { path: 'registrarEmpresa',component:RegistrarEmpresaComponent},
+  { path:'',component:HomeComponent }, 
+  { path:'nosotros',component:NosotrosComponent },
+  { path: 'registrarEmpresa',component:RegistrarEmpresaComponent },
   { path: 'detallesproducto/:id', component:DetalleproductoComponent },
   { path: 'crearproducto', component:CrearProductosComponent },
   { path: 'detallesproducto', component:DetalleproductoComponent },
-  { path: 'formulario-pedido', component: FormularioPedidoComponent}
+  { path: 'formulario-pedido', component: FormularioPedidoComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'registro', component: RegistroComponent }
+
+
 ];
 
 @NgModule({

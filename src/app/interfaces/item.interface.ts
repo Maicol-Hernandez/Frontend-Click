@@ -1,3 +1,4 @@
+
 export interface IItem {
 
     id:number,
@@ -5,7 +6,6 @@ export interface IItem {
     nombre:string,
     precio:number,
     cantidad:number,
-
 
 }
 

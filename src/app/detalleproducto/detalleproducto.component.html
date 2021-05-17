@@ -8,6 +8,7 @@
     Detalles del pedido
   </h3>
   <span class="main-color-text">${{precioTotal}}</span>
+  
   <table class="table">
     <thead>
       <tr>
@@ -30,6 +31,7 @@
         <td> {{ producto.cantidad }} </td>
         <td> {{ producto.precio }} </td>
         <td> {{ producto.id }}  </td>
+        <td> {{ totalCantidad }}  </td>
         <td>  <button type="button" (click)="onRemoverItem(producto.id)">Eliminar</button> </td>
       </tr>
 

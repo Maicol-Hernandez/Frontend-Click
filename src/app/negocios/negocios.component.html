@@ -30,12 +30,12 @@
                 <div class="card">
                     <img [src]="producto.foto" class="card-img-top" alt="">
                     <div class="card-body">
-                        <h5 class="card-title">{{ producto.nombre }}  {{producto.id}} </h5>
+                        <h5 class="card-title">{{ producto.nombre }} </h5>
                         <p class="card-text"><small class="text-muted">precio: ${{ producto.precio }}</small></p>
                         <!--(ngSubmit)="OnSubmit(producto.id)"-->
                         <form [formGroup]="form" (ngSubmit)="OnSubmit(producto.id)" >
                             <!--El minimo es de un 1 producto-->
-                            <input type="number" min="1" formControlName="cantidad">
+                            <input type="number" min="0" formControlName="cantidad">
                             <button type="submit" class="btn btn-danger ml-4">Pedir producto {{ producto.id }}</button>
                         </form>
                        

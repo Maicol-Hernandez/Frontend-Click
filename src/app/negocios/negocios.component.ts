@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ClientService } from '../servicios/client.service';
 import { ActivatedRoute, Data, ParamMap } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { CartService } from '../servicios/cart.service';
 import { IItem } from '../interfaces/item.interface';
 
@@ -32,8 +32,9 @@ export class NegociosComponent implements OnInit {
     ) {}
 
   ngOnInit(): void {
-    this.form = this.fb.group({
-      cantidad: [1, Validators.required]
+    this.form = new FormGroup({
+      cantidad: new FormControl('', [Validators.required, Validators.min(1)]) 
+      
     });
 
     this.client.getRequestDataEmpresa('http://localhost:5000/api/v01/user/datosempresa').subscribe(
@@ -131,6 +132,15 @@ export class NegociosComponent implements OnInit {
       }
     }
 */
+
+
+    
+  onAddItem() {
+    const cantidad = this.form.controls.cantidad.value;    
+    this.cartService.addItem(this.detallesFact);
+    console.log("cantidad:", cantidad)
+  }
+
     cart() {
       this.abrirCart = !this.abrirCart;
     }
