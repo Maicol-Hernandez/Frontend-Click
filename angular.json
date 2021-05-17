@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "ClickFrontend"
+    }
+  },
+  "defaultProject": "ClickFrontend",
+  "cli": {
+    "analytics": false
+  }
 }
