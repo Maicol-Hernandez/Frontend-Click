@@ -7,7 +7,7 @@
   <h3 class="titulo">
     Detalles del pedido
   </h3>
-  <span class="main-color-text">${{precioTotal}}</span>
+  <span class="main-color-text">Total $ {{carro.sumCarritoUser.getValue() | number}}</span>
   <table class="table">
     <thead>
       <tr>
@@ -16,21 +16,20 @@
         <th scope="col">Nombre</th>
         <th scope="col">Cantidad</th>
         <th scope="col">Precio</th>
-        <th scope="col">Total</th>
+        <th scope="col">Opciones</th>
         <th scope="col"></th>
       </tr>
     </thead>
 
     <tbody>
       <!--Estos datos debe traerlos desde localStorage-->
-      <tr *ngFor="let producto of data">
+      <tr *ngFor="let producto of carro.carritoUser.getValue()">
         
         <th scope="row"><img [src]="producto.foto" class="img-productos" alt="productos"></th>     
         <td> {{ producto.nombre }} </td>
         <td> {{ producto.cantidad }} </td>
         <td> {{ producto.precio }} </td>
-        <td> {{ producto.id }}  </td>
-        <td>  <button type="button" (click)="onRemoverItem(producto.id)">Eliminar</button> </td>
+        <td>  <button type="button" (click)="delente(producto.id)">Eliminar</button> </td>
       </tr>
 
 

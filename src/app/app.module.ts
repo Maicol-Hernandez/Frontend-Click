@@ -9,7 +9,6 @@ import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
 import { NosotrosComponent } from './nosotros/nosotros.component';
 import { NegociosComponent } from './negocios/negocios.component';
-import { CarritoComponent } from './carrito/carrito.component';
 import { DetalleproductoComponent } from './detalleproducto/detalleproducto.component';
 import { FormularioPedidoComponent } from './formulario-pedido/formulario-pedido.component';
 import { RegistrarEmpresaComponent } from './registrar-empresa/registrar-empresa.component';
@@ -25,7 +24,6 @@ import { FacturaComponent } from './factura/factura.component';
   declarations: [
     AppComponent,
     NegociosComponent,
-    CarritoComponent,
     DetalleproductoComponent,
     NavComponent,
     HomeComponent,
