@@ -1,3 +1,4 @@
+
 @font-face {
     font-family: Poppins-Regular;
     src: url('../../fuentes/Poppins-Regular.ttf'); 
@@ -24,12 +25,15 @@
       box-sizing: border-box;
   }
   
-  body, html {
-      height: 100%;
-      font-family: Poppins-Regular, sans-serif;
-  }
-  
-  
+  /*
+.img-fondo{ 
+  width: 1322px;
+  height: 700px;
+  position: absolute;
+   
+}
+*/
+
   input {
       outline: none;
       border: none;
@@ -55,9 +59,11 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    padding: 15px;
-    background: -webkit-linear-gradient(to right, #F09819, #FF512F);
-    background: linear-gradient(to right, #F09819, #FF512F);
+    padding: 10px;
+    background-image: url('../../static/login.png');
+
+    /*background: -webkit-linear-gradient(to right, #F09819, #FF512F);
+    background: linear-gradient(to right, #F09819, #FF512F);*/
   }
   
   .wrap-login {
@@ -254,3 +260,5 @@
       padding: 77px 15px 33px 15px;
     }
   }
+
+

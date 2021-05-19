@@ -9,6 +9,32 @@ export class ClientService {
 
   constructor(private http: HttpClient) { }
 
+  //Servio del registro de los usuarios
+  postRequestRegistroUsers(route:string, data?:any, token?:string) {
+    let config:any = {
+      reponseType: "json"
+    }
+    if(token) {
+      const herder = new Headers().set('Authorization',  `Bearer ${token}`)
+      config['herder'] = herder;
+
+    }
+    return this.http.post(route, data, config );
+  }
+
+  postRequestEmpresaId(route:string, id:any, token?:string ) {
+    let config:any = {
+      reponseType: "json"
+    }
+  if(token) {
+    const herder = new Headers().set('Authorization',  `Bearer ${token}`)
+    config['herder'] = herder;
+ 
+  }
+
+  return this.http.post(route, id, config)
+  }
+
   getRequestDataEmpresa(route: string, token?: string){
 
     let config:any = {
@@ -34,19 +60,6 @@ export class ClientService {
     }
 
     return this.http.get(route, config);
-  }
-
-  postRequestEmpresaId(route:string, id:any, token?:string ) {
-    let config:any = {
-      reponseType: "json"
-    }
-  if(token) {
-    const herder = new Headers().set('Authorization',  `Bearer ${token}`)
-    config['herder'] = herder;
- 
-  }
-
-  return this.http.post(route, id, config)
   }
 
   postRequestId(route:string, id:any, token?:string) {
