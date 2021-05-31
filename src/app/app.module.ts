@@ -18,6 +18,7 @@ import { CrearProductosComponent } from './crear-productos/crear-productos.compo
 import { LoginComponent } from './login/login.component';
 import { RegistroUsuarioComponent } from './registro-usuario/registro-usuario.component';
 import { FacturaComponent } from './factura/factura.component';
+import { PagosComponent } from './pagos/pagos.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { FacturaComponent } from './factura/factura.component';
     CrearProductosComponent,
     LoginComponent,
     RegistroUsuarioComponent,
-    FacturaComponent
+    FacturaComponent,
+    PagosComponent
   ],
   imports: [
     FormsModule,
