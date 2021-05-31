@@ -16,8 +16,7 @@ import { CrearProductosComponent } from './crear-productos/crear-productos.compo
 import { LoginComponent } from './login/login.component';
 import { RegistroComponent } from './registro/registro.component';
 import { FacturaComponent } from './factura/factura.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatIconModule } from '@angular/material/icon';
+import { PagosComponent } from './pagos/pagos.component';
 
 
 @NgModule({
@@ -33,8 +32,9 @@ import { MatIconModule } from '@angular/material/icon';
     RegistrarEmpresaComponent,
     CrearProductosComponent,
     LoginComponent,
-    RegistroComponent,
+    RegistroUsuarioComponent,
     FacturaComponent,
+    PagosComponent
   ],
   imports: [
     FormsModule,

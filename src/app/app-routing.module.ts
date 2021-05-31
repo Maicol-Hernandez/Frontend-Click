@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
+import {PagosComponent} from './pagos/pagos.component'; 
 import { DetalleproductoComponent } from './detalleproducto/detalleproducto.component';
 import { NegociosComponent } from './negocios/negocios.component';
 import { HomeComponent } from '../app/home/home.component';
@@ -23,9 +23,11 @@ const routes: Routes = [
   { path: 'formulario-pedido', component: FormularioPedidoComponent },
   { path: 'registro', component: RegistroComponent },
   { path: 'login', component:LoginComponent},
-  { path: 'factura', component:FacturaComponent}
-
+  { path: 'registro-usuario', component:RegistroUsuarioComponent},
+  { path: 'factura', component:FacturaComponent},
+  {path :'pagos', component: PagosComponent}
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

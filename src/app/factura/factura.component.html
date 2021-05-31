@@ -1,3 +1,47 @@
 <app-nav></app-nav>
-<p>factura works!</p>
+<div class="d-flex justify-content-center" #content id="content">
+    <div class="card" style="width: 40rem;">
+        <div class="card-body">
+          <h5 class="card-title">Factura de Pago</h5>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Cantidad</th>
+                        <th scope="col">precio</th>
+                    </tr>
+                </thead>
+                <tbody *ngFor="let item of carro.carritoUser.getValue()">
+                  <tr class="table-active">
+                    <td colspan="1" class="table-active">{{item.nombre}}</td>
+                    <td colspan="1" class="table-active">{{item.cantidad}}</td>
+                    <td colspan="1" class="table-active">$ {{ item.precio | number: '1.0-0' }}</td>
+                 </tr>
+                </tbody>
+              </table>
+              <div class="alert alert-dark" role="alert">
+                <p>INFORMACION TRIBUTARIA</p>
+                <p>Valor del iva   $ {{carro.sumIva.getValue() | number: '1.0-0'}}</p>
+              </div>
+              <div class="alert alert-primary" role="alert">
+                <h3>Total : $ {{carro.sumProducto.getValue() | number: '1.0-0'}}</h3>
+              </div>
+        </div>
+    </div>
+</div>
+<div class="d-flex justify-content-center" *ngIf="pays">
+  <div class="card" style="width: 40rem;">
+    <button (click)="pay()">PAGAR</button>
+  </div>
+</div>
+<div class="d-flex justify-content-center" *ngIf="paid">
+    <div class="card" style="width: 40rem;">
+      <p>Tienes estas opciones para obtener la factura</p><br>
+      <div class="btn-group" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-outline-secondary" (click)=" generatePdf('download')">Descargar</button>
+        <button type="button" class="btn btn-outline-secondary" (click)=" generatePdf('print')">Impirmir</button>
+        <button type="button" class="btn btn-outline-secondary" (click)=" generatePdf('open')">Abrir</button>
+      </div>
+    </div>
+</div>
 <app-footer></app-footer>
