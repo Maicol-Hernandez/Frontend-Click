@@ -1,30 +1,61 @@
+
 <app-nav></app-nav>
 
-<div class="container-login">
-    <div class="wrap-login">
-        <form class="login-form validate-form" id="formLogin" action="" method="post">
+<div class="container-login" id="">
+    <div id="ilu3" class="img-login" alt="...">
+        
+            <img id="img-position" src="../../static/login.png"  alt="">
+        
+        <div class="wrap-login">
+
+        <form [formGroup]="form" (ngSubmit)="onSubmit()" class="login-form validate-form" id="formLogin" action="" >
             <span class="login-form-title">LOGIN</span>
             
-            <div class="wrap-input100" data-validate = "Usuario incorrecto">
-                <input class="input100" type="text" id="usuario" name="usuario" placeholder="Usuario">
+            <div class="wrap-input100" >
+                <input class="input100" formControlName="email" matInput type="email" placeholder="Email" [(ngModel)]="correo" name="correo" #email (ngModelChange)="mostrarVar()" />
+
                 <span class="focus-efecto"></span>
+                
+                <mat-error *ngIf="isValidField('email')"> 
+                    {{ getErrorMessange("email") }}
+                </mat-error>
+            
             </div>
             
-            <div class="wrap-input100" data-validate="Password incorrecto">
-                <input class="input100" type="password" id="password" name="password" placeholder="Password">
+            <div class="wrap-input100" >
+                <input class="input100" [type]="hide ? 'password' : 'text'"  formControlName="password" matInput placeholder="Password"/>
+                
                 <span class="focus-efecto"></span>
+                
+                <button class="btn-hide" type="button" (click)="hide = !hide">
+                    <mat-icon>{{ hide ? "visibility_off": "visibility" }}</mat-icon>    
+                </button>
+
+                <span class="focus-efecto"></span>
+                <mat-error *ngIf="isValidField('password')"> 
+                    {{ getErrorMessange("password") }}
+                </mat-error>
             </div>
-            
-            <div class="container-login-form-btn">
+            <mat-error *ngIf="errorMessage"> 
+                {{ errorMessage }}
+            </mat-error>
+            <div *ngIf="loading" >
+               Spinner! 
+            </div>
+            <div class="container-login-form-btn" *ngIf="!loading">
                 <div class="wrap-login-form-btn">
                     <div class="login-form-bgbtn"></div>
-                    <button type="submit" name="submit" class="login-form-btn">CONECTAR</button>
+                    <button [disabled]="form.invalid"  mat-raised-button type="submit"  class="login-form-btn" color="primary">
+                        CONECTAR
+                    </button>
                 </div>
                 <a href="..." class="nav-link" [routerLink]="['/registro']">¿No tienes una cuenta? Registrate</a>
-                
             </div>
+            
         </form>
     </div>
+    
+    
 </div>
-
+</div>
 <app-footer></app-footer>

@@ -25,18 +25,10 @@
       box-sizing: border-box;
   }
   
-  /*
-.img-fondo{ 
-  width: 1322px;
-  height: 700px;
-  position: absolute;
-   
-}
-*/
 
   input {
-      outline: none;
-      border: none;
+    outline: none;
+    border: none;
   }
   
   button {
@@ -44,13 +36,27 @@
       border: none;
       background: transparent;
   }
-  
+
   button:hover {
       cursor: pointer;
   }
   
   /*-- contenedor del Login--*/
-  
+  #img-position{
+
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    margin-top: auto;
+    max-width: 45%;
+    width: 100%;
+    max-height: 100%;
+    height: 500px;
+    float: right;
+    margin-right: -1%;
+  } 
+
+
   .container-login {
     width: 100%;  
     min-height: 100vh;
@@ -60,18 +66,22 @@
     justify-content: center;
     align-items: center;
     padding: 10px;
-    background-image: url('../../static/login.png');
-
-    /*background: -webkit-linear-gradient(to right, #F09819, #FF512F);
+    
+    /*
+    background: -webkit-linear-gradient(to right, #F09819, #FF512F);
     background: linear-gradient(to right, #F09819, #FF512F);*/
+
   }
   
   .wrap-login {
     width: 400px;
     background: #eceff1;
-    border-radius: 20px;
     overflow: hidden;
+    border-radius: 20px;
+    border-color: black solid 5px;
     padding: 77px 55px 53px 55px;
+    float: left;
+    margin-left: 20%;
     -webkit-box-shadow: 25px 40px 28px 0px rgba(0, 0, 0, 0.38);
    /* box-shadow: eje-x | eje-y | blur-radius | color */
   }
@@ -103,16 +113,28 @@
     margin-bottom: 37px;
   }
   
+  mat-error{
+    color: #9C0000;
+  }
+  
+  .btn-hide {
+    float: left;
+    margin-left: 300px;
+    margin: -35px 0px 0px 260px;
+
+
+  }
+
   .input100 {
     font-family: Poppins-Regular;
     font-size: 15px;
     color: #555555;
     line-height: 1.2;
-  
     display: block;
-    width: 100%;
+    width: 90%;
     height: 45px;
     background: transparent;
+    border-radius: 20px;
     padding: 0 5px;
   }
   
@@ -255,10 +277,49 @@
   
   /*--- Para dispositivos small responsive ---*/
   
-  @media (max-width: 576px) {
+  
+
+
+
+  @media (max-width: 800px) {
     .wrap-login {
       padding: 77px 15px 33px 15px;
+      width: 80%;
+      margin-left: 50px;
     }
+    
+    #img-position{
+      width: 200px;
+      height: 20%;
+      margin: -35px 0px 0px 88px ;
+      float: right;
+      right: 28%;
+      position: absolute;
+
+    }
+
   }
 
 
+  @media (max-width: 1024px) {
+    .wrap-login {
+      padding: 77px 15px 45px 15px;
+      width: 100%;
+      margin-left: 50px;
+     
+    } .btn-hide{
+      float: right;
+      margin-left: 300px;
+      margin: -35px 0px 0px 0px;
+    }
+
+    #img-position{
+      width: 35%;
+      height: 25%;
+      margin: -88px 0px 0px 0px ;
+      float: right;
+      right: 27%;
+      position: absolute;
+
+    }
+  }

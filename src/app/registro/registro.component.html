@@ -1,71 +1,193 @@
-<p>registro works!</p>
 <app-nav></app-nav>
 
 
+<img id="ilu3" src="../../static/ilu3.png" class="rounded float-end" alt="..."width="400px" height="476px">
+
+
 <div class="card"  id="formulario" style="width: 40rem;">
-    <div class="card-body">
-      <h3>¡Crea tu cuenta en click!</h3><br>
-      <div>
-        <form [formGroup]="form" >
-            <!--Nombres -->
-            <div class="mb-3">
-              <label for="exampleInputNombres" class="form-label">Nombres</label>
-              <input formControlName="nombres" type="text" class="form-control" id="exampleInputNombres">
-              <small id="exampleInputNombres"></small>
+  <div class="card-body">
+    <h3>¡Crea tu cuenta en click!</h3><br>
+    <div>
+      
+      <form [formGroup]="form" (ngSubmit)="OnSubmit()" >
+          <!-- Nombres -->
+          <div class="mb-3">
+            <label for="nombres" class="form-label">Nombres</label>
+            <input formControlName="nombres" placeholder="Ingrese los nombres" type="text" class="form-control-inputs">
+            
+            <div class="error-messange" *ngIf="form.controls.nombres.errors && (form.controls.nombres.dirty || form.controls.nombres.touched)">  
+              <div class="error-messange-pass" *ngIf="form.controls.nombres.errors.required">
+                El campo nombres es obligatorio. 
+              </div>         
+              
+              <div class="error-messange-pass" *ngIf="form.controls.nombres.errors.minlength">
+              El campo nombres debe tener como minimo 5 caracteres.
+             </div> 
             </div>
-            <!-- Apellidos -->
-            <div class="mb-3">
-                <label for="exampleInputApellidos" class="form-label">Apellidos</label>
-                <input formControlName="apellidos" type="text" class="form-control" id="exampleInputApellidos">
-                <small id="exampleInputApellidos"></small>
+           </div>
+
+          <!-- Apellidos -->
+          <div class="mb-3">
+              <label for="apellidos" class="form-label">Apellidos</label>
+              <input formControlName="apellidos" placeholder="Ingrese los apellidos" type="text" class="form-control-inputs">
+              
+              <div class="error-messange" *ngIf="form.controls.apellidos.errors && (form.controls.apellidos.dirty || form.controls.apellidos.touched)">
+                <div class="error-messange-pass" *ngIf="form.controls.apellidos.errors.required">
+                  El campo apellidos es obligatorio. 
+                </div>         
+                <div class="error-messange-pass" *ngIf="form.controls.apellidos.errors.minlength">
+                  El campo apellidos debe tener como minimo 5 caracteres.
+               </div> 
+            
               </div>
-            <!--Tipo de doumento -->
-            <div class="mb-3">
-              <label for="exampleInputTipoDocumento" class="form-label">Tipo de documento:  &nbsp;&nbsp;</label>
-              <select id="card" class="form-select" aria-label="Default select example" formControlName="tipoDocumento">
-                <option value="">-</option>
-                <option value="ropa">CC</option>
-                <option value="alimentos">RC</option>
-                <option value="otro">Otro</option>
-            </select>
-            <small id="exampleInputTipoDocumento"></small>
-            </div>
-            <!--Numero Telefonico -->
-            <div class="mb-3">
-              <label for="exampleInputNumeroTel" class="form-label">Numero telefonico</label>
-              <input type="tel" class="form-control" id="NumeroTel" formControlName="numeroTel">
-              <small id="NumeroTel"></small>
-            </div>
-            <!--Fecha de Nacimiento-->
-            <div>
-              <label for="exampleInputFechaNacimiento" class="form-label">Fecha de Nacimiento</label>
-              <input type="date" class="form-control" id="FechaNacimiento" formControlName="fechaNacimiento">
-              <small id="FechaNacimiento"></small>
             </div>
 
-            <!-- correo electronico -->
-            <div class="mb-3">
-              <label for="exampleInputEmail" class="form-label">Correo electronico </label>
-              <input type="email" class="form-control" id="Email" aria-describedby="emailHelp" formControlName="email">
-              <div id="emailHelp" class="form-text">Puedes ingresar el correo personal ,pero te recomendamos que coloques un email solo para ti.</div>
-              <small id="Email"></small>
+          <!--Tipo de doumento -->
+          <div class="mb-3">
+            <label for="tipo de documento" class="form-label">Tipo de Documento:  &nbsp;&nbsp;</label>
+            <select id="card" id="exampleInputTipoDocumento" class="form-select"  formControlName="tipoDocumento">
+              <option value="">Seleccione</option>
+              <option value="CC">Cudula de Ciudadania</option>
+              <option value="CI">Cedula de Identidad</option>
+              <option value="RC">Registro Civil</option>
+              <option value="CE">Cedula de Extranjeria</option>
+              <option value="otro">Otro</option>
+          </select>
+          
+          <div class="error-messange" *ngIf="form.controls.tipoDocumento.errors && (form.controls.tipoDocumento.dirty || form.controls.tipoDocumento.touched)">
+            <div class="error-messange-pass" *ngIf="form.controls.tipoDocumento.errors.required">
+              El tipo de documento es obligatorio. 
             </div>
-            <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Contraseña</label>
-                <input formControlName="password" type="password" class="form-control" >
+       
+          </div>
+        </div>
+
+          <!-- Numero de Documento -->
+          <div class="mb-3">
+            <label for="numero de documento" class="form-label">Numero de Documento</label>
+            <input type="text" placeholder="Ingrese el numero de documento" class="form-control-inputs"  formControlName="numeroDoc">
+           
+            <div class="error-messange" *ngIf="form.controls.numeroDoc.errors && (form.controls.numeroDoc.dirty || form.controls. numeroDoc.touched)">
+              <div class="error-messange-pass" *ngIf="form.controls.numeroDoc.errors.required">
+                El numero de documento es obligatorio. 
+              </div>         
+        
+              <div class="error-messange-pass" *ngIf="form.controls.numeroDoc.errors.maxlength">
+                El numero de documento debe tener como maximo 10 caracteres.
+             </div> 
+        
             </div>
-            <div class="mb-3">
-                <label for="exampleInputPassword2" class="form-label"> Confirmar contraseña</label>
-                <input formControlName="password2" type="password" class="form-control" >
+          </div>
+
+          <!--Numero Telefonico -->
+          <div class="mb-3">
+            <label for="numero telefonico" class="form-label">Numero Telefonico</label>
+            <input type="tel" placeholder="Ingrese el numero telefonico" class="form-control-inputs" formControlName="numeroTel">
+           
+            <div class="error-messange" *ngIf="form.controls.numeroTel.errors && (form.controls.numeroTel.dirty || form.controls.numeroTel.touched)">
+              <div class="error-messange-pass" *ngIf="form.controls.numeroTel.errors.required">
+                El numero de telefono es obligatorio.
+              </div>
+          
+              <div class="error-messange-pass" *ngIf="form.controls.numeroTel.errors.maxlength">
+                El numero de telefono debe tener como maximo 10 caracteres.
+              </div>
+            </div>
+          </div>
+
+          <!--Fecha de Nacimiento-->
+          <div>
+            <label for="fecha de nacimiento" class="form-label">Fecha de Nacimiento</label>
+            <input placeholder="Ingrese la fecha de nacimiento" type="date" class="form-control-inputs" id="FechaNacimiento" formControlName="fechaNacimiento">
+            <small id="FechaNacimiento1"></small>
+            
+            <div class="error-messange" *ngIf="form.controls.fechaNacimiento.invalid && (form.controls.fechaNacimiento.dirty || form.controls.fechaNacimiento.touched)">
+              <div class="error-messange-pass" *ngIf="form.controls.fechaNacimiento.errors?.required">
+                El campo fecha de nacimiento es obligatorio. 
+              </div>   
+            </div>
+          </div>
+
+          <!-- correo electronico -->
+          <br>
+          <div class="mb-3">
+            <label for="correo electronico" class="form-label">Correo Electronico</label>
+            <input type="email" placeholder="Ingrese el correo electronico" class="form-control-inputs" formControlName="email" >
+            <!--
+            <mat-error *ngIf="isValidField('email')">
+              {{ getErrorMessange("email") }}
+            </mat-error>
+            -->
+            <div class="error-messange" *ngIf="form.controls.email.errors && (form.controls.email.dirty || form.controls.email.touched)">
+              <div class="error-messange-pass" *ngIf="form.controls.email.errors.required">
+                El email es obligatorio. 
+              </div>
+              
+              <div class="error-messange-pass" *ngIf="form.controls.email.errors.minlength">
+                El email debe tener como minimo 12 caracteres.
+              </div>
+
+             <div class="error-messange-pass" *ngIf="(form.controls.email.derty || form.controls.email.untouched) && form.controls.email.invalid && form.controls.email.errors.pattern">
+              Indruzca una dirección de correo electrónico válida.
+             </div>
             </div>
 
-            <!--Boton -->
-            <button  id="boton" type="submit" class="btn btn">Guardar</button>
-          </form>
+          <div id="emailHelp" class="form-text">
+            Puedes ingresar el correo personal, pero te recomendamos que coloques un email solo para ti.
+          </div>
+        </div>
 
+          <!-- Contraseña -->
+          <div class="mb-3">
+              <label for="contraseña" class="form-label">Contraseña</label>
+              <input formControlName="password" [type]="presse? 'password': 'text'" type="password" placeholder="Ingrese la contraseña" class="form-control-inputs" id="password">
+              
+              <button class="button-presse"  type="button" (click)="presse =! presse">
+                <mat-icon>{{ presse? "visibility_off" : "visibility" }}</mat-icon>    
+              </button>
 
+              <div class="error-messange" *ngIf="form.controls.password.errors && (form.controls.password.dirty || form.controls.password.touched)">
+                <div class="error-messange-pass" *ngIf="(form.controls.password.touched || submitted) && form.controls.password.errors.required">
+                  El campo contraseña es obligatorio.
+                </div>
+                  
+                <div class="error-messange-pass" *ngIf="form.controls.password.touched && form.controls.password.errors?.invalidPassword">
+                La contraseña debe tener como mínimo 8 caracteres, almenos 1 letra mayúscula, 1 minúscula y un número.  
+              </div>
+          
+            </div>
+          </div>
+
+            <!-- ContraseñaDos -->
+          <div class="mb-3">
+              <label for="confirmar contraseña" class="form-label">Confirmar Contraseña</label>
+              <input formControlName="confirmPassword" [type]=" hide? 'password':'text'" type="password" placeholder="Confirmar contraseña" class="form-control-inputs" id="password" > 
+              
+              <button  class="button-presse" type="button" (click)="hide =! hide">
+                <mat-icon>{{ hide? "visibility_off" : "visibility" }}</mat-icon>    
+              </button>
+
+              <div class="error-messange" *ngIf="form.controls.confirmPassword.errors && (form.controls.confirmPassword.dirty || form.controls.confirmPassword.touched)">
+                <div class="error-messange-pass" *ngIf="(form.controls.confirmPassword.touched || submitted ) && form.controls.confirmPassword.errors.required">
+                  El campo confirmar contraseña es obligatorio. 
+                </div>         
+                
+                <div class="error-messange-pass" *ngIf="form.controls.password.touched && form.controls.confirmPassword.errors?.passwordMismatch">
+                  Las contraseñas no coinciden.
+                </div>
+              </div>
+
+            </div>
+
+          <!-- Boton -->
+          <button [disabled]="form.invalid"  color="primary"  type="submit" id="boton" class="btn btn">
+            Guardar
+          </button>
+        
+        </form>
+      </div>
+      
     </div>
-    </div>
-</div>
+  </div>
 
 <app-footer></app-footer>

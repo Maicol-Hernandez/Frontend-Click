@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Data, ParamMap } from '@angular/router';
 import { ClientService } from '../servicios/client.service';
-import {AuthService} from '../servicios/auth.service';
-import { CartService } from '../servicios/cart.service';
+import { AuthService } from '../servicios/auth.service';
+import { CarritoClickService } from '../servicios/carrito-click.service';
 import { IItem } from '../interfaces/item.interface';
 @Component({
   selector: 'app-detalleproducto',
@@ -11,61 +11,34 @@ import { IItem } from '../interfaces/item.interface';
 })
 export class DetalleproductoComponent implements OnInit {
 
-  
-  data;
-  aumentoTotal: number;
-  public items: Array<IItem>
-  public totalCantidad:number = 0;
-  public precioTotal:number = 0;
-
+  public precioTotal= 0;
+  public productos : any=[];
   constructor(
     private route: ActivatedRoute, 
     private client: ClientService,
     public auth : AuthService,
-    private cartService: CartService
+    public carro:  CarritoClickService
 
     ){}
 
   ngOnInit() {
-/*
-    console.log("Se imprime public items: Array<IItem>: ", this.items)
-    this.cartService.datoCarrito.subscribe(dato => {
-      if(dato){
-        this.items = dato
-        this.totalCantidad = dato.length
-        this.precioTotal = dato.reduce((sum, articulo) => sum + (articulo.precio * articulo.cantidad), 0)
-        
-      }
-    });*/
-
-    //Variable que trae la informacion del localStorage
-    this.data = JSON.parse(this.cartService.getPedidos());
-    console.log("Este son detalles ",this.data);
-
-    /*
-    this.cartService.total.subscribe(total => { 
-      this.aumentoTotal = total
-      console.log("VALOR TOTAL ", this.aumentoTotal)
-    });
-*/
-    //console.log("ESTE ES VALOR DEL CARRITO: ",this.cartService);
-    
+    this.carro.init()
+    console.log(this.carro.carritoUser.getValue());
+    this.carro.sumCart();
   }
   
+  //Metodo para eliminar en un dato del carrito de compras
+  delente(id:any){
+    //consumo un servicio del carro 
+     this.carro.delenteProduct(id);
+     this.carro.sumCart();
+   }
 
-  enviarPruductos(){
-    this.client.postRequestEnviarProductos('http://localhost:5000/api/v01/user/enviarproductos',this.data).subscribe(
+   enviarPruductos(){
+    this.client.postRequestEnviarProductos('http://localhost:5000/api/v01/user/enviarproductos',null).subscribe(
 
     )
   }
-
-
-  onRemoverItem(producto: IItem) {
-    this.cartService.removerElementosCarrito(producto);
-  }
-
-  
-
   }
 
 

@@ -14,6 +14,7 @@ export class ClientService {
     let config:any = {
       reponseType: "json"
     }
+    
     if(token) {
       const herder = new Headers().set('Authorization',  `Bearer ${token}`)
       config['herder'] = herder;
@@ -21,6 +22,26 @@ export class ClientService {
     }
     return this.http.post(route, data, config );
   }
+
+  postRequestLogin(route: string, data?:any, token?:string) {
+
+    let config:any = {
+      responseType: "json"
+    }
+
+    if(token){
+      const header = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+      config['header'] = header;
+    }
+    return this.http.post(route, data, config);
+  }
+
+
+
+
+
+
+
 
   postRequestEmpresaId(route:string, id:any, token?:string ) {
     let config:any = {

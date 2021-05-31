@@ -1,17 +1,166 @@
-
 @font-face {
-    font-family: Poppins-Regular;
-    src: url('../../fuentes/Poppins-Regular.ttf'); 
+  font-family: Poppins-Regular;
+  src: url('../../fuentes/Poppins-Regular.ttf'); 
+}
+
+#boton  {  
+  background: #FF512F;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #F09819, #FF512F);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #f09819, #FF512F); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+
+.card-body{
+font-family: Poppins-Regular;
+
+}
+
+
+.card{
+  float: auto;
+  right: 17%;
+
+}
+
+h3{
+  font-family: Poppins-Regular;  
+  font-size: 30px;
+  text-align: center;
+  color: #FF512F;  /* fallback for old browsers */
+  color: -webkit-linear-gradient(to right, #F09819, #FF512F);  /* Chrome 10-25, Safari 5.1-6 */
+  color: linear-gradient(to right, #f09819, #FF512F)
+  
+}
+
+.form-select.ng-invalid:focus{
+  box-shadow: 0 0 0 0.25rem rgb(227 6 6 / 25%);
+  border-color:  #E30606;
+}
+
+.form-select.ng-invalid.ng-touched{
+  box-shadow: 0 0 0 0.10rem rgb(227 6 6 / 25%);
+}
+
+.form-select.ng-valid:focus.ng-valid:focus{
+
+  border-color: #0FA100;
+  box-shadow: 0 0 0 0.25rem rgb(15 161 0 / 25%);
+
+}
+
+.form-control{
+  border-radius: 5px;
+  border: solid 2px grey;
+}
+
+.float-end{
+margin: 20px;
+margin-top: 20px;
+}
+
+
+#formulario{
+      /* Arriba | Derecha | Abajo | Izquierda */
+      margin : 50px 40px 20px 300px;
+      font-family: Poppins-Regular;
   }
 
+input.ng-invalid.ng-touched {
+  box-shadow: 0 0 0 0.10rem rgb(227 6 6 / 25%);
+}
 
-#boton{background: #FF512F;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #F09819, #FF512F);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #f09819, #FF512F); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    }
-    
-#formulario{
-        /* Arriba | Derecha | Abajo | Izquierda */
-        margin : 50px 25px 20px 300px;
-        font-family: Poppins-Regular;
-    }
+mat-error{
+  color: red;
+  background: #ffff;
+  border-color: #fff;
+  margin-bottom: 1px;
+  font-size: 10px;
+  padding: 2px ;
+  margin: 2px;
+  width: 300px;
+  font-family: Poppins-Regular;
+  font-size: 12px;
+
+}
+
+.form-control-inputs:focus {
+  color: #212529;
+  background-color: #fff;
+  border-color: #E30606;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgb(227 6 6 / 25%);
+}
+
+.form-control-inputs.ng-valid.ng-dirty:focus {
+  color: #212529;
+  background-color: #fff;
+  border-color: #0FA100;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgb(15 161 0 / 25%);
+}
+
+
+.form-control-inputs{
+  display: block;
+  width: 100%;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529; 
+  background-color: #fff; 
+  background-clip: padding-box; 
+  border: 1px solid #ced4da; 
+  -webkit-appearance: none; 
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: .25rem;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out; 
+}
+
+
+#password{
+  width: 45%;
+  height: 30px;
+  margin-block-end: 10px;
+  border-radius: 10px;    
+}
+
+
+.button-presse {
+  position: relative;
+  outline: none !important;
+  margin: 2px;
+  border: none;
+  background: transparent;
+  float: left;
+  left:  15px;
+  margin: -38px -0px -8px 224px;
+  
+}
+
+.error-messange-pass{
+  color: red;
+  background: #ffff;
+  border-color: #fff;
+  margin-bottom: 1px;
+
+}
+
+.error-messange{
+  padding: 2px ;
+  margin: 2px;
+  width: 300px;
+  
+  font-family: Poppins-Regular;
+  font-size: 12px;
+}
+
+
+
+
+@media (max-width: 576px) {
+  .wrap-login {
+    padding: 77px 15px 33px 15px;
+  }
+}
