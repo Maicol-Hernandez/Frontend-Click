@@ -1,10 +1,325 @@
-#botonini{background: #FF512F;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #F09819, #FF512F);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #f09819, #FF512F); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+@font-face {
+    font-family: Poppins-Regular;
+    src: url('../../fuentes/Poppins-Regular.ttf'); 
+  }
+  
+  @font-face {
+    font-family: Poppins-Medium;
+    src: url('../../fuentes/Poppins-Medium.ttf'); 
+  }
+  
+  @font-face {
+    font-family: Poppins-Bold;
+    src: url('../../fuentes/Poppins-Bold.ttf'); 
+  }
+  
+  @font-face {
+    font-family: Poppins-SemiBold;
+    src: url('../../fuentes/Poppins-SemiBold.ttf'); 
+  }
+  
+  *{
+      margin: 0px; 
+      padding: 0px; 
+      box-sizing: border-box;
+  }
+  
+
+  input {
+    outline: none;
+    border: none;
+  }
+  
+  button {
+      outline: none !important;
+      border: none;
+      background: transparent;
+  }
+
+  button:hover {
+      cursor: pointer;
+  }
+  
+  /*-- contenedor del Login--*/
+  #img-position{
+
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    margin-top: auto;
+    max-width: 45%;
+    width: 100%;
+    max-height: 100%;
+    height: 500px;
+    float: right;
+    margin-right: -1%;
+  } 
+
+
+  .container-login {
+    width: 100%;  
+    min-height: 100vh;
+    display: -webkit-flex;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
     
-}
-.login{
-    /* Arriba | Derecha | Abajo | Izquierda */
-    margin : 50px 55px 20px 700px;}
-#ilu4{ /* Arriba | Derecha | Abajo | Izquierda */
-        margin : 50px 55px 20px 200px;}
+    /*
+    background: -webkit-linear-gradient(to right, #F09819, #FF512F);
+    background: linear-gradient(to right, #F09819, #FF512F);*/
+
+  }
+  
+  .wrap-login {
+    width: 400px;
+    background: #eceff1;
+    overflow: hidden;
+    border-radius: 20px;
+    border-color: black solid 5px;
+    padding: 77px 55px 53px 55px;
+    float: left;
+    margin-left: 20%;
+    -webkit-box-shadow: 25px 40px 28px 0px rgba(0, 0, 0, 0.38);
+   /* box-shadow: eje-x | eje-y | blur-radius | color */
+  }
+  
+  
+  /*----Formulario de user y password----*/
+  
+  .login-form {
+    width: 100%;
+  }
+  
+  .login-form-title {
+    display: block;
+    font-family: Poppins-Bold;
+    font-size: 40px;
+    color: #333333;
+    line-height: 1.5;
+    text-align: center;
+  }
+  
+  
+  /*------------------------------------------------------------------
+  [ Input ]*/
+  
+  .wrap-input100 {
+    width: 100%;
+    position: relative;
+    border-bottom: 2px solid #adadad;
+    margin-bottom: 37px;
+  }
+  
+  mat-error{
+    color: #9C0000;
+  }
+  
+  .btn-hide {
+    float: left;
+    margin-left: 300px;
+    margin: -35px 0px 0px 260px;
+
+
+  }
+
+  .input100 {
+    font-family: Poppins-Regular;
+    font-size: 15px;
+    color: #555555;
+    line-height: 1.2;
+    display: block;
+    width: 90%;
+    height: 45px;
+    background: transparent;
+    border-radius: 20px;
+    padding: 0 5px;
+  }
+  
+  /*---------------------------------------------*/ 
+  .focus-efecto {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+  }
+  
+  .focus-efecto::before {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 4px; /*ancho de la linea que hace el efecto de barra de progeso en el input al hacer foco*/
+  
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+  
+    background: #FF512F;
+    background: -webkit-linear-gradient(to left, #F09819, #FF512F);
+    background: -o-linear-gradient(to left, #F09819, #FF512F);
+    background: -moz-linear-gradient(to left, #F09819, #FF512F);
+    background: linear-gradient(to left, #F09819, #FF512F);
+  }
+  
+  .focus-efecto::after {
+    font-family: Poppins-Regular;
+    font-size: 15px;
+    color: #999999;
+    line-height: 1.2;
+  
+    content: attr(data-placeholder);
+    display: block;
+    width: 100%;
+    position: absolute;
+    top: 16px;
+    left: 0px;
+    padding-left: 5px;
+  
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+  }
+  
+  .input100:focus + .focus-efecto::after {
+    top: -15px;
+  }
+  
+  .input100:focus + .focus-efecto::before {
+    width: 100%;
+  }
+  
+  .has-val.input100 + .focus-efecto::after {
+    top: -15px;
+  }
+  
+  .has-val.input100 + .focus-efecto::before {
+    width: 100%;
+  }
+  
+  /*---------------------------------------------*/
+  
+  
+  /*------------------------------------------------------------------
+  [ Button ]*/
+  .container-login-form-btn {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 13px;
+  }
+  
+  .wrap-login-form-btn {
+    width: 100%;
+    display: block;
+    position: relative;
+    z-index: 1;
+    border-radius: 40px 5px;
+    overflow: hidden;
+    margin: 0 auto;
+  }
+  
+  .login-form-bgbtn {
+    position: absolute;
+    z-index: -1;
+    width: 300%;
+    height: 100%;
+    background: #FF512F;
+    background: -webkit-linear-gradient(to right, #F09819, #FF512F, #F09819, #FF512F);
+    background: -o-linear-gradient(to right, #F09819, #FF512F, #F09819, #FF512F);
+    background: -moz-linear-gradient(to right, #F09819, #FF512F, #F09819, #FF512F);
+    background: linear-gradient(to right, #F09819, #FF512F, #F09819, #FF512F);
+    top: 0;
+    left: -100%;
+  
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+  }
+  
+  .login-form-btn {
+    font-family: Poppins-Medium;
+    font-size: 20px;
+    color: #fff;
+    line-height: 1.2;
+    text-transform: uppercase;
+  
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    width: 100%;
+    height: 50px;
+  }
+  
+  .wrap-login-form-btn:hover .login-form-bgbtn {
+    left: 0;
+  }
+  
+  
+  /*--- Para dispositivos small responsive ---*/
+  
+  
+
+
+
+  @media (max-width: 800px) {
+    .wrap-login {
+      padding: 77px 15px 33px 15px;
+      width: 80%;
+      margin-left: 50px;
+    }
+    
+    #img-position{
+      width: 200px;
+      height: 20%;
+      margin: -35px 0px 0px 88px ;
+      float: right;
+      right: 28%;
+      position: absolute;
+
+    }
+
+  }
+
+
+  @media (max-width: 1024px) {
+    .wrap-login {
+      padding: 77px 15px 45px 15px;
+      width: 100%;
+      margin-left: 50px;
+     
+    } .btn-hide{
+      float: right;
+      margin-left: 300px;
+      margin: -35px 0px 0px 0px;
+    }
+
+    #img-position{
+      width: 35%;
+      height: 25%;
+      margin: -88px 0px 0px 0px ;
+      float: right;
+      right: 27%;
+      position: absolute;
+
+    }
+  }

@@ -56,10 +56,16 @@ export class RegistrarEmpresaComponent implements OnInit {
       var NumeroE = this.form.value.NumeroEmpresa;
       var NumeroS = this.form.value.NumeroSecundario;
       var emailE = this.form.value.emailEmpresa;
+      var horario = this.form.value.Horario;
       //validamos los campos del formulario
+      
       if(emailE == ""){
         document.getElementById('EmailEmpresa1').focus();
         document.getElementById('EmailEmpresa2').innerHTML = "Te hace falta este campo";
+      }
+      if(horario == ""){
+        document.getElementById('Horario').focus();
+        document.getElementById('Horario2').innerHTML = "Te hace falta este campo";
       }
       if(NumeroS == ""){
         document.getElementById('NumeroEmpresa3').focus();

@@ -32,9 +32,6 @@ export class NegociosComponent implements OnInit {
     ) {}
 
   ngOnInit(): void {
-    this.form = this.fb.group({
-      cantidad: [1, Validators.required]
-    });
     this.carro.init();
 
     this.client.getRequestDataEmpresa('http://localhost:5000/api/v01/user/datosempresa').subscribe(

@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Data, ParamMap } from '@angular/router';
 import { ClientService } from '../servicios/client.service';
-import {AuthService} from '../servicios/auth.service';
-import { CarritoClickService} from '../servicios/carrito-click.service';
-import{Route} from '@angular/router';
+import { AuthService } from '../servicios/auth.service';
+import { CarritoClickService } from '../servicios/carrito-click.service';
+import { IItem } from '../interfaces/item.interface';
+
 @Component({
   selector: 'app-detalleproducto',
   templateUrl: './detalleproducto.component.html',
@@ -37,10 +38,19 @@ export class DetalleproductoComponent implements OnInit {
         
         });    
   }
+  
   //Metodo para eliminar en un dato del carrito de compras
   delente(id:any){
     //consumo un servicio del carro 
      this.carro.delenteProduct(id);
      this.carro.sumCart()
    }
+
+   enviarPruductos(){
+    this.client.postRequestEnviarProductos('http://localhost:5000/api/v01/user/enviarproductos',null).subscribe(
+
+    )
+  }
+  }
+
 }
