@@ -15,6 +15,7 @@
         <th scope="col">Producto</th>
         <th scope="col">Nombre</th>
         <th scope="col">Cantidad</th>
+        <th scope="col">Porcentaje del iva</th>
         <th scope="col">Precio</th>
         <th scope="col">Opciones</th>
         <th scope="col"></th>
@@ -28,6 +29,7 @@
         <th scope="row"><img [src]="producto.foto" class="img-productos" alt="productos"></th>     
         <td> {{ producto.nombre }} </td>
         <td> {{ producto.cantidad }} </td>
+        <td>  {{producto.iva}} % </td>
         <td> {{ producto.precio }} </td>
         <td>  <button type="button" (click)="delente(producto.id)">Eliminar</button> </td>
       </tr>
@@ -39,7 +41,7 @@
     <button type="button" class="btn btn-secondary btn-lg" id="boton1" [routerLink]="['/vernegocio']">Seguir Comprando</button>
   </div>
   <div class="boton2">
-    <button type="submit" class="btn btn-secondary btn-lg" [routerLink]="['/formulario-pedido']" id="boton2" (click)="enviarPruductos()" >Continuar</button>
+    <button type="submit" class="btn btn-secondary btn-lg" [routerLink]="['/pagos']" id="boton2" >Pagar</button>
   </div>
 </section>
 

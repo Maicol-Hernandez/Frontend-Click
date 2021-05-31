@@ -1,0 +1,137 @@
+<!--Div de los botones de pagos-->
+<div class="d-flex justify-content-center">
+  <div class="card" style="width: 60rem;">
+    <div class="card-body">
+      <h5 class="card-title">Metodos de pagos</h5>
+      <p class="card-text">{{nombre}} selecciona la pasarela de pago que quieras</p>
+      <div class="bordes">
+        <div>
+          <button (click)="clickPaypal()">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNiIkMIgSOPoZw-h1MF0TibEVgiMa1q_O9HiGZG6Ai9VyVQw0HN4TL8JjcAM3c8kXgJhQ&usqp=CAU" width="150px">
+          </button>
+        </div>
+        <div>
+          <button (click)="clickPayU()">
+            <img src="https://i2.wp.com/qepd.news/wp-content/uploads/2019/07/payu.png?fit=600%2C400&ssl=1" width="110px">
+          </button>
+        </div>
+        <div>
+          <button (click)="clickMercadoPagos()">
+            <img src="https://http2.mlstatic.com/resources/frontend/landings-mp/images/mercadopago-og.jpg" width="140px" class="img-fluid">
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="d-flex justify-content-center">
+  <div class="card" style="width: 30rem;" *ngIf="payUC">
+    <div class="card-body">
+      <div>
+        <img src="https://image.flaticon.com/icons/png/512/825/825520.png" width="100px" class="img-fluid">
+          <form [formGroup]="formPayU" (ngSubmit)=" enviarPayU()">
+              <div class="mb-3">
+                <input formControlName="numberTarjeta"  type="text" maxlength="16" minlength="16"  class="form-control" placeholder="N.° de la tarjeta">
+              </div>
+              <div class="mb-3">
+                <input type="date" formControlName="fecha" class="form-control" placeholder="Fecha de vencimiento">
+              </div>
+              <div class="mb-3">
+                <input type="text" formControlName="csc" class="form-control" placeholder="CSC">
+              </div>
+              <h3>Dirección de la tarjeta</h3>
+              <br>
+              <div class="mb-3">
+                <input type="text"  formControlName="nombre" class="form-control" placeholder="Nombre">
+              </div>
+              <div class="mb-3">
+                <input type="text"  class="form-control" formControlName="apellidos" placeholder="Apellidos">
+              </div>
+              <div class="mb-3">
+                <input type="text"  formControlName="direccion" class="form-control" placeholder="Direccion">
+              </div>
+              <div class="mb-3">
+                <input type="text"  formControlName="subDireccion" class="form-control" placeholder="Direccion(continuación)">
+              </div>
+              <div class="mb-3">
+                <input type="text"  formControlName="ciudad" class="form-control" placeholder="Ciudad">
+              </div>
+              <div class="mb-3">
+                <input type="text"  formControlName="codigoPostal" class="form-control" placeholder="Codigo postal">
+              </div>
+              <div class="mb-3">
+                <input type="text"  formControlName="numeroTelefonico" class="form-control" placeholder="Numero telefonico">
+              </div>
+              <div class="mb-3">
+                <input type="email" formControlName="email" class="form-control" placeholder="Correo electronico">
+              </div>
+              <button type="submit" class="btn btn-primary">Pagar Ahora</button>
+          </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="d-flex justify-content-center">
+  <div class="card" style="width: 30rem;" *ngIf="payPalC">
+    <div class="card-body">
+      <div>
+        <img src="https://logos-world.net/wp-content/uploads/2020/04/PayPal-Logo-2007-2014.png" width="100px" class="img-fluid">
+        <h3>Pagar con PayPal</h3>
+        <p>
+          Con una cuenta de Paypal, usted reunirá los requisitos para gozar de la Devolución por Nuestra Cuenta, la Protección al Comprador y mucho más.
+        </p>
+        <form [formGroup]="formPayPal" (ngSubmit)=" enviarPayPal()">
+          <div class="mb-3">
+            <input type="email" formControlName="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Correo o numero de celular">
+          </div>
+          <div class="mb-3">
+            <input type="password"  formControlName="password" class="form-control" id="exampleInputPassword1" placeholder="Contraseña">
+          </div>
+          <div class="d-grid gap-2 col-6 mx-auto">
+            <button type="submit" class="btn-lg btn-primary">Iniciar sesión</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="d-flex justify-content-center">
+  <div class="card" style="width: 30rem;" *ngIf="mercadoPagosC">
+    <div class="card-body">
+      <img src="https://image.flaticon.com/icons/png/512/60/60378.png" width="200px" class="img-fluid">
+      <img src="https://avatars.githubusercontent.com/u/900583?s=280&v=4" width="150px">
+      <div>
+        <div class="card-body">
+            <form [formGroup]="formMercadoPago" (ngSubmit)=" enviarMercadoPago()" >
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">N.° de la tarjeta</label>
+                <input type="tel" formControlName="numberTarjeta" maxlength="16" minlength="16"  class="form-control">
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Nombre y Apellidos</label>
+                <input type="text" formControlName="nombres"  class="form-control">
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Fecha de vencimiento</label>
+                <input formControlName="fecha" type="date"  class="form-control">
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Numero de documento</label>
+                <input formControlName="numeroDocumento" type="text"  class="form-control">
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Codigo de seguridad</label>
+                <input formControlName="csc" type="text"  class="form-control" placeholder="CSC">
+              </div>
+              <div class="d-grid gap-2 col-6 mx-auto">
+                <button type="submit" class="btn btn-primary">Pagar</button>
+              </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
