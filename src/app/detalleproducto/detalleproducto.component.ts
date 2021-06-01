@@ -11,9 +11,10 @@ import { IItem } from '../interfaces/item.interface';
   styleUrls: ['./detalleproducto.component.css']
 })
 export class DetalleproductoComponent implements OnInit {
-
-  public precioTotal= 0;
-  public productos : any=[];
+  dataCurrent:any;
+  productos : any=[];
+  idProductos : any=[];
+  dataProducto: any;
   constructor(
     private route: ActivatedRoute, 
     private client: ClientService,
@@ -24,15 +25,25 @@ export class DetalleproductoComponent implements OnInit {
 
   ngOnInit() {
     this.carro.init()
-    console.log(this.carro.carritoUser.getValue());
-    this.carro.sumCart();
+    this.client.getRequestProductoEmpresa('http://localhost:5000/api/v01/user/productoempresa').subscribe(
+        
+        (data): any => {
+          this.dataProducto = data["data"];
+          this.carro.updatedProducts(this.dataProducto);
+          this.carro.sumCart();
+      }, 
+
+        (error: any) => {
+          console.log(error)
+        
+        });    
   }
   
   //Metodo para eliminar en un dato del carrito de compras
   delente(id:any){
     //consumo un servicio del carro 
      this.carro.delenteProduct(id);
-     this.carro.sumCart();
+     this.carro.sumCart()
    }
 
    enviarPruductos(){
@@ -42,4 +53,4 @@ export class DetalleproductoComponent implements OnInit {
   }
   }
 
-
+}

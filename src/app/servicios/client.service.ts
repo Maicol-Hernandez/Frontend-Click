@@ -105,15 +105,6 @@ export class ClientService {
     return this.http.post(route, data, config);
   }
 
-  postRequestFormularioEmpresa(route: string ,data? :any){
-    let config:any = {
-      responseType: "json"
-    }
-    return this.http.post(route,data,config);
-
-
-  }
-
   
   postRequestEnviarProductos(route:string, id:any, token?:string) {
     let config:any = {
@@ -126,5 +117,118 @@ export class ClientService {
     return this.http.post(route, id, config);
   }
 
+  //Modulo Negocio
+  getRequestMostrarNegocios(route: string, token?: string){
+    let config:any = {
+      responseType: "json"
+    }
 
+    if(token){
+      const herder = new HttpHeaders().set('Authorization', `Bearer ${token}`)
+      config['heders'] = herder
+    }
+
+    return this.http.get(route, config);
+  }
+
+  getRequestMostrarNegocioId(route: string, id: number) {
+    let config:any = {
+      responseType: "json"
+    }
+    const params = new HttpParams().set('id', `${id}`);
+    config["params"] = params;
+
+    const header = new HttpHeaders().set('Authorization', '57ydf544ljka559ahjkfgd1');
+    config["header"] = header;
+
+    return this.http.get(route, config);
+  }
+
+  postRequestFormularioEmpresa(route: string ,data? :any){
+    let config:any = {
+      responseType: "json"
+    }
+    return this.http.post(route,data,config);
+  }
+
+  postRequestActualizarEmpresa(route: string ,data? :any){
+    let config:any = {
+      responseType: "json"
+    }
+    return this.http.post(route,data,config);
+  }
+
+  getRequestEliminarNegocioId(route: string, id: number) {
+    let config: any = {
+      responseType: "json"
+    }
+    const params = new HttpParams().set('id', `${id}`);
+    config["header"] =  params;
+
+    const header = new HttpHeaders().set('Authorization', '57ydf544ljka559ahjkfgd1');
+    config["header"] =  header;
+
+    return this.http.get(route, config);
+  }
+
+  //Modulo Producto
+
+  getRequestMostrarProductos(route: string, id: number) {
+    let config:any = {
+      responseType: "json"
+    }
+    const params = new HttpParams().set('id', `${id}`);
+    config["params"] = params;
+
+    const header = new HttpHeaders().set('Authorization', '57ydf544ljka559ahjkfgd1');
+    config["header"] = header;
+
+    return this.http.get(route, config);
+  }
+
+  getRequestProductoId(route: string, id: number, idN: number) {
+    let config:any = {
+      responseType: "json"
+    }
+
+    const params = new HttpParams().set('id', `${id}`);
+    config["params"] = params;
+
+    const header = new HttpHeaders().set('Authorization', '57ydf544ljka559ahjkfgd1');
+    config["header"] = header;
+
+    return this.http.get(route, config);
+  }
+
+  postRequestEnviarProductoCreado(route:string, data? :any, /*token? :string*/) {
+    let config:any = {
+      responseType: "json"
+    }
+    /*if
+      const header = new Headers().set('Authorization', `Bearer ${}`)
+      config['header'] = header;
+    */
+    return this.http.post(route, config, data);
+  }
+
+  postRequestActualizarProducto(route: string ,data? :any){
+    let config:any = {
+      responseType: "json"
+    }
+    return this.http.post(route,data,config);
+  }
+
+  getRequestEliminarProductoId(route: string, id: number) {
+    let config: any = {
+      responseType: "json"
+    }
+    const params = new HttpParams().set('id', `${id}`);
+    config["header"] =  params;
+
+    const header = new HttpHeaders().set('Authorization', '57ydf544ljka559ahjkfgd1');
+    config["header"] =  header;
+
+    return this.http.get(route, config);
+  }
 }
+

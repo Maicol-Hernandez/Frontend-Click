@@ -10,6 +10,9 @@ export class CarritoClickService {
   public carritoUser : BehaviorSubject<Array<any>> = new BehaviorSubject([]);
   public  pedidos = new BehaviorSubject<Array<IItem>>(null);
   public sumCarritoUser : BehaviorSubject<Number> = new BehaviorSubject(null);
+  //Suma que nos permite almacenar el total del iva y la suma de los productos
+  public sumIva : BehaviorSubject<Number> = new BehaviorSubject(null);
+  public sumProducto : BehaviorSubject<Number> = new BehaviorSubject(null);
   public listado :any = []
   public carrito :any;
   constructor() { }
@@ -99,6 +102,7 @@ export class CarritoClickService {
               id : this.carrito.id,
               nombre : this.carrito.nombre,
               precio : this.carrito.precio,
+              iva  :  this.carrito.iva,
               cantidad : this.carrito.cantidad,
               foto : this.carrito.foto
             }     
@@ -113,18 +117,47 @@ export class CarritoClickService {
           }
       }
 
-  //Metodo que nos va permitir hacer la suma total del carrito
+
+  //Metodo que nos va permitir hacer la suma el iva  del carrito
   sumCart(){
-    var info :any=[];
-    var sum = 0;
+    var ivas :any=[];
+    var cantidades : any = [];
+    var sumProduct = 0;
+    var sumIvas = 0;
     for (const iterator of this.carritoUser.getValue()){
-      var multi = iterator.cantidad * iterator.precio;
-      info.push(multi);
+      var iva = (iterator.precio * iterator.iva)/100;
+      var valorTotal = (iterator.cantidad * iterator.precio);
+      var productoIva  = iva * iterator.cantidad;
+      ivas.push(productoIva);
+      cantidades.push(valorTotal);
     }
-    for (let i = 0; i < info.length; i++) {
-      sum += info[i];
+    for (let i = 0; i < ivas.length; i++) {
+      sumIvas += ivas[i];
+      sumProduct += cantidades[i]
     }
-    this.sumCarritoUser.next(sum);
+    this.sumProducto.next(sumProduct);
+    this.sumIva.next(sumIvas);
+    sumIvas = sumIvas + sumProduct;
+    this.sumCarritoUser.next(sumIvas);
+  }
+
+  updatedProducts(productServe:any){
+    var i = 0;
+    this.listado = JSON.parse(this.getPedidos());
+    for (const product of productServe) {
+      var producto = this.listado[i];
+      if(producto != undefined){
+        if(producto.iva != product.iva){
+          product.cantidad = producto.cantidad;
+          this.listado[i] = product;
+          this.carritoUser.next(this.listado);
+          this.setPedido(this.listado);
+        }
+      }else{
+        break;
+      }
+      i++;
+    }
   }
 
 }

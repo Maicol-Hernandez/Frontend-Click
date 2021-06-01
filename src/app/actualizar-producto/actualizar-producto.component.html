@@ -1,0 +1,21 @@
+<p>actualizar-producto works!</p>
+<div>
+  <form [formGroup]="form" (ngSubmit)="OnSubmit()">
+    <div class="container">
+      <div class="left">
+          <div class="header">
+              <h2 class="animation a1">Actualizar Producto</h2>
+              <h4 class="animation a2">Reemplace los datos que quiere actualizar</h4>
+          </div>
+              <div class="form">
+              <input formControlName="nombreProducto" type="text" class="form-field animation a3" placeholder="Nombre del producto">
+              <input formControlName="descripcion" type="text" class="form-field animation a4" placeholder="Descripcion">
+              <input formControlName="precio" type="number" class="form-field animation a4" placeholder="Precio">
+              <input formControlName="logoProducto" type="file" class="form-field animation a4" placeholder="Logo del producto">
+              <button class="animation a6">Crear Producto</button>
+          </div>
+      </div>
+      <div class="right"></div>
+    </div>
+  </form>
+</div>

@@ -61,7 +61,6 @@ export class NegociosComponent implements OnInit {
        async OnSubmit(id:any){
            //Consumo a un servicio del carro
            this.carro.addProductCars(id,this.dataProducto,1);
-           this.carro.sumCart();
        }
     }
   

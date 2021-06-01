@@ -3,6 +3,7 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from'@angular/forms';
+import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
 import { HomeComponent } from './home/home.component';
@@ -16,8 +17,12 @@ import { CrearProductosComponent } from './crear-productos/crear-productos.compo
 import { LoginComponent } from './login/login.component';
 import { RegistroComponent } from './registro/registro.component';
 import { FacturaComponent } from './factura/factura.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatIconModule } from '@angular/material/icon';
+import { PagosComponent } from './pagos/pagos.component';
+import { ZonaAdministracionComponent } from './zona-administracion/zona-administracion.component';
+import { GestionarNegocioComponent } from './gestionar-negocio/gestionar-negocio.component';
+import { ActualizarNegocioComponent } from './actualizar-negocio/actualizar-negocio.component';
+import { ActualizarProductoComponent } from './actualizar-producto/actualizar-producto.component';
+import { CrearProductoComponent } from './crear-producto/crear-producto.component';
 
 
 @NgModule({
@@ -33,9 +38,16 @@ import { MatIconModule } from '@angular/material/icon';
     RegistrarEmpresaComponent,
     CrearProductosComponent,
     LoginComponent,
-    RegistroComponent,
+    RegistroUsuarioComponent,
     FacturaComponent,
+    PagosComponent,
+    ZonaAdministracionComponent,
+    GestionarNegocioComponent,
+    ActualizarNegocioComponent,
+    ActualizarProductoComponent,
+    CrearProductoComponent
   ],
+  
   imports: [
     FormsModule,
     MatIconModule,
@@ -46,6 +58,7 @@ import { MatIconModule } from '@angular/material/icon';
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent],

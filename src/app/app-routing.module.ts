@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
+import {PagosComponent} from './pagos/pagos.component'; 
 import { DetalleproductoComponent } from './detalleproducto/detalleproducto.component';
 import { NegociosComponent } from './negocios/negocios.component';
 import { HomeComponent } from '../app/home/home.component';
@@ -10,7 +10,13 @@ import { FormularioPedidoComponent } from './formulario-pedido/formulario-pedido
 import { CrearProductosComponent } from'../app/crear-productos/crear-productos.component';
 import { RegistroComponent } from '../app/registro/registro.component';
 import { LoginComponent } from './login/login.component';
-import { FacturaComponent } from './factura/factura.component'
+import { FacturaComponent } from './factura/factura.component';
+import { ZonaAdministracionComponent } from './zona-administracion/zona-administracion.component';
+import { GestionarNegocioComponent } from './gestionar-negocio/gestionar-negocio.component';
+import { ActualizarNegocioComponent } from './actualizar-negocio/actualizar-negocio.component';
+
+import { CrearProductoComponent } from './crear-producto/crear-producto.component';
+import { ActualizarProductoComponent } from './actualizar-producto/actualizar-producto.component';
 
 const routes: Routes = [
   { path: 'vernegocio', component:NegociosComponent },
@@ -23,9 +29,16 @@ const routes: Routes = [
   { path: 'formulario-pedido', component: FormularioPedidoComponent },
   { path: 'registro', component: RegistroComponent },
   { path: 'login', component:LoginComponent},
-  { path: 'factura', component:FacturaComponent}
-
+  { path: 'registro-usuario', component:RegistroUsuarioComponent},
+  { path: 'factura', component:FacturaComponent},
+  {path :'pagos', component: PagosComponent},
+  { path: 'zona-administracion', component:ZonaAdministracionComponent},
+  { path: 'gestionar-negocio', component:GestionarNegocioComponent},
+  { path: 'actualizar-negocio', component:ActualizarNegocioComponent},
+  { path: 'crear-producto', component:CrearProductoComponent},
+  { path: 'actualizar-producto', component:ActualizarProductoComponent}
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
