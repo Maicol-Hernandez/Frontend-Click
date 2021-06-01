@@ -1,0 +1,78 @@
+#botonini{background: #FF512F;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #F09819, #FF512F);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #f09819, #FF512F); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.h1 {
+  text-align: center;
+  padding-top: 30px;
+}
+
+.parrafo {
+  font-size: 30px;
+  text-align: center;
+  padding-top: 30px;
+}
+
+.portada {
+  display: flexbox;
+  justify-content: center;
+  align-content: center;
+}
+
+.contenedor-imagen {
+  display: flexbox;
+
+}
+
+.portada__imagen {
+  display: block;
+  margin: auto;
+}
+
+#boton {
+  display: block;
+  margin: auto;
+  background: #FF512F;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #F09819, #FF512F);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #f09819, #FF512F); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.contenedor_titulo_negocio {
+  display: block;
+  margin: auto;
+  border: 3px solid #000;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  padding-top: 50px;
+  width: 500px;
+}
+
+.negocio_titulo {
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 30px;
+}
+
+#contenedor_negocios {
+  display: block;
+  margin: auto;
+}
+
+#boton_gestionar {
+  display: block;
+  margin: auto;
+  background: #FF512F;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #F09819, #FF512F);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #f09819, #FF512F); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.logo {
+  height: 300px;
+  width: 250px;
+}
+
+#informacion_negocio {
+  padding-left: 40px;
+}
