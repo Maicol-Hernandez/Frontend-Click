@@ -24,7 +24,7 @@ export class ZonaAdministracionComponent implements OnInit {
     this.client.getRequestMostrarNegocios('http://localhost:5000/api/v02/user/mostrarNegocios').subscribe(
         (data): any => {
           this.datosNegocio = data["Datos"]
-          console.log(this.datosNegocio);
+          console.log("Datos del negocios: ",this.datosNegocio);
         },
 
         (error: any) => {
@@ -37,10 +37,11 @@ export class ZonaAdministracionComponent implements OnInit {
     this.client.getRequestMostrarNegocioId('http://localhost:5000/api/v02/user/mostrarNegocioId', id).subscribe(
     (data): any => {
       this.negocio = data["data"]
-      console.log(this.negocio)
+      console.log("Datos mostrar negocio: ",this.negocio)
       this.negocioService.negocioPorId.emit({
         data:this.negocio
-      })
+
+      });
     },
     (error: any) => {
       console.log("Ha ocurrido un error en la llamada")
