@@ -20,10 +20,10 @@
         </div>
         <div class="col-md-8" id="informacion_negocio">
           <div class="card-body">
-            <h5 class="card-title">Nombre negocio: {{negocio.nombre}}</h5>
-            <p class="card-text">Tipo de negocio: {{negocio.tipo}}</p>
-            <p class="card-text">Tipo de negocio: {{negocio.direccion}}</p>
-            <p class="card-text">Tipo de negocio: {{negocio.horarios}}</p>
+            <h5 class="card-title">Nombre negocio: {{ negocio.nombre }}</h5>
+            <p class="card-text">Tipo de negocio: {{ negocio.tipo }}</p>
+            <p class="card-text">Tipo de negocio: {{ negocio.direccion }}</p>
+            <p class="card-text">Tipo de negocio: {{ negocio.horarios }}</p>
             <button type="button" class="btn btn-primary"  id="boton_gestionar" [routerLink]="['/gestionar-negocio']" (click)="negocioId(negocio.id)">Gestionar Negocio</button>
           </div>
         </div>

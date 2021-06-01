@@ -3,6 +3,8 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from'@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -38,9 +40,9 @@ import { CrearProductoComponent } from './crear-producto/crear-producto.componen
     RegistrarEmpresaComponent,
     CrearProductosComponent,
     LoginComponent,
-    RegistroUsuarioComponent,
     FacturaComponent,
     PagosComponent,
+    RegistroComponent,
     ZonaAdministracionComponent,
     GestionarNegocioComponent,
     ActualizarNegocioComponent,

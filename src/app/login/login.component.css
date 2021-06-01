@@ -80,6 +80,7 @@
     border-radius: 20px;
     border-color: black solid 5px;
     padding: 77px 55px 53px 55px;
+    max-width: 1200px;
     float: left;
     margin-left: 20%;
     -webkit-box-shadow: 25px 40px 28px 0px rgba(0, 0, 0, 0.38);
@@ -277,11 +278,16 @@
   
   /*--- Para dispositivos small responsive ---*/
   
-  
 
+  @media(max-width: 375px){
+    .wrap-login {
+      padding: 77px 15px 33px 15px;
+      float: right;
+      right: 12px;
+    }
+  }
 
-
-  @media (max-width: 800px) {
+  @media(max-width: 800px) {
     .wrap-login {
       padding: 77px 15px 33px 15px;
       width: 80%;
@@ -315,7 +321,7 @@
 
     #img-position{
       width: 35%;
-      height: 25%;
+      height: 30%;
       margin: -88px 0px 0px 0px ;
       float: right;
       right: 27%;
