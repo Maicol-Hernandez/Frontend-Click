@@ -1,0 +1,44 @@
+<app-nav></app-nav>
+<div class="card mb-3" style="max-width: 600px; max-height: 700px;" id="contenedor_negocio" *ngFor="let negocio of negocioData">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="{{negocio.imglogo}}" alt="logo del negocio">
+            </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">Nombre del negocio: {{negocio.nombre}}</h5>
+                <p class="card-text">Tipo de negocio: {{negocio.tipo}}</p>
+                <p class="card-text">Direccion: {{negocio.direccion}}</p>
+                <p class="card-text">Horarios: {{negocio.horarios}}</p>
+                <p class="card-text">Telefono principal: {{negocio.telefono1}}</p>
+                <p class="card-text">Telefono secundario: {{negocio.telefono2}} </p>
+                <p class="card-text">Correo: {{negocio.correo}}</p>
+
+            </div>
+        </div>
+        <div class="contenedor_botones">
+            <button type="button" class="btn btn-primary" id="boton" [routerLink]="['/gestionar-negocio']" (click)="actualizarNegocioId(negocio.id)">Actualizar Datos</button>
+            <button type="button" class="btn btn-primary" id="boton" (click)="eliminarNegocioId(negocio.id)">Eliminar Negocio</button>
+        </div>
+        </div>
+    </div>
+    <div class="separador1"></div>
+    <h3 class="titulo_productos">Productos</h3>
+    <div class="separador2"></div>
+    <div class="row row-cols-1 row-cols-md-3 g-4" id="contenedor_productos" *ngFor="let producto of productosData">
+        <div class="col">
+            <div class="card">
+            <img src="{{producto.foto}}" class="card-img-top" alt="foto del producto">
+            <div class="card-body">
+                <h5 class="card-title">Nombre del producto: {{producto.nombre}}</h5>
+                <p class="card-text">Descripcion: {{producto.descripcion}}</p>
+                <p class="card-text">Precio: {{producto.precio}}</p>
+            </div>
+            <div>
+              <button type="button" class="btn btn-primary" id="boton1" [routerLink]="['/gestionar-negocio']" (click)="actualizarProducto(producto.id, negocio.id)">Actualizar Producto</button>
+              <button type="button" class="btn btn-primary" id="boton1" (click)="eliminarProducto(producto.id)">Eliminar Producto</button>
+            </div>
+            </div>
+        </div>
+    </div>
+<app-footer></app-footer>
