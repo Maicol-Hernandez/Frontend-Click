@@ -11,13 +11,20 @@
             <a class="nav-link active" aria-current="page" href="#">Home</a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link " href="/nosotros">Acerca de nosotros</a>
+            <a  href="#" class="nav-link" [routerLink]="['/nosotros']" >Acerca de nosotros</a>
           </li>
         </ul>
 
-        <a href="#" [routerLink]="['/login']" id="botonini" class="btn btn">Iniciar Sesion</a>
-        <a href="#"  [routerLink]="['/registro']" id="botonini" class="btn btn">Registrarse</a>
-        <a href="#"  [routerLink]="['/zona-administracion']" id="regis" class="btn btn">Zona de administracion</a>
+        <a href="#" *ngIf="!(auth.isLoggedIn() | async)" [routerLink]="['/login']" id="botonini" class="btn btn">Iniciar Sesion</a>
+        <a href="#" *ngIf="!(auth.isLoggedIn() | async)" [routerLink]="['/registro']" id="botonini" class="btn btn">Registrarse</a>
+        <a href="#" *ngIf="(auth.isLoggedIn() | async)"  [routerLink]="['/zona-administracion']" id="regis" class="btn btn">Zona de administracion</a>
+        <li class="btn btn" id="botonini" *ngIf="auth.isLoggedIn() | async" >
+          <a class="btn btn" [routerLink]="['/']" (click)="auth.logout()">Salir</a>
+      </li>
+      <li class="btn btn" *ngIf="auth.isLoggedIn() | async" >
+        <a class="nav-link" *ngIf="auth.isLoggedIn() | async">Bienvenido {{ auth.getCourrentUser() }}</a>
+      </li>
+
       </div>
     </div>
   </nav>

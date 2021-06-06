@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams, HttpHeaders} from '@angular/common/http';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 
 
 @Injectable({
@@ -10,26 +10,26 @@ export class ClientService {
   constructor(private http: HttpClient) { }
 
   //Servio del registro de los usuarios
-  postRequestRegistroUsers(route:string, data?:any, token?:string) {
-    let config:any = {
+  postRequestRegistroUsers(route: string, data?: any, token?: string) {
+    let config: any = {
       reponseType: "json"
     }
-    
-    if(token) {
-      const herder = new Headers().set('Authorization',  `Bearer ${token}`)
-      config['herder'] = herder;
+
+    if (token) {
+      const header = new HttpHeaders().set('Authorization', `Bearer ${token}`)
+      config['header'] = header;
 
     }
-    return this.http.post(route, data, config );
+    return this.http.post(route, data, config);
   }
 
-  postRequestLogin(route: string, data?:any, token?:string) {
+  postRequestLogin(route: string, data?: any, token?: string) {
 
-    let config:any = {
+    let config: any = {
       responseType: "json"
     }
 
-    if(token){
+    if (token) {
       const header = new HttpHeaders().set('Authorization', `Bearer ${token}`);
       config['header'] = header;
     }
@@ -37,45 +37,58 @@ export class ClientService {
   }
 
 
-
-
-
-
-
-
-  postRequestEmpresaId(route:string, id:any, token?:string ) {
-    let config:any = {
+  postRequestEmpresaId(route: string, id: any, token?: string) {
+    let config: any = {
       reponseType: "json"
     }
-  if(token) {
-    const herder = new Headers().set('Authorization',  `Bearer ${token}`)
-    config['herder'] = herder;
- 
+    if (token) {
+      const header = new HttpHeaders().set('Authorization', `Bearer ${token}`)
+      config['headers'] = header;
+
+    }
+
+    return this.http.post(route, id, config)
   }
 
-  return this.http.post(route, id, config)
-  }
+  getRequestDataEmpresa(route: string, token?: string) {
 
-  getRequestDataEmpresa(route: string, token?: string){
-
-    let config:any = {
+    let config: any = {
       responseType: "json"
     }
 
-    if(token){
-      const heder =new HttpHeaders().set('Authorization', `Bearer ${token}`)
-      config['herders'] = heder
+    if (token) {
+      const heder = new HttpHeaders().set('Authorization', `Bearer ${token}`)
+      config['headers'] = heder
     }
+
+    console.log(config);
+
 
     return this.http.get(route, config);
   }
 
-  getRequestProductoEmpresa(route: string, token?: string){
+  /* 
+ getRequestToken(route: string, token?:string) {
+
     let config:any = {
       responseType: "json"
     }
+    if (token){
+      const header = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+      config["headers"] = header;
+    }
+    console.log(config);
 
-    if(token){
+    return this.http.get(route, config);
+  } */
+
+
+  getRequestProductoEmpresa(route: string, token?: string) {
+    let config: any = {
+      responseType: "json"
+    }
+
+    if (token) {
       const herder = new HttpHeaders().set('Authorization', `Bearer ${token}`)
       config['herders'] = herder
     }
@@ -83,20 +96,20 @@ export class ClientService {
     return this.http.get(route, config);
   }
 
-  postRequestId(route:string, id:any, token?:string) {
-    let config:any = {
+  postRequestId(route: string, id: any, token?: string) {
+    let config: any = {
       responseType: "json"
     }
-    if(token) {
-      const herder = new Headers().set('Authorization',  `Bearer ${token}`)
+    if (token) {
+      const herder = new Headers().set('Authorization', `Bearer ${token}`)
       config['herder'] = herder;
     }
     return this.http.post(route, id, config);
   }
- 
+
   /*Servicio del formulario de pedido*/
-  postRequestFormularioPedido(route: string, data?:any) {
-    let config:any = {
+  postRequestFormularioPedido(route: string, data?: any) {
+    let config: any = {
       responseType: "json"
     }
     const header = new HttpHeaders().set('Authorization', '57ydf544ljka559ahjkfgd1');
@@ -105,25 +118,25 @@ export class ClientService {
     return this.http.post(route, data, config);
   }
 
-  
-  postRequestEnviarProductos(route:string, id:any, token?:string) {
-    let config:any = {
+
+  postRequestEnviarProductos(route: string, id: any, token?: string) {
+    let config: any = {
       responseType: "json"
     }
-    if(token) {
-      const herder = new Headers().set('Authorization',  `Bearer ${token}`)
+    if (token) {
+      const herder = new Headers().set('Authorization', `Bearer ${token}`)
       config['herder'] = herder;
     }
     return this.http.post(route, id, config);
   }
 
   //Modulo Negocio
-  getRequestMostrarNegocios(route: string, token?: string){
-    let config:any = {
+  getRequestMostrarNegocios(route: string, token?: string) {
+    let config: any = {
       responseType: "json"
     }
 
-    if(token){
+    if (token) {
       const herder = new HttpHeaders().set('Authorization', `Bearer ${token}`)
       config['heders'] = herder
     }
@@ -132,7 +145,7 @@ export class ClientService {
   }
 
   getRequestMostrarNegocioId(route: string, id: number) {
-    let config:any = {
+    let config: any = {
       responseType: "json"
     }
     const params = new HttpParams().set('id', `${id}`);
@@ -144,18 +157,18 @@ export class ClientService {
     return this.http.get(route, config);
   }
 
-  postRequestFormularioEmpresa(route: string ,data? :any){
-    let config:any = {
+  postRequestFormularioEmpresa(route: string, data?: any) {
+    let config: any = {
       responseType: "json"
     }
-    return this.http.post(route,data,config);
+    return this.http.post(route, data, config);
   }
 
-  postRequestActualizarEmpresa(route: string ,data? :any){
-    let config:any = {
+  postRequestActualizarEmpresa(route: string, data?: any) {
+    let config: any = {
       responseType: "json"
     }
-    return this.http.post(route,data,config);
+    return this.http.post(route, data, config);
   }
 
   getRequestEliminarNegocioId(route: string, id: number) {
@@ -163,10 +176,10 @@ export class ClientService {
       responseType: "json"
     }
     const params = new HttpParams().set('id', `${id}`);
-    config["header"] =  params;
+    config["header"] = params;
 
     const header = new HttpHeaders().set('Authorization', '57ydf544ljka559ahjkfgd1');
-    config["header"] =  header;
+    config["header"] = header;
 
     return this.http.get(route, config);
   }
@@ -174,7 +187,7 @@ export class ClientService {
   //Modulo Producto
 
   getRequestMostrarProductos(route: string, id: number) {
-    let config:any = {
+    let config: any = {
       responseType: "json"
     }
     const params = new HttpParams().set('id', `${id}`);
@@ -187,7 +200,7 @@ export class ClientService {
   }
 
   getRequestProductoId(route: string, id: number, idN: number) {
-    let config:any = {
+    let config: any = {
       responseType: "json"
     }
 
@@ -200,8 +213,8 @@ export class ClientService {
     return this.http.get(route, config);
   }
 
-  postRequestEnviarProductoCreado(route:string, data? :any, /*token? :string*/) {
-    let config:any = {
+  postRequestEnviarProductoCreado(route: string, data?: any, /*token? :string*/) {
+    let config: any = {
       responseType: "json"
     }
     /*if
@@ -211,11 +224,11 @@ export class ClientService {
     return this.http.post(route, config, data);
   }
 
-  postRequestActualizarProducto(route: string ,data? :any){
-    let config:any = {
+  postRequestActualizarProducto(route: string, data?: any) {
+    let config: any = {
       responseType: "json"
     }
-    return this.http.post(route,data,config);
+    return this.http.post(route, data, config);
   }
 
   getRequestEliminarProductoId(route: string, id: number) {
@@ -223,10 +236,10 @@ export class ClientService {
       responseType: "json"
     }
     const params = new HttpParams().set('id', `${id}`);
-    config["header"] =  params;
+    config["header"] = params;
 
     const header = new HttpHeaders().set('Authorization', '57ydf544ljka559ahjkfgd1');
-    config["header"] =  header;
+    config["header"] = header;
 
     return this.http.get(route, config);
   }
