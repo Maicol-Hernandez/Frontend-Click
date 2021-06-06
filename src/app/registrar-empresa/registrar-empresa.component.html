@@ -7,8 +7,9 @@
   <div class="card-body">
     <h3>¡Crea tu negocio en click!</h3><br>
     <div>
-      
+            
         <form [formGroup]="form" (ngSubmit)=" OnSubmit()">
+
           <div class="mb-3">
             <label for="exampleInputNombreEmpresa1" class="form-label">Ingrese el nombre del negocio</label>
             <input formControlName="nombreEmpresa" type="text" class="form-control" id="exampleInputNombreEmpresa1">
@@ -58,6 +59,7 @@
             <small id="EmailEmpresa2"></small>
           </div>
           <button type="submit" class="btn btn">Guardar</button>
+
         </form>
   </div>
  </div>
