@@ -11,12 +11,11 @@
     </div>
   </div>
 
-
   <div *ngFor="let datos of dataEmpresa" class="card border-dark mb-3" id="efecto" style="width: 18rem;">
-    <div class="c-img">
-    <img [src]="datos.imgLogo" class="rounded float-start" alt="..."width="200px" height="200px">
-    </div>
     <div class="capat">
+      <div class="c-img">
+        <img src="http://localhost:8000/imagenes/{{datos.imgLogo}},{{datos.nombre}}" alt="" srcset="" width="200px" height="200px">
+      </div>
     <div class="card-body" >
         <p> {{ datos.id }} </p> 
         <p class="card-text"> {{ datos.nombre }} </p>

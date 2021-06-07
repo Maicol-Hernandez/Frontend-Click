@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild,ElementRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { ClientService } from '../servicios/client.service';
 import { Router } from '@angular/router';
+
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 @Component({
   selector: 'app-registrar-empresa',
   templateUrl: './registrar-empresa.component.html',
@@ -9,6 +11,13 @@ import { Router } from '@angular/router';
 })
 export class RegistrarEmpresaComponent implements OnInit {
   form: FormGroup;
+  @ViewChild("foto", {
+    read: ElementRef
+  }) foto: ElementRef;
+  data:any;
+  infoImg : any;
+  status : boolean = false;
+  mostrarError = false;
   constructor(
     private fb: FormBuilder,
     private route: Router,
@@ -24,74 +33,66 @@ export class RegistrarEmpresaComponent implements OnInit {
       NumeroSecundario : ['',Validators.required],
       emailEmpresa : ['',Validators.required],
       Horario : ['',Validators.required],
-      logo : ['',Validators.required],
+      img : [null],
     });
+  }
+  upload(event) {
+    if(event.target.files[0].type == 'image/jpg' || event.target.files[0].type == 'image/jpeg' ){
+      const file = (event.target as HTMLInputElement).files[0];
+      this.form.patchValue({
+        img: file
+      });
+      this.infoImg = event.target.files[0].name;
+      this.form.get('img').updateValueAndValidity()
+      this.mostrarError = false;
+      this.status = true;
+    }else{
+      this.mostrarError=true;
+    }
+  }
+
+  //metodo que se va encargar de enviar la informacion a la base de datos
+  registrarEmpresaDB(data:any){
+      this.client.postRequestFormularioEmpresa('http://localhost:5000/api/v01/user/registerEmpresa',data).subscribe(
+      (response:any)=>{
+        Swal.fire({
+          position: 'top-end',
+          title: 'Se registro exitosamente!',
+          showConfirmButton: false,
+          timer: 2000
+        }).then(() => {
+          this.route.navigate(['/'])
+        });
+      },
+      (error)=>{
+        console.error(error);
+      }
+      )   
   }
   OnSubmit(){
     if (this.form.valid) {
-      let data = {
-      nombre :  this.form.value.nombreEmpresa,
-      tipoE : this.form.value.tipoEmpresa,
-      direccionE : this.form.value.DireccionEmpresa,
-      numeroE : this.form.value.NumeroEmpresa,
-      numeroS : this.form.value.NumeroSecundario,
-      emailE : this.form.value.emailEmpresa,
-      horario : this.form.value.Horario,
-      logo : this.form.value.logo
-    }
-    this.client.postRequestFormularioEmpresa('http://localhost:5000/api/v01/user/registerEmpresa',data).subscribe(
-      (response:any)=>{
-        //post de regitro de la empresa
-        console.log("funciono");
-      },
-      (error)=>{
-        console.log("error");
-      }
-    )
-     }else{
-      //declaramos los variables para validar despues
-      var nombreE = this.form.value.nombreEmpresa;
-      var tipoE = this.form.value.tipoEmpresa;
-      var DireccionE = this.form.value.DireccionEmpresa;
-      var NumeroE = this.form.value.NumeroEmpresa;
-      var NumeroS = this.form.value.NumeroSecundario;
-      var emailE = this.form.value.emailEmpresa;
-      var horario = this.form.value.Horario;
-      //validamos los campos del formulario
+          var data = {
+          nombre :  this.form.value.nombreEmpresa,
+          tipoE : this.form.value.tipoEmpresa,
+          direccionE : this.form.value.DireccionEmpresa,
+          numeroE : this.form.value.NumeroEmpresa,
+          numeroS : this.form.value.NumeroSecundario,
+          emailE : this.form.value.emailEmpresa,
+          horario : this.form.value.Horario,
+          logo : this.infoImg
+          }
+          var formData: any = new FormData();
+          formData.append("img", this.form.get('img').value);
+          formData.append("nombreEmpresa", this.form.get('nombreEmpresa').value);
+            this.client.postRequestFormularioEmpresa('http://localhost:8000/upload',formData).subscribe(
+          (response:any)=>{
+            this.registrarEmpresaDB(data);
+          },
+            (error)=>{
+            console.error(error);
+          }
+        )
       
-      if(emailE == ""){
-        document.getElementById('EmailEmpresa1').focus();
-        document.getElementById('EmailEmpresa2').innerHTML = "Te hace falta este campo";
-      }
-      if(horario == ""){
-        document.getElementById('Horario').focus();
-        document.getElementById('Horario2').innerHTML = "Te hace falta este campo";
-      }
-      if(NumeroS == ""){
-        document.getElementById('NumeroEmpresa3').focus();
-        document.getElementById('NumeroEmpresa2').innerHTML = "Te hace falta este campo";
-      }
-
-      if(NumeroE == ""){
-        document.getElementById('NumeroEmpresa0').focus();
-        document.getElementById('NumeroEmpresa1').innerHTML = "Te hace falta este campo";
-      }
-
-      if(DireccionE == ""){
-        document.getElementById('DireccionEmpresa').focus();
-        document.getElementById('DireccionEmpresa2').innerHTML = "Te hace falta este campo";
-      }
-
-      if(tipoE == ""){
-        document.getElementById('card').focus();
-        document.getElementById('exampleInputTipoEmpresa2').innerHTML = "Te hace falta este campo";
-      }
-
-      if(nombreE == ""){
-        document.getElementById('exampleInputNombreEmpresa1').focus();
-        document.getElementById('exampleInputNombreEmpresa2').innerHTML = "Te hace falta este campo";
-      }
      }
-
   }
 }
