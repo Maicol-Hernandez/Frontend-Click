@@ -7,65 +7,121 @@
   <div class="card-body">
     <h3>¡Crea tu negocio en click!</h3><br>
     <div>
-            
         <form [formGroup]="form" (ngSubmit)=" OnSubmit()">
-
           <div class="mb-3">
             <label for="exampleInputNombreEmpresa1" class="form-label">Ingrese el nombre del negocio</label>
-            <input formControlName="nombreEmpresa" type="text" class="form-control" id="exampleInputNombreEmpresa1">
-            <small id="exampleInputNombreEmpresa2"></small>
+            <input maxlength="50" formControlName="nombreEmpresa" type="text" class="form-control" id="exampleInputNombreEmpresa1" class="form-control-inputs">
+          </div>
+          <!--Alertas-->
+          <div class="error-messange" *ngIf="form.controls.nombreEmpresa.errors && (form.controls.nombreEmpresa.dirty || form.controls.nombreEmpresa.touched)">
+            <div class="error-messange-pass" *ngIf="form.controls.nombreEmpresa.errors.required">
+              El campo nombre de la empresa es obligatorio. 
+            </div>         
+            <div class="error-messange-pass" *ngIf="form.controls.nombreEmpresa.errors.minlength">
+              El campo nombre de la empresa  debe tener como minimo 5 caracteres.
+           </div> 
           </div>
           <div class="mb-3">
             <label for="exampleInputTipoEmpresa" class="form-label">Ingrese el tipo de empresa:  &nbsp;&nbsp;</label>
-            <select id="card" class="form-select" aria-label="Default select example" formControlName="tipoEmpresa">
+            <select id="card" class="form-select" aria-label="Default select example" formControlName="tipoEmpresa" class="form-control-inputs">
               <option value="">-</option>
               <option value="ropa">Ropa</option>
               <option value="alimentos">Alimentos</option>
               <option value="artesania">Artesania</option>
               <option value="electrodomesticos">Electrodomesticos</option>
-              <option value="otro">Otro</option>
+              <option value="otro">Otro</option>  
           </select>
-          <small id="exampleInputTipoEmpresa2"></small>
           </div>
+          <!--Alertas-->
+          <div class="error-messange" *ngIf="form.controls.tipoEmpresa.errors && (form.controls.tipoEmpresa.dirty || form.controls.tipoEmpresa.touched)">
+            <div class="error-messange-pass" *ngIf="form.controls.tipoEmpresa.errors.required">
+              Seleccione el tipo de empresa. 
+            </div>         
+          </div>
+
           <div class="mb-3">
             <label for="Empresa1" class="form-label">Ingrese la Direccion</label>
-            <input type="text" class="form-control" id="DireccionEmpresa" formControlName="DireccionEmpresa" >
-            <small id="DireccionEmpresa2"></small>
+            <input maxlength="200" type="text" class="form-control" id="DireccionEmpresa" formControlName="DireccionEmpresa" class="form-control-inputs" >
           </div>
+
+          <!--Alertas-->
+          <div class="error-messange" *ngIf="form.controls.DireccionEmpresa.errors && (form.controls.DireccionEmpresa.dirty || form.controls.DireccionEmpresa.touched)">
+            <div class="error-messange-pass" *ngIf="form.controls.DireccionEmpresa.errors.required">
+              El campo direccion es obligatorio. 
+            </div>         
+            <div class="error-messange-pass" *ngIf="form.controls.DireccionEmpresa.errors.minlength">
+              El campo nombre de la empresa  debe tener como minimo 5 caracteres.
+           </div> 
+          </div>
+
           <div class="mb-3">
             <label for="exampleInputNumeroTele1" class="form-label">Ingrese el primer numero telefonico</label>
-            <input type="tel" class="form-control" id="NumeroEmpresa0" formControlName="NumeroEmpresa">
-            <small id="NumeroEmpresa1"></small>
+            <input maxlength="10" type="tel" class="form-control" id="NumeroEmpresa0" formControlName="NumeroEmpresa" class="form-control-inputs">
           </div>
+
+          <!--Alertas-->
+          <div class="error-messange" *ngIf="form.controls.NumeroEmpresa.errors && (form.controls.NumeroEmpresa.dirty || form.controls.NumeroEmpresa.touched)">
+            <div class="error-messange-pass" *ngIf="form.controls.NumeroEmpresa.errors.required">
+              El campo numero de la empresa es obligatorio. 
+            </div>         
+            <div class="error-messange-pass" *ngIf="form.controls.NumeroEmpresa.errors.minlength">
+              El campo numero de la empresa  debe tener como minimo 10 caracteres.
+           </div> 
+          </div>
+
           <div class="mb-3">
             <label for="exampleInputNumeroTele2" class="form-label">Ingrese el segundo numero telefonico(opcional)</label>
-            <input type="tel" class="form-control" id="NumeroEmpresa2" formControlName="NumeroSecundario">
-            <small id="NumeroEmpresa3"></small>
+            <input maxlength="10" type="tel" class="form-control" id="NumeroEmpresa2" formControlName="NumeroSecundario" class="form-control-inputs">
           </div>
+
+          <!--Alertas-->
+          <div class="error-messange" *ngIf="form.controls.NumeroSecundario.errors && (form.controls.NumeroSecundario.dirty || form.controls.NumeroSecundario.touched)">
+            <div class="error-messange-pass" *ngIf="form.controls.NumeroSecundario.errors.minlength">
+              El campo numero secundario  de la empresa  debe tener como minimo 10 caracteres.
+           </div> 
+          </div>
+
           <div class="mb-3">
             <label for="Empresa1" class="form-label">Horario de trabajo</label>
-            <input type="text" class="form-control" id="Horario" formControlName="Horario">
-            <small id="Horario2"></small>
+            <input maxlength="12" type="text" class="form-control" id="Horario" formControlName="Horario" class="form-control-inputs">
           </div>
-          <div class="mb-3">
+
+          <!--Alertas-->
+          <div class="error-messange" *ngIf="form.controls.Horario.errors && (form.controls.Horario.dirty || form.controls.Horario.touched)">
+            <div class="error-messange-pass" *ngIf="form.controls.Horario.errors.required">
+              El campo horario es empresa es obligatorio. 
+            </div>         
+          </div>
+
+          <div class="form-group">
             <label for="Empresa1" class="form-label">Ingrese el logo</label>
-            <input type="file" class="form-control" id="logo" formControlName="logo" >
-            <small id="logo2"></small>
+              <input type = "file"  (change)="upload($event)" />
           </div>
+          <!--Alerta-->
+          <div>
+            <div class="error-messange" *ngIf="mostrarError">
+              No sirve el formato debes tener JPG o JPEG
+            </div>
+          </div>
+
           <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Ingrese el Email </label>
-            <input type="email" class="form-control" id="EmailEmpresa1" aria-describedby="emailHelp" formControlName="emailEmpresa">
+            <input maxlength="200" type="email" class="form-control" id="EmailEmpresa1" aria-describedby="emailHelp" formControlName="emailEmpresa" class="form-control-inputs">
             <div id="emailHelp" class="form-text">Puedes ingresar el correo personal ,pero te recomendamos que coloques un email solo para tu.</div>
-            <small id="EmailEmpresa2"></small>
+          </div>
+          <!--Alertas-->
+          <div class="error-messange" *ngIf="form.controls.emailEmpresa.errors && (form.controls.emailEmpresa.dirty || form.controls.emailEmpresa.touched)">
+            <div class="error-messange-pass" *ngIf="form.controls.emailEmpresa.errors.required">
+              El campo email de la empresa es obligatorio. 
+            </div>         
+            <div class="error-messange-pass" *ngIf="form.controls.emailEmpresa.errors.minlength">
+              El campo email de la empresa debe tener como minimo 10 caracteres.
+           </div> 
           </div>
           <button type="submit" class="btn btn">Guardar</button>
-
         </form>
   </div>
- </div>
 </div>
-
-
+</div>  
 <app-footer></app-footer>
-    
  
