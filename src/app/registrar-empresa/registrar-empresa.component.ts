@@ -17,6 +17,7 @@ export class RegistrarEmpresaComponent implements OnInit {
   data:any;
   infoImg : any;
   status : boolean = false;
+  nameEmpresa:any;
   mostrarError = false;
   constructor(
     private fb: FormBuilder,
@@ -46,6 +47,12 @@ export class RegistrarEmpresaComponent implements OnInit {
       this.form.get('img').updateValueAndValidity()
       this.mostrarError = false;
       this.status = true;
+      var nombre = this.form.get('nombreEmpresa').value
+      console.log(nombre);
+      if(nombre.charAt(nombre.length - 1) == " "){
+        this.nameEmpresa =  nombre.substring(0,nombre.length - 1);
+        console.log(this.nameEmpresa);
+      }
     }else{
       this.mostrarError=true;
     }
@@ -83,7 +90,7 @@ export class RegistrarEmpresaComponent implements OnInit {
           }
           var formData: any = new FormData();
           formData.append("img", this.form.get('img').value);
-          formData.append("nombreEmpresa", this.form.get('nombreEmpresa').value);
+          formData.append("nombreEmpresa", this.nameEmpresa);
             this.client.postRequestFormularioEmpresa('http://localhost:8000/upload',formData).subscribe(
           (response:any)=>{
             this.registrarEmpresaDB(data);
