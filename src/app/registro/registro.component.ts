@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ClientService } from '../servicios/client.service';
+import { AuthService } from '../servicios/auth.service'; 
 import { CustomvalidatorsService } from '../servicios/customvalidators.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -17,7 +18,7 @@ export class RegistroComponent implements OnInit {
 
   hide: boolean = true;
   presse: boolean = true;
-
+  errorMessage: string = ""; 
   form: FormGroup;
   load: boolean = true;
 
@@ -30,6 +31,7 @@ export class RegistroComponent implements OnInit {
   constructor(
     public fb: FormBuilder,
     public client: ClientService,
+    public auth: AuthService,
     public route: Router,
     private validatorCustom: CustomvalidatorsService
 
@@ -86,30 +88,44 @@ export class RegistroComponent implements OnInit {
         nombres: this.form.value.nombres,
         apellidos: this.form.value.apellidos,
         tipoDocumento: this.form.value.tipoDocumento,
-        numeroDocumento: this.form.value.numeroDocumento,
-        numeroTelefono: this.form.value.numeroTelefono,
+        numeroDocumento: this.form.value.numeroDoc, 
+        numeroTelefono: this.form.value.numeroTel,
         fechaNacimiento: this.form.value.fechaNacimiento,
         email: this.form.value.email,
         password: this.form.value.password
       }).subscribe(
 
-        (reponse: any) => {
+        (response: any) => {
           this.load = true;
-          console.log("Se registro", reponse)
+          console.log("Se registro", response)
 
           Swal.fire({
             position: 'top-end',
             title: 'Se registro exitosamente!',
             showConfirmButton: false,
             timer: 2000
+
           }).then(() => {
+            
             this.route.navigate(['/'])
+            
           });
 
+          console.log("Registro ok", response)
+          
+          this.auth.login(response.token);
+          
+        },
+
+        (error) => {
+          console.error("error.error.status: ", error.error.status);
+          if (error.status) {
+            this.errorMessage = error.error.status            
+            console.error("this.errorMessagee", this.errorMessage);
+        
+          }
+        
         });
-      (error) => {
-        console.log(error.status);
-      }
 
     } else {
 

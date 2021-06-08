@@ -76,32 +76,33 @@ export class AuthService {
   private daleteCourrentUserIdUsario(): void {
     localStorage.removeItem('courrentUserIdUsuario');
   }
-  setCourrentUserFechaNacimineto(fecha_nacimiento: string): void {
+  setCourrentUserFechaNacimiento(fecha_nacimiento: string): void {
     localStorage.setItem('courrentUserFechaNacimiento', fecha_nacimiento);
   }
-  getCourrentUserFechaNacimineto(): string {
+  getCourrentUserFechaNacimiento(): string {
     return localStorage.getItem('courrentUserFechaNacimiento');
   }
-  private daleteCourrentUserFechaNacimineto(): void {
+  private daleteCourrentUserFechaNacimiento(): void {
     localStorage.removeItem('courrentUserFechaNacimiento');
   }
   setCourrentUserNumeroTelefono(numero_telefono: string): void {
     localStorage.setItem('courrentUserNumeroTelefono', numero_telefono);
   }
   getCourrentUserNumeroTelefono(): string {
-    return localStorage.getItem('courrentUserNumeroTelfono');
+    return localStorage.getItem('courrentUserNumeroTelefono');
   }
   private daleteCourrentUserNumeroTelefono(): void {
-    localStorage.removeItem('courrentUserNumeroTelfono');
+    localStorage.removeItem('courrentUserNumeroTelefono');
   }
 
 
+  
   logout(): void {
     localStorage.removeItem('token');
     this.daleteCourrentUser();
     this.daleteCourrentUserApellidos();
     this.daleteCourrentUserCorreo();
-    this.daleteCourrentUserFechaNacimineto();
+    this.daleteCourrentUserFechaNacimiento();
     this.daleteCourrentUserIdUsario();
     this.daleteCourrentUserTipoDocumento();
     this.daleteCourrentUserNumeroDocumento();
