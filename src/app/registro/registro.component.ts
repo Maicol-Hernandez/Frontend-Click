@@ -113,7 +113,7 @@ export class RegistroComponent implements OnInit {
 
           console.log("Registro ok", response)
           
-          this.auth.login(response.token);
+          //this.auth.login(response.token);
           
         },
 
