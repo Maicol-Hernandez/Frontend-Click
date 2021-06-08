@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { ClientService } from '../servicios/client.service';
+import { NegociosService } from '../servicios/negocios.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,23 +13,31 @@ export class ActualizarNegocioComponent implements OnInit {
 
   form: FormGroup;
   negocioDatos;
+  nombre;
 
   constructor(
     private fb: FormBuilder,
     private route: Router,
-    private client : ClientService
+    private client : ClientService,
+    private negocioService : NegociosService
   ) { }
 
   ngOnInit(): void {
 
+    this.negocioService.actualizarNegocio$.subscribe(dataNegocio => {
+      this.negocioDatos = dataNegocio
+      console.log("Este es el negocio que se quiere actualizar", dataNegocio)
+    })
+
     this.form = this.fb.group({
-      nombreNegocio: ['',Validators.required],
-      tipoNegocio: ['',Validators.required],
+      idn: ['',Validators.required],
+      nombre: ['',Validators.required],
+      tipo: ['',Validators.required],
       direccion: ['',Validators.required],
-      telefonoPrincipal: ['',Validators.required],
-      telefonoSecundario: ['',Validators.required],
+      telefono1: ['',Validators.required],
+      telefono2: ['',Validators.required],
       horarios: ['',Validators.required],
-      email: ['',Validators.required],
+      correo: ['',Validators.required],
       logo: ['',Validators.required]
     })
 
@@ -37,13 +46,14 @@ export class ActualizarNegocioComponent implements OnInit {
   OnSubmit(){
     if (this.form.valid) {
       let data = {
-      nombreNegocio :  this.form.value.nombreNegocio,
-      tipoNegocio : this.form.value.tipoNegocio,
+      idn :  this.form.value.idn,
+      nombre :  this.form.value.nombre,
+      tipo : this.form.value.tipo,
       direccion : this.form.value.direccion,
-      telefonoPrincipal : this.form.value.telefonoPrincipal,
-      telefonoSecundario : this.form.value.telefonoSecundario,
+      telefono1 : this.form.value.telefono1,
+      telefono2 : this.form.value.telefono2,
       horarios : this.form.value.horarios,
-      email : this.form.value.email,
+      correo : this.form.value.correo,
       logo : this.form.value.logo
     }
     this.client.postRequestActualizarEmpresa('http://localhost:5000/api/v02/user/actualizarNegocio',data).subscribe(

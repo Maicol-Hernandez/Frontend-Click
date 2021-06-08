@@ -1,14 +1,9 @@
 * { box-sizing: border-box; }
-
-@font-face {
-    font-family: Poppins-Regular;
-    src: url('../../fuentes/Poppins-Regular.ttf'); 
-  }
-  
+@import url('https://fonts.googleapis.com/css?family=Rubik:400,500&display=swap');
 
 
 body {
-    font-family: Poppins-Regular;
+    font-family: 'Rubik', sans-serif;
 }
 
 .container {
@@ -27,7 +22,6 @@ body {
     animation-fill-mode: both;
     animation-delay: 1s;
 }
-
 
 .right {
     flex: 1;
