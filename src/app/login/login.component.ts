@@ -84,7 +84,7 @@ export class LoginComponent implements OnInit {
 
           this.auth.setCourrentUserTipoDocumento(response.tipo_documento);
 
-          this.auth.setCourrentUserFechaNacimineto(response.fecha_nacimiento);
+          this.auth.setCourrentUserFechaNacimiento(response.fecha_nacimiento);
 
           this.auth.setCourrentUserNumeroTelefono(response.numero_telefono);
  

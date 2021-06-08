@@ -48,8 +48,6 @@
             <select id="card" id="exampleInputTipoDocumento" class="form-select"  formControlName="tipoDocumento">
               <option value="">Seleccione</option>
               <option value="CC">Cedula de Ciudadania</option>
-              <option value="CI">Cedula de Identidad</option>
-              <option value="RC">Registro Civil</option>
               <option value="CE">Cedula de Extranjeria</option>
               <option value="otro">Otro</option>
           </select>
@@ -113,11 +111,6 @@
           <div class="mb-3">
             <label for="correo electronico" class="form-label">Correo Electronico</label>
             <input type="email" placeholder="Ingrese el correo electronico" class="form-control-inputs" formControlName="email" >
-            <!--
-            <mat-error *ngIf="isValidField('email')">
-              {{ getErrorMessange("email") }}
-            </mat-error>
-            -->
             <div class="error-messange" *ngIf="form.controls.email.errors && (form.controls.email.dirty || form.controls.email.touched)">
               <div class="error-messange-pass" *ngIf="form.controls.email.errors.required">
                 El email es obligatorio. 
@@ -126,11 +119,13 @@
               <div class="error-messange-pass" *ngIf="form.controls.email.errors.minlength">
                 El email debe tener como minimo 12 caracteres.
               </div>
-
              <div class="error-messange-pass" *ngIf="(form.controls.email.derty || form.controls.email.untouched) && form.controls.email.invalid && form.controls.email.errors.pattern">
               Indruzca una dirección de correo electrónico válida.
              </div>
             </div>
+            <mat-error *ngIf="errorMessage"> 
+              {{ errorMessage }}
+            </mat-error>
 
           <div id="emailHelp" class="form-text">
             Puedes ingresar el correo personal, pero te recomendamos que coloques un email solo para ti.
