@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { ClientService } from '../servicios/client.service';
+import { NegociosService } from '../servicios/negocios.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,29 +12,39 @@ import { Router } from '@angular/router';
 export class CrearProductoComponent implements OnInit {
 
   form: FormGroup;
+  idNegocio;
 
   constructor(
     private fb: FormBuilder,
     private route: Router,
-    private client : ClientService
+    private client : ClientService,
+    private negocioService : NegociosService
   ) { }
 
   ngOnInit(): void {
+
+    this.negocioService.idcrearproducto$.subscribe(dataId => {
+      this.idNegocio = dataId
+      console.log("De aqui sacaremos el ID", this.idNegocio)
+    })
+
     this.form = this.fb.group({
-      nombreProducto: ['',Validators.required],
+      idn: ['',Validators.required],
+      nombre: ['',Validators.required],
       descripcion: ['',Validators.required],
       precio: ['',Validators.required],
-      logoProducto: ['',Validators.required],
+      logo: ['',Validators.required]
     })
   }
 
   OnSubmit(){
     if (this.form.valid) {
       let data = {
-      nombre :  this.form.value.nombreEmpresa,
-      descripcion : this.form.value.tipoEmpresa,
-      precio : this.form.value.DireccionEmpresa,
-      logo : this.form.value.NumeroEmpresa,
+      idnegocio : this.form.value.idn,
+      nombre : this.form.value.nombre,
+      descripcion : this.form.value.descripcion,
+      precio : this.form.value.precio,
+      logo : this.form.value.logo
     }
     this.client.postRequestEnviarProductoCreado('http://localhost:5000/api/v02/user/crearProducto',data).subscribe(
       (response:any)=>{

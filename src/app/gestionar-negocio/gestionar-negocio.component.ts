@@ -17,8 +17,12 @@ export class GestionarNegocioComponent implements OnInit , OnDestroy{
   mensajeEliminacionNegocio;
   mensajeEliminacionProducto;
 
+  idNegocio;
+
   negocioData1;
+  productoData1;
   negocioSuscripcion: Subscription;
+  productoSuscripcion: Subscription;
   constructor(
     private router: ActivatedRoute,
     private client: ClientService,
@@ -41,6 +45,11 @@ export class GestionarNegocioComponent implements OnInit , OnDestroy{
       console.log(dataNegocio)
     });
 
+    this.productoSuscripcion = this.negocioService.producto$.subscribe( dataProducto => {
+      this.productoData1 = dataProducto
+      console.log(dataProducto)
+    })
+
     /*this.router.params.subscribe(parametros => {
       this.service.obtenerNegocioPorId(Number(parametros.id))
       .subscribe(negocio =>
@@ -56,7 +65,8 @@ export class GestionarNegocioComponent implements OnInit , OnDestroy{
     this.client.getRequestMostrarNegocioId('http://localhost:5000/api/v02/user/mostrarNegocioId', id).subscribe(
       (data): any => {
         this.datosActualizar = data["data"]
-        console.log(this.datosActualizar);
+        console.log(this.datosActualizar)
+        this.negocioService.actualizarNegocio$.emit(this.datosActualizar)
       },
       (error: any) => {
         console.log("Ha ocurrido un error en la llamada")
@@ -64,7 +74,7 @@ export class GestionarNegocioComponent implements OnInit , OnDestroy{
   }
 
   eliminarNegocioId(id){
-    this.client.getRequestEliminarNegocioId('http://localhost:5000/api/v02/user/eliminarNegocio', id).subscribe(
+    this.client.deleteRequestEliminarNegocioId('http://localhost:5000/api/v02/user/eliminarNegocio', id).subscribe(
       (data): any => {
         this.mensajeEliminacionNegocio = data["data"]
         console.log(this.mensajeEliminacionNegocio)
@@ -74,10 +84,28 @@ export class GestionarNegocioComponent implements OnInit , OnDestroy{
       })
   }
 
-  actualizarProducto(id, idN) {
-    this.client.getRequestProductoId('http://localhost:5000/api/v02/user/productoId', id, idN).subscribe(
+  deleteNegocio(id) {
+    this.client.deleteNegocio(id).subscribe(data => {
+      console.log(data)
+    })
+  }
+
+  crearProducto(id) {
+    this.client.getRequestMostrarNegocioId('http://localhost:5000/api/v02/user/mostrarNegocioId', id).subscribe(
+      (data): any => {
+        this.idNegocio = data["data"]
+        this.negocioService.idcrearproducto$.emit(this.idNegocio)
+      },
+      (error: any) => {
+        console.log("Ha ocurrido un error en la llamada")
+      })
+  }
+
+  actualizarProducto(id) {
+    this.client.getRequestProductoId('http://localhost:5000/api/v02/user/productoId', id).subscribe(
       (data): any => {
         this.datosActualizar1 = data["data"]
+        this.negocioService.actualizarProducto$.emit(this.datosActualizar1)
       },
       (error: any) => {
         console.log("Ha ocurrido un error en la llamada")

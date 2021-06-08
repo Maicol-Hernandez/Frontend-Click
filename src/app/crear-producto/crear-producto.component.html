@@ -7,10 +7,11 @@
               <h4 class="animation a2">Ingresa los datos del producto</h4>
           </div>
               <div class="form">
-              <input formControlName="nombreProducto" type="text" class="form-field animation a3" placeholder="Nombre del producto">
+              <input formControlName="idn" [(ngModel)]="idNegocio[0].id" type="number" class="form-field animation a3" placeholder="ID del negocio">
+              <input formControlName="nombre" type="text" class="form-field animation a3" placeholder="Nombre del producto">
               <input formControlName="descripcion" type="text" class="form-field animation a4" placeholder="Descripcion">
               <input formControlName="precio" type="number" class="form-field animation a4" placeholder="Precio">
-              <input formControlName="logoProducto" type="file" class="form-field animation a4" placeholder="Logo del producto">
+              <input formControlName="logo" type="text" class="form-field animation a4" placeholder="Logo del producto">
               <button type="submit" class="animation a6">Crear Producto</button>
           </div>
       </div>
@@ -18,3 +19,4 @@
     </div>
   </form>
 </div>
+

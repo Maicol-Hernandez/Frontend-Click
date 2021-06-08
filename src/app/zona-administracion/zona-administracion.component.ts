@@ -24,7 +24,7 @@ export class ZonaAdministracionComponent implements OnInit {
     this.client.getRequestMostrarNegocios('http://localhost:5000/api/v02/user/mostrarNegocios').subscribe(
         (data): any => {
           this.datosNegocio = data["Datos"]
-          console.log("Datos del negocios: ",this.datosNegocio);
+          console.log(this.datosNegocio);
         },
 
         (error: any) => {
@@ -37,30 +37,29 @@ export class ZonaAdministracionComponent implements OnInit {
     this.client.getRequestMostrarNegocioId('http://localhost:5000/api/v02/user/mostrarNegocioId', id).subscribe(
     (data): any => {
       this.negocio = data["data"]
-      console.log("Datos mostrar negocio: ",this.negocio)
-      this.negocioService.negocioPorId.emit({
+      console.log(this.negocio)
+      this.negocioService.negocio$.emit(this.negocio)
+      /*this.negocioService.negocioPorId.emit({
         data:this.negocio
-
-      });
+      })*/
     },
     (error: any) => {
       console.log("Ha ocurrido un error en la llamada")
-    }
-    )
+    })
 
 
     this.client.getRequestMostrarProductos('http://localhost:5000/api/v02/user/mostrarProductos', id).subscribe(
       (data): any => {
         this.productos = data["data"]
         console.log(this.productos)
-        this.negocioService.productosNegocio.emit({
+        this.negocioService.producto$.emit(this.productos)
+        /*this.negocioService.productosNegocio.emit({
           data:this.productos
-        })
+        })*/
       },
       (error: any) => {
         console.log("Ha ocurrido un error en la llamada")
-      }
-    )
+      })
   }
 }
 
