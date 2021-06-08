@@ -1,5 +1,5 @@
-
 <div>
+  <form [formGroup]="form" (ngSubmit)="OnSubmit()">
     <div class="container">
       <div class="left">
         <div class="header">
@@ -7,8 +7,9 @@
           <h4 class="animation a2">Reemplace los datos que quiere actualizar</h4>
         </div>
           <div class="form">
-          <input formControlName="nombreNegocio" type="text" class="form-field animation a3" placeholder="Nombre del negocio">
-          <select formControlName="tipoNegocio" id="card" class="form-select" aria-label="Default select example">
+            <input formControlName="idn" [(ngModel)]="negocioDatos[0].id" type="text" class="form-field animation a3" placeholder="Numero identificador del negocio">
+          <input formControlName="nombre" [(ngModel)]="negocioDatos[0].nombre" type="text" class="form-field animation a3" placeholder="Nombre del negocio">
+          <select formControlName="tipo" [(ngModel)]="negocioDatos[0].tipo" id="card" class="form-select" aria-label="Default select example">
               <option value="">-</option>
               <option value="ropa">Ropa</option>
               <option value="alimentos">Alimentos</option>
@@ -16,17 +17,17 @@
               <option value="electrodomesticos">Electrodomesticos</option>
               <option value="otro">Otro</option>
           </select>
-          <input formControlName="direccion" type="text" class="form-field animation a4" placeholder="direccion">
-          <input formControlName="telefonoPrincipal" type="number" class="form-field animation a4" placeholder="telefono principal">
-          <input formControlName="telefonoSecundario" type="number" class="form-field animation a4" placeholder="telefono secundario">
-          <input formControlName="horarios" type="text" class="form-field animation a4" placeholder="Horarios de trabajo">
-          <input formControlName="email" type="email" class="form-field animation a4" placeholder="Email">
-          <input formControlName="logo" type="file" class="form-field animation a4" placeholder="Logo">
+          <input formControlName="direccion" [(ngModel)]="negocioDatos[0].direccion" type="text" class="form-field animation a4"  placeholder="direccion">
+          <input formControlName="telefono1" [(ngModel)]="negocioDatos[0].telefono1" type="number" class="form-field animation a4"  placeholder="telefono principal">
+          <input formControlName="telefono2" [(ngModel)]="negocioDatos[0].telefono2" type="number" class="form-field animation a4"  placeholder="telefono secundario">
+          <input formControlName="horarios" type="text" [(ngModel)]="negocioDatos[0].horarios" class="form-field animation a4" placeholder="Horarios de trabajo">
+          <input formControlName="correo" type="email" [(ngModel)]="negocioDatos[0].correo" class="form-field animation a4" placeholder="Email">
+          <input formControlName="logo" type="file" [(ngModel)]="negocioDatos[0].logo" class="form-field animation a4" placeholder="Logo">
           <button type="submit" class="animation a6">Actualizar negocio</button>
         </div>
       </div>
   <div class="right"></div>
 </div>
-  
+  </form>
 </div>
 

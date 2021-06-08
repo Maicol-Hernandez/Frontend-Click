@@ -131,12 +131,38 @@ export class ClientService {
   }
 
   //Modulo Negocio
-  getRequestMostrarNegocios(route: string, token?: string) {
-    let config: any = {
+  getRequestMostrarTodosLosNegocios(route: string, token?: string){
+    let config:any = {
       responseType: "json"
     }
 
-    if (token) {
+    if(token){
+      const herder = new HttpHeaders().set('Authorization', `Bearer ${token}`)
+      config['heders'] = herder
+    }
+
+    return this.http.get(route, config);
+  }
+
+  getRequestMostrarNegocio(route: string, id: number) {
+    let config:any = {
+      responseType: "json"
+    }
+    const params = new HttpParams().set('id', `${id}`);
+    config["params"] = params;
+
+    const header = new HttpHeaders().set('Authorization', '57ydf544ljka559ahjkfgd1');
+    config["header"] = header;
+
+    return this.http.get(route, config);
+  }
+
+  getRequestMostrarNegocios(route: string, token?: string){
+    let config:any = {
+      responseType: "json"
+    }
+
+    if(token){
       const herder = new HttpHeaders().set('Authorization', `Bearer ${token}`)
       config['heders'] = herder
     }
@@ -145,7 +171,7 @@ export class ClientService {
   }
 
   getRequestMostrarNegocioId(route: string, id: number) {
-    let config: any = {
+    let config:any = {
       responseType: "json"
     }
     const params = new HttpParams().set('id', `${id}`);
@@ -157,37 +183,41 @@ export class ClientService {
     return this.http.get(route, config);
   }
 
-  postRequestFormularioEmpresa(route: string, data?: any) {
-    let config: any = {
+  postRequestFormularioEmpresa(route: string ,data? :any){
+    let config:any = {
       responseType: "json"
     }
-    return this.http.post(route, data, config);
+    return this.http.post(route,data,config);
   }
 
-  postRequestActualizarEmpresa(route: string, data?: any) {
-    let config: any = {
+  postRequestActualizarEmpresa(route: string ,data? :any){
+    let config:any = {
       responseType: "json"
     }
-    return this.http.post(route, data, config);
+    return this.http.post(route,data,config);
   }
 
-  getRequestEliminarNegocioId(route: string, id: number) {
+  deleteRequestEliminarNegocioId(route: string, id: number) {
     let config: any = {
       responseType: "json"
     }
     const params = new HttpParams().set('id', `${id}`);
-    config["header"] = params;
+    config["header"] =  params;
 
-    const header = new HttpHeaders().set('Authorization', '57ydf544ljka559ahjkfgd1');
-    config["header"] = header;
+    /*const header = new HttpHeaders().set('Authorization', '57ydf544ljka559ahjkfgd1');
+    config["header"] =  header;*/
 
-    return this.http.get(route, config);
+    return this.http.delete(route, config);
   }
 
+  deleteNegocio(id) {
+    const puntoDeEliminacion = 'http://localhost:5000/api/v02/user/eliminarNegocio/' + id;
+    return this.http.delete(puntoDeEliminacion)
+  }
   //Modulo Producto
 
   getRequestMostrarProductos(route: string, id: number) {
-    let config: any = {
+    let config:any = {
       responseType: "json"
     }
     const params = new HttpParams().set('id', `${id}`);
@@ -199,8 +229,8 @@ export class ClientService {
     return this.http.get(route, config);
   }
 
-  getRequestProductoId(route: string, id: number, idN: number) {
-    let config: any = {
+  getRequestProductoId(route: string, id: number) {
+    let config:any = {
       responseType: "json"
     }
 
@@ -213,22 +243,22 @@ export class ClientService {
     return this.http.get(route, config);
   }
 
-  postRequestEnviarProductoCreado(route: string, data?: any, /*token? :string*/) {
-    let config: any = {
+  postRequestEnviarProductoCreado(route:string, data? :any) {
+    let config:any = {
       responseType: "json"
     }
     /*if
       const header = new Headers().set('Authorization', `Bearer ${}`)
       config['header'] = header;
     */
-    return this.http.post(route, config, data);
+    return this.http.post(route,data,config);
   }
 
-  postRequestActualizarProducto(route: string, data?: any) {
-    let config: any = {
+  postRequestActualizarProducto(route: string ,data? :any){
+    let config:any = {
       responseType: "json"
     }
-    return this.http.post(route, data, config);
+    return this.http.post(route,data,config);
   }
 
   getRequestEliminarProductoId(route: string, id: number) {
@@ -236,10 +266,10 @@ export class ClientService {
       responseType: "json"
     }
     const params = new HttpParams().set('id', `${id}`);
-    config["header"] = params;
+    config["header"] =  params;
 
     const header = new HttpHeaders().set('Authorization', '57ydf544ljka559ahjkfgd1');
-    config["header"] = header;
+    config["header"] =  header;
 
     return this.http.get(route, config);
   }

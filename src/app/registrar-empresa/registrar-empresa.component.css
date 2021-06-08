@@ -1,3 +1,103 @@
+.error-messange{color: red;}
+.form-select.ng-invalid:focus{
+  box-shadow: 0 0 0 0.25rem rgb(227 6 6 / 25%);
+  border-color:  #E30606;
+}
+
+.form-select.ng-invalid.ng-touched{
+  box-shadow: 0 0 0 0.10rem rgb(227 6 6 / 25%);
+}
+
+.form-select.ng-valid:focus.ng-valid:focus{
+
+  border-color: #0FA100;
+  box-shadow: 0 0 0 0.25rem rgb(15 161 0 / 25%);
+
+}
+
+.form-control{
+  border-radius: 5px;
+  border: solid 2px grey;
+}
+
+.float-end{
+margin: 20px;
+margin-top: 20px;
+}
+
+
+
+input.ng-invalid.ng-touched {
+  box-shadow: 0 0 0 0.10rem rgb(227 6 6 / 25%);
+}
+
+mat-error{
+  color: red;
+  background: #ffff;
+  border-color: #fff;
+  margin-bottom: 1px;
+  font-size: 10px;
+  padding: 2px ;
+  margin: 2px;
+  width: 300px;
+  font-family: Poppins-Regular;
+  font-size: 12px;
+
+}
+
+.form-control-inputs:focus {
+  color: #212529;
+  background-color: #fff;
+  border-color: #E30606;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgb(227 6 6 / 25%);
+}
+
+.form-control-inputs.ng-valid.ng-dirty:focus {
+  color: #212529;
+  background-color: #fff;
+  border-color: #0FA100;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgb(15 161 0 / 25%);
+}
+
+
+.form-control-inputs{
+  display: block;
+  width: 100%;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529; 
+  background-color: #fff; 
+  background-clip: padding-box; 
+  border: 1px solid #ced4da; 
+  -webkit-appearance: none; 
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: .25rem;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out; 
+}
+.error-messange-pass{
+  color: red;
+  background: #ffff;
+  border-color: #fff;
+  margin-bottom: 1px;
+
+}
+
+.error-messange{
+  padding: 2px ;
+  margin: 2px;
+  width: 300px;
+  
+  font-family: Poppins-Regular;
+  font-size: 12px;
+}
+
+
+
 /*cambiamos el color de la app*/
 small{
   color: red;

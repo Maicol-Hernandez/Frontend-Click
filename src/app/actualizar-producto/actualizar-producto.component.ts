@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { ClientService } from '../servicios/client.service';
+import { NegociosService } from '../servicios/negocios.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,15 +12,24 @@ import { Router } from '@angular/router';
 export class ActualizarProductoComponent implements OnInit {
 
   form: FormGroup;
+  productoDatos;
 
   constructor(
     private fb: FormBuilder,
     private route: Router,
-    private client : ClientService
+    private client : ClientService,
+    private negocioService : NegociosService
   ) { }
 
   ngOnInit(): void {
+
+    this.negocioService.actualizarProducto$.subscribe(dataProducto => {
+      this.productoDatos = dataProducto
+      console.log("Este es el producto que se quiere actualizar", this.productoDatos)
+    })
+
     this.form = this.fb.group({
+      idProducto: ['',Validators.required],
       nombreProducto: ['',Validators.required],
       descripcion: ['',Validators.required],
       precio: ['',Validators.required],
@@ -30,10 +40,11 @@ export class ActualizarProductoComponent implements OnInit {
   OnSubmit(){
     if (this.form.valid) {
       let data = {
-      nombre :  this.form.value.nombreEmpresa,
-      descripcion : this.form.value.tipoEmpresa,
-      precio : this.form.value.DireccionEmpresa,
-      logo : this.form.value.NumeroEmpresa,
+      idProducto :  this.form.value.idProducto,
+      nombre :  this.form.value.nombreProducto,
+      descripcion : this.form.value.descripcion,
+      precio : this.form.value.precio,
+      logo : this.form.value.logoProducto,
     }
     this.client.postRequestActualizarProducto('http://localhost:5000/api/v02/user/actualizarProducto',data).subscribe(
       (response:any)=>{

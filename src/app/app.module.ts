@@ -49,7 +49,6 @@ import { CrearProductoComponent } from './crear-producto/crear-producto.componen
     ActualizarProductoComponent,
     CrearProductoComponent
   ],
-  
   imports: [
     FormsModule,
     MatIconModule,

@@ -4,7 +4,7 @@
         <div class="perfil-empresa-portada">
             <div *ngFor="let empresa of dataEmpresa">
                 <div  class="datos-img">
-                    <img  [src]="empresa.imgLogo" class="card-img-top"  alt=""></div>    
+                    <img  [src]="empresa.imgLogo" class="card-img-top"  alt=""></div>
                 <div  class="datos-negocio">
                     <div>Nombre del negocio: {{ empresa.nombre }}</div>
                     <div>Tipo de negocio: {{ empresa.tipo }} </div>
@@ -21,7 +21,7 @@
     <ul class="carrito">
         <button type="button" class="cart" [routerLink]="['/detallesproducto']"><a><i class="fa fa-shopping-cart"></i>Carrito</a></button>
     </ul>
-    
+
 <div class="wrap">
     <h1>Productos</h1>
     <div class="store-wrapper">

@@ -13,7 +13,21 @@ export class NegociosService {
 
   @Output() productosNegocio: EventEmitter<any> = new EventEmitter();
 
+  negociocomprar$ = new EventEmitter<Array<any>>();
+
+  productocomprar$ = new EventEmitter<Array<any>>();
+
   negocio$ = new EventEmitter<Array<any>>();
+
+  producto$ = new EventEmitter<Array<any>>();
+
+  idcrearproducto$ = new EventEmitter<Array<any>>();
+
+  actualizarNegocio$ = new EventEmitter<Array<any>>();
+
+  crearProducto$ = new EventEmitter<Array<any>>();
+
+  actualizarProducto$ = new EventEmitter<Array<any>>();
 
   constructor(
     private http: HttpClient,
