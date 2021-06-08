@@ -114,23 +114,7 @@ export class RegistroComponent implements OnInit {
           console.log("Registro ok", response)
           
           this.auth.login(response.token);
-
-          this.auth.setCourrentUser(response.nombres);
-
-          this.auth.setCourrentUserApellidos(response.apellidos);
- 
-          this.auth.setCourrentUserCorreo(response.correo);
-
-          this.auth.setCourrentUserNumeroDocumento(response.numero_documento);
-
-          this.auth.setCourrentUserTipoDocumento(response.tipo_documento);
-
-          this.auth.setCourrentUserFechaNacimiento(response.fecha_nacimiento);
-
-          this.auth.setCourrentUserNumeroTelefono(response.numero_telefono);
- 
-          localStorage.setItem('token', response.token);
-          console.log(localStorage.getItem('token'));
+          
         },
 
         (error) => {
