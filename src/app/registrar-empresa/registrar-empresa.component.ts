@@ -49,6 +49,8 @@ export class RegistrarEmpresaComponent implements OnInit {
       this.status = true;
       var nombre = this.form.get('nombreEmpresa').value
       this.infoImg = nombre.trim();
+      var remplazo = this.infoImg.split(" ").join("")
+      this.infoImg = remplazo
       }
     }
     
