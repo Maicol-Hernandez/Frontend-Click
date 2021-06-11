@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild,ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { ClientService } from '../servicios/client.service';
 import { Router } from '@angular/router';
@@ -37,12 +37,14 @@ export class RegistrarEmpresaComponent implements OnInit {
       img : [null],
     });
   }
+  
   upload(event) {
     if(event.target.files[0].type == 'image/jpg' || event.target.files[0].type == 'image/jpeg' ){
       const file = (event.target as HTMLInputElement).files[0];
       this.form.patchValue({
         img: file
       });
+
       this.infoImg = event.target.files[0].name;
       this.form.get('img').updateValueAndValidity()
       this.mostrarError = false;
@@ -50,7 +52,7 @@ export class RegistrarEmpresaComponent implements OnInit {
       var nombre = this.form.get('nombreEmpresa').value
       console.log(nombre);
       if(nombre.charAt(nombre.length - 1) == " "){
-        this.nameEmpresa =  nombre.substring(0,nombre.length - 1);
+        this.nameEmpresa =  nombre.substring(0, nombre.length - 1);
         console.log(this.nameEmpresa);
       }
     }else{
@@ -75,9 +77,10 @@ export class RegistrarEmpresaComponent implements OnInit {
         console.error(error);
       }
       )   
+      
   }
   OnSubmit(){
-    if (this.form.valid) {
+    if (this.form.valid) {   
           var data = {
           nombre :  this.form.value.nombreEmpresa,
           tipoE : this.form.value.tipoEmpresa,

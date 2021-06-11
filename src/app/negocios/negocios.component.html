@@ -2,17 +2,17 @@
 <section class="seccion-perfil-empresa">
     <div class="perfil-empresa-header">
         <div class="perfil-empresa-portada">
-            <div *ngFor="let empresa of dataEmpresa">
+            <div *ngFor="let empresaId of dataEmpresaId">
                 <div  class="datos-img">
-                    <img  [src]="empresa.imgLogo" class="card-img-top"  alt=""></div>
+                    <img  [src]="empresaId.imgLogo" class="card-img-top"  alt=""></div>
                 <div  class="datos-negocio">
-                    <div>Nombre del negocio: {{ empresa.nombre }}</div>
-                    <div>Tipo de negocio: {{ empresa.tipo }} </div>
-                    <div>Direccion: {{ empresa.direccion }}</div>
-                    <div>Horarios: {{ empresa.horarios }} </div>
-                    <div>Telefono1: {{ empresa.telefono1 }}</div>
-                    <div>Telefono2: {{ empresa.telefono2 }}</div>
-                    <div>Correo: {{ empresa.correo }}</div>
+                    <div>Nombre del negocio: {{ empresaId.nombre }}</div>
+                    <div>Tipo de negocio: {{ empresaId.tipo_negocio }} </div>
+                    <div>Direccion: {{ empresaId.direccion }}</div>
+                    <div>Horarios: {{ empresaId.horarios }} </div>
+                    <div>Telefono1: {{ empresaId.telefono1 }}</div>
+                    <div>Telefono2: {{ empresaId.telefono2 }}</div>
+                    <div>Correo: {{ empresaId.correo }}</div>
                 </div>
             </div>
         </div>
