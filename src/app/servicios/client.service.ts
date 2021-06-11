@@ -263,5 +263,11 @@ export class ClientService {
 
     return this.http.get(route, config);
   }
+  deleteRequestEliminarProductos(route: string, data:any) {
+    let config: any = {
+      responseType: "json"
+    }
+    return this.http.post(route,data,config);
+  }
 }
 

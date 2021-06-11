@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs'
 import { ClientService } from '../servicios/client.service';
 import { NegociosService } from '../servicios/negocios.service';
 import { Router } from '@angular/router';
-
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 @Component({
   selector: 'app-gestionar-negocio',
   templateUrl: './gestionar-negocio.component.html',
@@ -24,6 +24,10 @@ export class GestionarNegocioComponent implements OnInit , OnDestroy{
   productoData1;
   negocioSuscripcion: Subscription;
   productoSuscripcion: Subscription;
+  //Eliminar Boton 
+  mostrar : boolean = false;
+  mostrarProductos : boolean = true;
+
   constructor(
     private router: ActivatedRoute,
     private client: ClientService,
@@ -44,7 +48,6 @@ export class GestionarNegocioComponent implements OnInit , OnDestroy{
 
     this.negocioSuscripcion = this.negocioService.negocio$.subscribe( dataNegocio => {
       this.negocioData1 = dataNegocio
-      console.log(dataNegocio)
     });
 
     this.productoSuscripcion = this.negocioService.producto$.subscribe( dataProducto => {
@@ -76,19 +79,57 @@ export class GestionarNegocioComponent implements OnInit , OnDestroy{
   }
 
   eliminarNegocioId(id){
-    this.client.deleteRequestEliminarNegocioId('http://localhost:5000/api/v02/user/eliminarNegocio', id).subscribe(
-      (data): any => {
-        this.mensajeEliminacionNegocio = data["data"]
-        console.log(this.mensajeEliminacionNegocio)
-        this.route.navigate(['/zona-administracion'])
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-success',
+        cancelButton: 'btn btn-danger'
       },
-      (error: any) =>{
-        console.log("Ha ocurrido un error en la llamada")
-      })
+      buttonsStyling: false
+    })
+    swalWithBootstrapButtons.fire({
+      title: '¿Deseas eliminar un negocio?',
+      text: "si tienes productos te aconsejo que elimine todos los productos!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Si, deseo eliminar mi negocio',
+      cancelButtonText: 'No, cancelar!',
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.client.deleteRequestEliminarNegocioId('http://localhost:5000/api/v02/user/eliminarNegocio', id).subscribe(
+          (data): any => {
+          this.mensajeEliminacionNegocio = data["data"]
+          swalWithBootstrapButtons.fire(
+            'ELiminado!',
+            'EL negocio se ha eliminado exitosamente.',
+            'success'
+          ) 
+          this.route.navigate(['/zona-administracion']) 
+          },
+          (error: any) =>{
+            swalWithBootstrapButtons.fire(
+              'Upp..',
+              'Te aconsejo que elimines primero los productos :)',
+              'error'
+            )
+            this.mostrar = true;
+          })
+      } else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        swalWithBootstrapButtons.fire(
+          'Cancelado',
+          'Gracias por continuar con click :)',
+          'error'
+        )
+      }
+    })
   }
 
   
 
+  //Opciones del Usuario
   crearProducto(id) {
     this.client.getRequestMostrarNegocioId('http://localhost:5000/api/v02/user/mostrarNegocioId', id).subscribe(
       (data): any => {
@@ -120,5 +161,59 @@ export class GestionarNegocioComponent implements OnInit , OnDestroy{
         console.log("Ha ocurrido un error en la llamada")
       })
   }
+  
+  deleteEveryOneP(id){
+    var data = {"idNegocio":id}
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-success',
+        cancelButton: 'btn btn-danger'
+      },
+      buttonsStyling: false
+    })
+    swalWithBootstrapButtons.fire({
+      title: '¿Deseas eliminar todos los productos?',
+      text: "Advertencia usted vas a eliminar todos los productos!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Si, deseo eliminar mi productos',
+      cancelButtonText: 'No, cancelar!',
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.client.deleteRequestEliminarProductos('http://localhost:5000/api/v02/eliminarProduct',data).subscribe(
+          (response): any => {
+          this.mostrarProductos = false;
+          this.mostrar=false;
+          swalWithBootstrapButtons.fire(
+            'ELiminado!',
+            'Los productos se ha eliminado exitosamente ,puedes eliminar tu negocio sin ningun problema.',
+            'success'
+          )  
+          },
+          (error: any) =>{
+            swalWithBootstrapButtons.fire(
+              'Upp..',
+              'No tenemos un servicio :(',
+              'error'
+            )
+            this.mostrar = true;
+          console.error(error)
+          })
+
+      } else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        swalWithBootstrapButtons.fire(
+          'Cancelado',
+          'Gracias por continuar con click :)',
+          'error'
+        )
+      }
+    })
+
+  }
+
 }
 
