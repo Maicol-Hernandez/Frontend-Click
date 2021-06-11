@@ -123,6 +123,7 @@ export class GestionarNegocioComponent implements OnInit , OnDestroy{
           'Tu negocio ha sido eliminado exitosamente.',
           'success'
         )
+        this.route.navigate(['/zona-administracion'])
       },(error:any)=>{
         Swal.fire(
           'Upp..',
