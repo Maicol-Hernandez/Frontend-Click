@@ -2,7 +2,7 @@
 <div class="card mb-3" style="max-width: 600px; max-height: 700px;" id="contenedor_negocio" *ngFor="let negocio of negocioData1">
         <div class="row g-0">
             <div class="col-md-4">
-                <img src="{{negocio.imglogo}}" alt="logo del negocio">
+                <img src="http://localhost:8000/imagenes/{{negocio.imgLogo}}" alt="logo del negocio">
             </div>
         <div class="col-md-8">
             <div class="card-body">
@@ -18,7 +18,7 @@
         </div>
         <div class="contenedor_botones">
             <button type="button" class="btn btn-primary" id="boton" routerLinkActive="active" [routerLink]="['/actualizar-negocio']" (click)="actualizarNegocioId(negocio.id)">Actualizar Datos</button>
-            <button type="button" class="btn btn-primary" id="boton" routerLinkActive="active" [routerLink]="['/zona-administracion']" (click)="deleteNegocio(negocio.id)">Eliminar Negocio</button>
+            <button type="button" class="btn btn-primary" id="boton" routerLinkActive="active"  (click)="eliminarNegocioId(negocio.id)">Eliminar Negocio</button>
         </div>
         </div>
     </div>

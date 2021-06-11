@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs'
 import { ClientService } from '../servicios/client.service';
 import { NegociosService } from '../servicios/negocios.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-gestionar-negocio',
@@ -26,7 +27,8 @@ export class GestionarNegocioComponent implements OnInit , OnDestroy{
   constructor(
     private router: ActivatedRoute,
     private client: ClientService,
-    private negocioService: NegociosService
+    private negocioService: NegociosService,
+    private route :Router
   ) { }
   public negocioData: any;
   public productosData: any;
@@ -78,17 +80,14 @@ export class GestionarNegocioComponent implements OnInit , OnDestroy{
       (data): any => {
         this.mensajeEliminacionNegocio = data["data"]
         console.log(this.mensajeEliminacionNegocio)
+        this.route.navigate(['/zona-administracion'])
       },
       (error: any) =>{
         console.log("Ha ocurrido un error en la llamada")
       })
   }
 
-  deleteNegocio(id) {
-    this.client.deleteNegocio(id).subscribe(data => {
-      console.log(data)
-    })
-  }
+  
 
   crearProducto(id) {
     this.client.getRequestMostrarNegocioId('http://localhost:5000/api/v02/user/mostrarNegocioId', id).subscribe(
