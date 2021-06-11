@@ -78,58 +78,9 @@ export class GestionarNegocioComponent implements OnInit , OnDestroy{
       })
   }
 
-  eliminarNegocioId(id){
-    const swalWithBootstrapButtons = Swal.mixin({
-      customClass: {
-        confirmButton: 'btn btn-success',
-        cancelButton: 'btn btn-danger'
-      },
-      buttonsStyling: false
-    })
-    swalWithBootstrapButtons.fire({
-      title: '¿Deseas eliminar un negocio?',
-      text: "si tienes productos te aconsejo que elimine todos los productos!",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonText: 'Si, deseo eliminar mi negocio',
-      cancelButtonText: 'No, cancelar!',
-      reverseButtons: true
-    }).then((result) => {
-      if (result.isConfirmed) {
-        this.client.deleteRequestEliminarNegocioId('http://localhost:5000/api/v02/user/eliminarNegocio', id).subscribe(
-          (data): any => {
-          this.mensajeEliminacionNegocio = data["data"]
-          swalWithBootstrapButtons.fire(
-            'ELiminado!',
-            'EL negocio se ha eliminado exitosamente.',
-            'success'
-          ) 
-          this.route.navigate(['/zona-administracion']) 
-          },
-          (error: any) =>{
-            swalWithBootstrapButtons.fire(
-              'Upp..',
-              'Te aconsejo que elimines primero los productos :)',
-              'error'
-            )
-            this.mostrar = true;
-          })
-      } else if (
-        /* Read more about handling dismissals below */
-        result.dismiss === Swal.DismissReason.cancel
-      ) {
-        swalWithBootstrapButtons.fire(
-          'Cancelado',
-          'Gracias por continuar con click :)',
-          'error'
-        )
-      }
-    })
-  }
 
-  
 
-  //Opciones del Usuario
+   //Opciones del Usuario que obtendar mediante con botones en la vista
   crearProducto(id) {
     this.client.getRequestMostrarNegocioId('http://localhost:5000/api/v02/user/mostrarNegocioId', id).subscribe(
       (data): any => {
@@ -162,7 +113,26 @@ export class GestionarNegocioComponent implements OnInit , OnDestroy{
       })
   }
   
-  deleteEveryOneP(id){
+  //Metodos que nos permite eliminar el negocio y sus productos
+  eliminarNegocioId(id){
+    var data = id.idNegocio;
+    this.client.deleteRequestEliminarNegocioId('http://localhost:5000/api/v02/user/eliminarNegocio', data).subscribe(
+      (response):any =>{
+        Swal.fire(
+          'Eliminado!',
+          'Tu negocio ha sido eliminado exitosamente.',
+          'success'
+        )
+      },(error:any)=>{
+        Swal.fire(
+          'Upp..',
+          'Lo sentimos no tenemos servicio :(',
+          'error'
+        )
+      }
+    )
+  }
+  deleteEveryOnePN(id){
     var data = {"idNegocio":id}
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
@@ -172,11 +142,11 @@ export class GestionarNegocioComponent implements OnInit , OnDestroy{
       buttonsStyling: false
     })
     swalWithBootstrapButtons.fire({
-      title: '¿Deseas eliminar todos los productos?',
-      text: "Advertencia usted vas a eliminar todos los productos!",
+      title: '¿Deseas eliminar tu negocio?',
+      text: "Advertencia usted vas a eliminar tu negocio y tu productos registrados!",
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonText: 'Si, deseo eliminar mi productos',
+      confirmButtonText: 'Si, deseo eliminar mi negocio',
       cancelButtonText: 'No, cancelar!',
       reverseButtons: true
     }).then((result) => {
@@ -185,11 +155,7 @@ export class GestionarNegocioComponent implements OnInit , OnDestroy{
           (response): any => {
           this.mostrarProductos = false;
           this.mostrar=false;
-          swalWithBootstrapButtons.fire(
-            'ELiminado!',
-            'Los productos se ha eliminado exitosamente ,puedes eliminar tu negocio sin ningun problema.',
-            'success'
-          )  
+            this.eliminarNegocioId(data)
           },
           (error: any) =>{
             swalWithBootstrapButtons.fire(

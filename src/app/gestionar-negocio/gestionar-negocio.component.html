@@ -18,7 +18,7 @@
         </div>
         <div class="contenedor_botones">
             <button type="button" class="btn btn-primary" id="boton" routerLinkActive="active" [routerLink]="['/actualizar-negocio']" (click)="actualizarNegocioId(negocio.id)">Actualizar Datos</button>
-            <button type="button" class="btn btn-primary" id="boton" routerLinkActive="active"  (click)="eliminarNegocioId(negocio.id)">Eliminar Negocio</button>
+            <button type="button" class="btn btn-primary" id="boton" routerLinkActive="active"  (click)="deleteEveryOnePN(negocio.id)">Eliminar Negocio</button>
         </div>
         </div>
     </div>
@@ -26,11 +26,6 @@
     <h3 class="titulo_productos">Productos</h3>
     <div class="separador2"></div>
     <button type="button" class="btn btn-primary" id="boton" routerLinkActive="active" [routerLink]="['/crear-producto']" (click)="crearProducto(negocioData1[0].id)">Crear nuevo producto</button>
-    <div *ngIf="mostrar">
-        <div *ngFor="let negocio of negocioData1">
-            <button type="button" class="btn btn-danger" id="boton" routerLinkActive="active"  (click)="deleteEveryOneP(negocio.id)">ELIMINAR TODOS LOS PRODUCTO</button>
-        </div>
-    </div>
     <div *ngIf="mostrarProductos">
         <div class="row row-cols-1 row-cols-md-3 g-4" id="contenedor_productos" *ngFor="let producto of productoData1">
             <div class="col">
