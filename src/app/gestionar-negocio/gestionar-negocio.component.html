@@ -2,7 +2,7 @@
 <div class="card mb-3" style="max-width: 600px; max-height: 700px;" id="contenedor_negocio" *ngFor="let negocio of negocioData1">
         <div class="row g-0">
             <div class="col-md-4">
-                <img src="http://localhost:8000/imagenes/{{negocio.imgLogo}}" alt="logo del negocio">
+                <img src="http://localhost:8000/imagenes/{{negocio.logo}}" alt="logo del negocio" width="200px" height="230px">
             </div>
         <div class="col-md-8">
             <div class="card-body">
@@ -13,7 +13,6 @@
                 <p class="card-text">Telefono principal: {{negocio.telefono1}}</p>
                 <p class="card-text">Telefono secundario: {{negocio.telefono2}} </p>
                 <p class="card-text">Correo: {{negocio.correo}}</p>
-
             </div>
         </div>
         <div class="contenedor_botones">

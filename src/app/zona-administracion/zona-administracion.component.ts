@@ -13,6 +13,8 @@ export class ZonaAdministracionComponent implements OnInit {
   datosNegocio;
   negocio;
   productos;
+  mostrar = false;
+  ensayo :any = [];
 
   constructor(
     private client: ClientService,
@@ -20,13 +22,12 @@ export class ZonaAdministracionComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-
     this.client.getRequestMostrarNegocios('http://localhost:5000/api/v02/user/mostrarNegocios').subscribe(
         (data): any => {
           this.datosNegocio = data["Datos"]
-          console.log(this.datosNegocio);
+          this.ensayo = data["Datos"]
+          this.mostrar = true;
         },
-
         (error: any) => {
           console.log(error)
         })
