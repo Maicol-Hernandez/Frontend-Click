@@ -54,11 +54,13 @@ export class RegistrarEmpresaComponent implements OnInit {
       if(nombre.charAt(nombre.length - 1) == " "){
         this.nameEmpresa =  nombre.substring(0, nombre.length - 1);
         console.log(this.nameEmpresa);
+      this.infoImg = nombre.trim();
+      var remplazo = this.infoImg.split(" ").join("")
+      this.infoImg = remplazo
       }
-    }else{
-      this.mostrarError=true;
     }
-  }
+    
+
 
   //metodo que se va encargar de enviar la informacion a la base de datos
   registrarEmpresaDB(data:any){
@@ -80,23 +82,24 @@ export class RegistrarEmpresaComponent implements OnInit {
       
   }
   OnSubmit(){
-    if (this.form.valid) {   
-          var data = {
-          nombre :  this.form.value.nombreEmpresa,
-          tipoE : this.form.value.tipoEmpresa,
-          direccionE : this.form.value.DireccionEmpresa,
-          numeroE : this.form.value.NumeroEmpresa,
-          numeroS : this.form.value.NumeroSecundario,
-          emailE : this.form.value.emailEmpresa,
-          horario : this.form.value.Horario,
-          logo : this.infoImg
-          }
-          var formData: any = new FormData();
-          formData.append("img", this.form.get('img').value);
-          formData.append("nombreEmpresa", this.nameEmpresa);
+
+    if (this.form.valid) {
+      var formData: any = new FormData();
+      formData.append("img", this.form.get('img').value);
+      formData.append("nombreEmpresa", this.infoImg);
             this.client.postRequestFormularioEmpresa('http://localhost:8000/upload',formData).subscribe(
           (response:any)=>{
-            this.registrarEmpresaDB(data);
+            var data:any = {
+              nombre :  this.form.value.nombreEmpresa,
+              tipoE : this.form.value.tipoEmpresa,
+              direccionE : this.form.value.DireccionEmpresa,
+              numeroE : this.form.value.NumeroEmpresa,
+              numeroS : this.form.value.NumeroSecundario,
+              emailE : this.form.value.emailEmpresa,
+              horario : this.form.value.Horario,
+              logo : response.img //LO que obtenga de la respuesta
+              }
+              this.registrarEmpresaDB(data);
           },
             (error)=>{
             console.error(error);

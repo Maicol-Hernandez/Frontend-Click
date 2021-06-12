@@ -3,7 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs'
 import { ClientService } from '../servicios/client.service';
 import { NegociosService } from '../servicios/negocios.service';
-
+import { Router } from '@angular/router';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 @Component({
   selector: 'app-gestionar-negocio',
   templateUrl: './gestionar-negocio.component.html',
@@ -23,10 +24,15 @@ export class GestionarNegocioComponent implements OnInit , OnDestroy{
   productoData1;
   negocioSuscripcion: Subscription;
   productoSuscripcion: Subscription;
+  //Eliminar Boton 
+  mostrar : boolean = false;
+  mostrarProductos : boolean = true;
+
   constructor(
     private router: ActivatedRoute,
     private client: ClientService,
-    private negocioService: NegociosService
+    private negocioService: NegociosService,
+    private route :Router
   ) { }
   public negocioData: any;
   public productosData: any;
@@ -42,7 +48,6 @@ export class GestionarNegocioComponent implements OnInit , OnDestroy{
 
     this.negocioSuscripcion = this.negocioService.negocio$.subscribe( dataNegocio => {
       this.negocioData1 = dataNegocio
-      console.log(dataNegocio)
     });
 
     this.productoSuscripcion = this.negocioService.producto$.subscribe( dataProducto => {
@@ -73,23 +78,9 @@ export class GestionarNegocioComponent implements OnInit , OnDestroy{
       })
   }
 
-  eliminarNegocioId(id){
-    this.client.deleteRequestEliminarNegocioId('http://localhost:5000/api/v02/user/eliminarNegocio', id).subscribe(
-      (data): any => {
-        this.mensajeEliminacionNegocio = data["data"]
-        console.log(this.mensajeEliminacionNegocio)
-      },
-      (error: any) =>{
-        console.log("Ha ocurrido un error en la llamada")
-      })
-  }
 
-  deleteNegocio(id) {
-    this.client.deleteNegocio(id).subscribe(data => {
-      console.log(data)
-    })
-  }
 
+   //Opciones del Usuario que obtendar mediante con botones en la vista
   crearProducto(id) {
     this.client.getRequestMostrarNegocioId('http://localhost:5000/api/v02/user/mostrarNegocioId', id).subscribe(
       (data): any => {
@@ -121,5 +112,75 @@ export class GestionarNegocioComponent implements OnInit , OnDestroy{
         console.log("Ha ocurrido un error en la llamada")
       })
   }
+  
+  //Metodos que nos permite eliminar el negocio y sus productos
+  eliminarNegocioId(id){
+    var data = id.idNegocio;
+    this.client.deleteRequestEliminarNegocioId('http://localhost:5000/api/v02/user/eliminarNegocio', data).subscribe(
+      (response):any =>{
+        Swal.fire(
+          'Eliminado!',
+          'Tu negocio ha sido eliminado exitosamente.',
+          'success'
+        )
+        this.route.navigate(['/zona-administracion'])
+      },(error:any)=>{
+        Swal.fire(
+          'Upp..',
+          'Lo sentimos no tenemos servicio :(',
+          'error'
+        )
+      }
+    )
+  }
+  deleteEveryOnePN(id){
+    var data = {"idNegocio":id}
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-success',
+        cancelButton: 'btn btn-danger'
+      },
+      buttonsStyling: false
+    })
+    swalWithBootstrapButtons.fire({
+      title: '¿Deseas eliminar tu negocio?',
+      text: "Advertencia usted vas a eliminar tu negocio y tu productos registrados!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Si, deseo eliminar mi negocio',
+      cancelButtonText: 'No, cancelar!',
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.client.deleteRequestEliminarProductos('http://localhost:5000/api/v02/eliminarProduct',data).subscribe(
+          (response): any => {
+          this.mostrarProductos = false;
+          this.mostrar=false;
+            this.eliminarNegocioId(data)
+          },
+          (error: any) =>{
+            swalWithBootstrapButtons.fire(
+              'Upp..',
+              'No tenemos un servicio :(',
+              'error'
+            )
+            this.mostrar = true;
+          console.error(error)
+          })
+
+      } else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        swalWithBootstrapButtons.fire(
+          'Cancelado',
+          'Gracias por continuar con click :)',
+          'error'
+        )
+      }
+    })
+
+  }
+
 }
 
