@@ -198,23 +198,13 @@ export class ClientService {
     return this.http.post(route,data,config);
   }
 
-  deleteRequestEliminarNegocioId(route: string, id: number) {
-    let config: any = {
-      responseType: "json"
-    }
-    const params = new HttpParams().set('id', `${id}`);
-    config["header"] =  params;
+  deleteRequestEliminarNegocioId(route: string, data:any) {
+    let httpParams = new HttpParams().set('id', data);
 
-    /*const header = new HttpHeaders().set('Authorization', '57ydf544ljka559ahjkfgd1');
-    config["header"] =  header;*/
-
-    return this.http.delete(route, config);
+    let options = { params: httpParams };
+    return this.http.delete(route,options);
   }
 
-  deleteNegocio(id) {
-    const puntoDeEliminacion = 'http://localhost:5000/api/v02/user/eliminarNegocio/' + id;
-    return this.http.delete(puntoDeEliminacion)
-  }
   //Modulo Producto
 
   getRequestMostrarProductos(route: string, id: number) {
@@ -273,6 +263,12 @@ export class ClientService {
     config["header"] =  header;
 
     return this.http.get(route, config);
+  }
+  deleteRequestEliminarProductos(route: string, data:any) {
+    let config: any = {
+      responseType: "json"
+    }
+    return this.http.post(route,data,config);
   }
 }
 
