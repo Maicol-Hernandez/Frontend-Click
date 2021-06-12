@@ -80,10 +80,9 @@ export class RegistrarEmpresaComponent implements OnInit {
   OnSubmit(){
 
     if (this.form.valid) {
-          
-          var formData: any = new FormData();
-          formData.append("img", this.form.get('img').value);
-          formData.append("nombreEmpresa", this.infoImg);
+      var formData: any = new FormData();
+      formData.append("img", this.form.get('img').value);
+      formData.append("nombreEmpresa", this.infoImg);
             this.client.postRequestFormularioEmpresa('http://localhost:8000/upload',formData).subscribe(
           (response:any)=>{
             var data:any = {
