@@ -16,7 +16,7 @@ import { GestionarNegocioComponent } from './gestionar-negocio/gestionar-negocio
 import { ActualizarNegocioComponent } from './actualizar-negocio/actualizar-negocio.component';
 import { CrearProductoComponent } from './crear-producto/crear-producto.component';
 import { ActualizarProductoComponent } from './actualizar-producto/actualizar-producto.component';
-
+import { MiCuentaComponent } from './mi-cuenta/mi-cuenta.component';
 
 const routes: Routes = [
   { path: 'vernegocio', component:NegociosComponent },
@@ -35,7 +35,8 @@ const routes: Routes = [
   { path: 'gestionar-negocio', component:GestionarNegocioComponent},
   { path: 'actualizar-negocio', component:ActualizarNegocioComponent},
   { path: 'crear-producto', component:CrearProductoComponent},
-  { path: 'actualizar-producto', component:ActualizarProductoComponent}
+  { path: 'actualizar-producto', component:ActualizarProductoComponent},
+  { path: 'mi-cuenta', component:MiCuentaComponent}
 ];
 
 

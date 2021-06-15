@@ -39,7 +39,7 @@ export class RegistrarEmpresaComponent implements OnInit {
   }
   
   upload(event) {
-    if(event.target.files[0].type == 'image/jpg' || event.target.files[0].type == 'image/jpeg' ){
+    if(event.target.files[0].type == 'image/jpg' || event.target.files[0].type == 'image/jpeg' || event.target.files[0].type == 'image/png'){
       const file = (event.target as HTMLInputElement).files[0];
       this.form.patchValue({
         img: file
@@ -80,10 +80,11 @@ export class RegistrarEmpresaComponent implements OnInit {
   OnSubmit(){
 
     if (this.form.valid) {
-      var formData: any = new FormData();
-      formData.append("img", this.form.get('img').value);
-      formData.append("nombreEmpresa", this.infoImg);
-            this.client.postRequestFormularioEmpresa('http://localhost:8000/upload',formData).subscribe(
+          
+          var formData: any = new FormData();
+          formData.append("img", this.form.get('img').value);
+          formData.append("nombreEmpresa", this.infoImg);
+          this.client.postRequestFormularioEmpresa('http://localhost:8000/upload',formData).subscribe(
           (response:any)=>{
             var data:any = {
               nombre :  this.form.value.nombreEmpresa,

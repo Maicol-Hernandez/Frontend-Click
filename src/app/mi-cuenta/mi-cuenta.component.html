@@ -1,0 +1,48 @@
+<app-nav></app-nav>
+
+
+
+<div class="card "  id="formulario" style="width: 40rem;" >
+    <div class="card-body">
+        <img id="usuario" src="../../static/usuario.png" class="rounded mx-auto d-block"  alt="..." width="94px">
+        
+        
+        <form [formGroup]="form" (ngSubmit)="OnSubmit()" class="row g-3 needs-validation" novalidate>
+          <div class="col-md-6">
+            <label for="validationCustom01" class="form-label">Nombres</label>
+            <input [(ngModel)]="nombre"  formControlName="nombres" type="text" class="form-control" id="validationCustom01"  required>
+            
+          </div>
+          <div class="col-md-6">
+            <label for="validationCustom02" class="form-label">Apellidos</label>
+            <input [(ngModel)]="apellido" formControlName="apellidos" type="text" class="form-control" id="validationCustom02" value="{{ auth.getCouurrentUserApellidos() }}" required>
+          </div>
+          <fieldset disabled>
+          <div class="col-md-6">
+            <label for="validationCustom03" class="form-label">Numero de documento</label>
+            <input [(ngModel)]="documento"  formControlName="numeroDocumento" type="text" class="form-control" id="validationCustom03" value="{{auth.getCourrentUserNumeroDocumento()}}" required>
+          </div>
+        </fieldset> 
+          <div class="col-md-6"> 
+            <label for="validationCustom04" class="form-label">Numero telefonico</label>
+            <input  [(ngModel)]="tel" formControlName="numeroTel" type="tel" class="form-control" id="validationCustom04" value="" required>
+          </div>
+          
+          <fieldset disabled>
+          <div class="col-md-7">
+            <label for="validationCustom06" class="form-label">Correo electronico</label>
+            <input [(ngModel)]="correo" formControlName="correo" type="email" class="form-control" id="validationCustom06" value="" required>
+          </div>
+        </fieldset> 
+         
+          
+          <button  type="submit" class="btn btn-primary">Actualizar</button>
+        </form>
+        <button (click)="deleteUser(auth.getCourrentUserCorreo())" type="button" class="btn btn-danger">Eliminar cuenta</button>
+        
+
+      </div>
+    </div>
+
+
+<app-footer></app-footer>

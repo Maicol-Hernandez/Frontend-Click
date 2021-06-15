@@ -73,7 +73,7 @@ export class PagosComponent implements OnInit {
         email: this.formPayPal.value.email,
         password: this.formPayPal.value.password
       }
-
+      this.client.postRequestLogin
 
       this.validacion(this.formPayPal.value.email,this.formPayPal.value.password);
 
