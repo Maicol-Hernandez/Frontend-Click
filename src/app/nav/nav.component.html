@@ -1,6 +1,6 @@
 <nav class=" bg-light navbar navbar-expand-lg navbar-light" id="nav" >
     <div class="container-fluid " >
-        <img src="./static/Logoclick.png" [routerLink]="['/']" alt="" width="54px">
+        <img src="./static/Logo.png" [routerLink]="['/']" alt="" width="54px">
       
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -20,10 +20,12 @@
         <a href="#" *ngIf="(auth.isLoggedIn() | async)"  [routerLink]="['/zona-administracion']" id="regis" class="btn btn">Zona de administracion</a>
         <li class="btn btn" id="botonini" *ngIf="auth.isLoggedIn() | async" >
           <a class="btn btn" [routerLink]="['/']" (click)="auth.logout()">Salir</a>
+          
       </li>
       <li class="btn btn" *ngIf="auth.isLoggedIn() | async" >
         <a class="nav-link" *ngIf="auth.isLoggedIn() | async">Bienvenido {{ auth.getCourrentUser() }}</a>
       </li>
+      <a href="#" *ngIf="(auth.isLoggedIn() | async)"  [routerLink]="['/mi-cuenta']" id="regis" class="btn btn">Mi cuenta</a>
 
       </div>
     </div>
