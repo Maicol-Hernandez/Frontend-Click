@@ -30,7 +30,7 @@ const routes: Routes = [
   { path: 'registro', component: RegistroComponent },
   { path: 'login', component:LoginComponent},
   { path: 'factura', component:FacturaComponent},
-  {path : 'pagos', component: PagosComponent},
+  { path : 'pagos', component: PagosComponent},
   { path: 'zona-administracion', component:ZonaAdministracionComponent},
   { path: 'gestionar-negocio', component:GestionarNegocioComponent},
   { path: 'actualizar-negocio', component:ActualizarNegocioComponent},

@@ -4,7 +4,7 @@
         <div class="perfil-empresa-portada">
             <div *ngFor="let empresaId of dataEmpresaId">
                 <div  class="datos-img">
-                    <img  [src]="empresaId.imgLogo" class="card-img-top"  alt=""></div>
+                    <img src="http://localhost:8000/imagenes/{{empresaId.imgLogo}}" class="card-img-top"  alt=""></div>
                 <div  class="datos-negocio">
                     <div>Nombre del negocio: {{ empresaId.nombre }}</div>
                     <div>Tipo de negocio: {{ empresaId.tipo_negocio }} </div>

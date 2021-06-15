@@ -1,7 +1,8 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
-import {CarritoClickService} from '../servicios/carrito-click.service';
+import { CarritoClickService } from '../servicios/carrito-click.service';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 @Component({
   selector: 'app-factura',
@@ -9,17 +10,38 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
   styleUrls: ['./factura.component.css']
 })
 export class FacturaComponent implements OnInit {
+  
   tablas = [];
   paid : boolean = false;
   pays : boolean = true;
   total : any;
+  form: FormGroup;
+  idNegocio;
+
   constructor(
     public carro : CarritoClickService,
+    public fb: FormBuilder,
   ) { }
 
   ngOnInit(): void {
+    this.form = this.fb.group({
+      iva: ['', Validators.required]
+    });
+    
     this.carro.init();
     
+    this.carro.sumIva.getValue()
+    this.carro.sumProducto.getValue()
+    this.idNegocio = localStorage.getItem('id_negocio')
+    console.log("Este es el valor: ", this.carro.sumIva.getValue())
+    
+    console.group(
+      `Iva : ${this.carro.sumIva.getValue()}`,
+      `ValorTotal : ${this.carro.sumProducto.getValue()}`,
+      `Fecha : ${new Date().toLocaleString()}`,
+      `id_negocio : ${this.idNegocio}`
+    )
+
     this.carro.listado.map(a =>{[
         this.tablas.push(
           {
@@ -46,6 +68,14 @@ export class FacturaComponent implements OnInit {
       ]
     })
   }
+  
+  OnSubmit(): void {
+    let data = {
+      iva: this.form.value.iva
+    }
+    console.log("Valor del data: ", data)
+  }
+
 
   pay(){
     this.paid = true;
@@ -158,5 +188,8 @@ export class FacturaComponent implements OnInit {
         break;
     }
    }
+
+
+
 
 }

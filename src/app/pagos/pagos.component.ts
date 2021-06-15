@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ClientService } from '../servicios/client.service';
 import { CarritoClickService} from '../servicios/carrito-click.service';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
-import {SIMULADOR} from '../catwalkSimulation.model';
+import { SIMULADOR } from '../catwalkSimulation.model';
 @Component({
   selector: 'app-pagos',
   templateUrl: './pagos.component.html',
@@ -18,6 +19,7 @@ export class PagosComponent implements OnInit {
   formMercadoPago : FormGroup;
   constructor( 
     public carro : CarritoClickService,
+    public client: ClientService,
     private fb : FormBuilder,
     private router : Router,
     ) { }
@@ -67,7 +69,14 @@ export class PagosComponent implements OnInit {
   
   async enviarPayPal(){
     if(this.formPayPal.valid){
+      let data = {
+        email: this.formPayPal.value.email,
+        password: this.formPayPal.value.password
+      }
+
+
       this.validacion(this.formPayPal.value.email,this.formPayPal.value.password);
+
     }else{
       console.log(false);
     }
