@@ -8,7 +8,7 @@
         </p>
     </div>
     <img src="../../static/zona-administracion.png" alt="administrador" class="portada__imagen">
-    <button [routerLink]="['/registrarEmpresa']" type="button" class="btn btn-primary" id="boton">Crear nuevo negocio</button>
+    <button [routerLink]="['/registrarEmpresa']" type="button" class="btn btn" id="boton">Crear nuevo negocio</button>
     <div class="contenedor_titulo_negocio"></div>
     <h4 class="negocio_titulo">
       Negocios
@@ -25,7 +25,7 @@
               <p class="card-text">Tipo de negocio: {{negocio.tipo}}</p>
               <p class="card-text">Tipo de negocio: {{negocio.direccion}}</p>
               <p class="card-text">Tipo de negocio: {{negocio.horarios}}</p>
-              <button type="button" class="btn btn-primary"  id="boton_gestionar" routerLinkActive="active" [routerLink]="['/gestionar-negocio']" (click)="negocioId(negocio.id)">Gestionar Negocio</button>
+              <button type="button" class="btn btn"  id="boton_gestionar" routerLinkActive="active" [routerLink]="['/gestionar-negocio']" (click)="negocioId(negocio.id)">Gestionar Negocio</button>
             </div>
           </div>
         </div>

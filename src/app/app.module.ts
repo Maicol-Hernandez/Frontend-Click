@@ -25,6 +25,7 @@ import { GestionarNegocioComponent } from './gestionar-negocio/gestionar-negocio
 import { ActualizarNegocioComponent } from './actualizar-negocio/actualizar-negocio.component';
 import { ActualizarProductoComponent } from './actualizar-producto/actualizar-producto.component';
 import { CrearProductoComponent } from './crear-producto/crear-producto.component';
+import { MiCuentaComponent } from './mi-cuenta/mi-cuenta.component';
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import { CrearProductoComponent } from './crear-producto/crear-producto.componen
     GestionarNegocioComponent,
     ActualizarNegocioComponent,
     ActualizarProductoComponent,
-    CrearProductoComponent
+    CrearProductoComponent,
+    MiCuentaComponent
   ],
   imports: [
     FormsModule,

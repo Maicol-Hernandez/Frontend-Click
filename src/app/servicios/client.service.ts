@@ -269,5 +269,17 @@ export class ClientService {
     }
     return this.http.post(route,data,config);
   }
+  postDeleteUser(route: string, data?: any, token?: string) {
+
+    let config: any = {
+      responseType: "json"
+    }
+
+    if (token) {
+      const header = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+      config['header'] = header;
+    }
+    return this.http.post(route, data, config);
+  }
 }
 
