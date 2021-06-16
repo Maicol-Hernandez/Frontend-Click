@@ -17,19 +17,20 @@
         </div>
         <div class="contenedor_botones">
             <button type="button" class="btn btn-primary" id="boton" routerLinkActive="active" [routerLink]="['/actualizar-negocio']" (click)="actualizarNegocioId(negocio.id)">Actualizar Datos</button>
-            <button type="button" class="btn btn-primary" id="boton" routerLinkActive="active"  (click)="deleteEveryOnePN(negocio.id)">Eliminar Negocio</button>
+            <button type="button" class="btn btn-primary" id="boton" routerLinkActive="active"  (click)="deleteEveryOnePN(negocio.id,negocio.logo)">Eliminar Negocio</button>
         </div>
         </div>
     </div>
+    <!--SE MODIFICO PARA PEGAR-->
     <div class="separador1"></div>
+    <div *ngIf="mostrarProductos">
     <h3 class="titulo_productos">Productos</h3>
     <div class="separador2"></div>
     <button type="button" class="btn btn-primary" id="boton" routerLinkActive="active" [routerLink]="['/crear-producto']" (click)="crearProducto(negocioData1[0].id)">Crear nuevo producto</button>
-    <div *ngIf="mostrarProductos">
         <div class="row row-cols-1 row-cols-md-3 g-4" id="contenedor_productos" *ngFor="let producto of productoData1">
             <div class="col">
                 <div class="card">
-                <img src="{{producto.foto}}" class="card-img-top" alt="foto del producto">
+                <img src="http://localhost:8000/imagenesProduct/{{producto.foto}}"  class="card-img-top" alt="foto del producto">
                 <div class="card-body">
                     <h5 class="card-title">Nombre del producto: {{producto.nombre}}</h5>
                     <p class="card-text">I.V.A: {{producto.iva}} %</p>
@@ -37,7 +38,7 @@
                 </div>
                 <div>
                   <button type="button" class="btn btn-primary" id="boton1" routerLinkActive="active" [routerLink]="['/actualizar-producto']" (click)="actualizarProducto(producto.id)">Actualizar Producto</button>
-                  <button type="button" class="btn btn-primary" id="boton1" (click)="eliminarProducto(producto.id)">Eliminar Producto</button>
+                  <button type="button" class="btn btn-primary" id="boton1" (click)="eliminarProducto(producto.id,producto.foto)">Eliminar Producto</button>
                 </div>
                 </div>
             </div>

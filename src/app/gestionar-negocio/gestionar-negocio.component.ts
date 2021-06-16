@@ -11,15 +11,12 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
   styleUrls: ['./gestionar-negocio.component.css']
 })
 export class GestionarNegocioComponent implements OnInit , OnDestroy{
-
   //negocioData;
   datosActualizar;
   datosActualizar1;
   mensajeEliminacionNegocio;
   mensajeEliminacionProducto;
-
   idNegocio;
-
   negocioData1;
   productoData1;
   negocioSuscripcion: Subscription;
@@ -37,7 +34,6 @@ export class GestionarNegocioComponent implements OnInit , OnDestroy{
   public negocioData: any;
   public productosData: any;
   ngOnInit(): void {
-
     this.negocioService.negocioPorId.subscribe(data => {
       this.negocioData = data
     })
@@ -54,18 +50,10 @@ export class GestionarNegocioComponent implements OnInit , OnDestroy{
       this.productoData1 = dataProducto
       console.log(dataProducto)
     })
-
-    /*this.router.params.subscribe(parametros => {
-      this.service.obtenerNegocioPorId(Number(parametros.id))
-      .subscribe(negocio =>
-        this.negocioData = negocio);
-      });*/
   }
-
   ngOnDestroy(): void {
     this.negocioSuscripcion.unsubscribe();
   }
-
   actualizarNegocioId(id){
     this.client.getRequestMostrarNegocioId('http://localhost:5000/api/v02/user/mostrarNegocioId', id).subscribe(
       (data): any => {
@@ -77,9 +65,6 @@ export class GestionarNegocioComponent implements OnInit , OnDestroy{
         console.log("Ha ocurrido un error en la llamada")
       })
   }
-
-
-
    //Opciones del Usuario que obtendar mediante con botones en la vista
   crearProducto(id) {
     this.client.getRequestMostrarNegocioId('http://localhost:5000/api/v02/user/mostrarNegocioId', id).subscribe(
@@ -91,7 +76,6 @@ export class GestionarNegocioComponent implements OnInit , OnDestroy{
         console.log("Ha ocurrido un error en la llamada")
       })
   }
-
   actualizarProducto(id) {
     this.client.getRequestProductoId('http://localhost:5000/api/v02/user/productoId', id).subscribe(
       (data): any => {
@@ -102,27 +86,63 @@ export class GestionarNegocioComponent implements OnInit , OnDestroy{
         console.log("Ha ocurrido un error en la llamada")
       })
   }
-
-  eliminarProducto(id) {
-    this.client.getRequestEliminarProductoId('http://localhost:5000/api/v02/user/eliminarProducto', id).subscribe(
+  //Agregar
+  //Metodo que nos ayuda a obtener los datos que no fueron eliminados
+  mostrarProductosUpdate(id){
+    this.client.getRequestMostrarProductos('http://localhost:5000/api/v02/user/mostrarProductos', id).subscribe(
       (data): any => {
-        this.mensajeEliminacionProducto = data["data"]
+        var dataProduct = data["data"]
+        console.log(dataProduct)
+        this.negocioService.producto$.emit(dataProduct)
       },
       (error: any) => {
         console.log("Ha ocurrido un error en la llamada")
       })
   }
-  
+  eliminarProducto(id,fileName) {
+    this.mostrarProductos = false
+    var idProduct:any = {"id":id}
+    this.client.getRequestEliminarProductoId('http://localhost:5000/api/v02/user/eliminarProducto', idProduct).subscribe(
+      (data): any => {
+        this.mostrarProductos = true;
+        this.mensajeEliminacionProducto = data["data"]
+        this.mostrarProductosUpdate(this.negocioData1[0].id)
+        this.eliminarImg(fileName);
+      },
+      (error: any) => {
+        Swal.fire(
+          'Upp..',
+          'Lo sentimos no tenemos servicio :(',
+          'error'
+        )
+      })
+  }
+  eliminarImg(data:any){
+    var formData = new FormData();
+    formData.append('filename',data)
+    this.client.getRequestEliminarProductoId('http://localhost:8000/delete',formData).subscribe(
+      (response)=>{
+        Swal.fire(
+          'Eliminado!',
+          'Tu producto ha sido eliminado exitosamente.',
+          'success'
+        )
+      },(error)=>{
+        Swal.fire(
+          'Upp..',
+          'Lo sentimos no se pudo eliminar la imagen :(',
+          'error'
+        )
+      }
+    );
+  }
+
   //Metodos que nos permite eliminar el negocio y sus productos
-  eliminarNegocioId(id){
+  eliminarNegocioId(id,filename){
     var data = id.idNegocio;
     this.client.deleteRequestEliminarNegocioId('http://localhost:5000/api/v02/user/eliminarNegocio', data).subscribe(
       (response):any =>{
-        Swal.fire(
-          'Eliminado!',
-          'Tu negocio ha sido eliminado exitosamente.',
-          'success'
-        )
+        this.deleteImgNegocio(filename)
         this.route.navigate(['/zona-administracion'])
       },(error:any)=>{
         Swal.fire(
@@ -133,7 +153,7 @@ export class GestionarNegocioComponent implements OnInit , OnDestroy{
       }
     )
   }
-  deleteEveryOnePN(id){
+  deleteEveryOnePN(id,filename){
     var data = {"idNegocio":id}
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
@@ -156,7 +176,7 @@ export class GestionarNegocioComponent implements OnInit , OnDestroy{
           (response): any => {
           this.mostrarProductos = false;
           this.mostrar=false;
-            this.eliminarNegocioId(data)
+            this.eliminarNegocioId(data,filename)
           },
           (error: any) =>{
             swalWithBootstrapButtons.fire(
@@ -167,7 +187,6 @@ export class GestionarNegocioComponent implements OnInit , OnDestroy{
             this.mostrar = true;
           console.error(error)
           })
-
       } else if (
         /* Read more about handling dismissals below */
         result.dismiss === Swal.DismissReason.cancel
@@ -179,7 +198,26 @@ export class GestionarNegocioComponent implements OnInit , OnDestroy{
         )
       }
     })
-
+  }
+  //Agregar
+  deleteImgNegocio(filename){
+      var formData= new FormData();
+      formData.append('filename',filename)
+      this.client.getRequestEliminarProductoId('http://localhost:8000/deleteImgNegocio',formData).subscribe(
+        (response)=>{
+          Swal.fire(
+            'Eliminado!',
+            'Tu negocio ha sido eliminado exitosamente.',
+            'success'
+          )
+        },(error)=>{
+          Swal.fire(
+            'Upp..',
+            'Lo sentimos no se pudo eliminar la imagen :(',
+            'error'
+          )
+        }
+      );
   }
 
 }

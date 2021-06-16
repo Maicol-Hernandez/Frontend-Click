@@ -1,4 +1,4 @@
-<p>actualizar-producto works!</p>
+<app-nav></app-nav>
 <div>
   <form [formGroup]="form" (ngSubmit)="OnSubmit()">
     <div class="container">
@@ -8,12 +8,11 @@
               <h4 class="animation a2">Reemplace los datos que quiere actualizar</h4>
           </div>
               <div class="form">
-              <input formControlName="idProducto" [(ngModel)]="productoDatos[0].id" type="number" class="form-field animation a3" placeholder="id">
               <input formControlName="nombreProducto" [(ngModel)]="productoDatos[0].nombre" type="text" class="form-field animation a3" placeholder="Nombre del producto">
-              <input formControlName="descripcion" [(ngModel)]="productoDatos[0].descripcion" type="text" class="form-field animation a4" placeholder="Descripcion">
+              <input formControlName="descripcion" [(ngModel)]="productoDatos[0].iva" type="number" class="form-field animation a4" placeholder="Descripcion">
               <input formControlName="precio" [(ngModel)]="productoDatos[0].precio" type="number" class="form-field animation a4" placeholder="Precio">
-              <input formControlName="logoProducto" [(ngModel)]="productoDatos[0].logo" type="file" class="form-field animation a4" placeholder="Logo del producto">
-              <button class="animation a6">Crear Producto</button>
+              <input  type="file" class="form-field animation a4" placeholder="Logo del producto" (change)="upload($event)">
+              <button class="animation a6">Actualizar producto</button>
           </div>
       </div>
       <div class="right"></div>

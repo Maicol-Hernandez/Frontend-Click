@@ -251,18 +251,14 @@ export class ClientService {
     return this.http.post(route,data,config);
   }
 
-  getRequestEliminarProductoId(route: string, id: number) {
+  //EliminarProductos debo agregar
+  getRequestEliminarProductoId(route: string, data :any) {
     let config: any = {
       responseType: "json"
     }
-    const params = new HttpParams().set('id', `${id}`);
-    config["header"] =  params;
-
-    const header = new HttpHeaders().set('Authorization', '57ydf544ljka559ahjkfgd1');
-    config["header"] =  header;
-
-    return this.http.get(route, config);
+    return this.http.post(route,data, config);
   }
+  //Eliminar todos los productos
   deleteRequestEliminarProductos(route: string, data:any) {
     let config: any = {
       responseType: "json"
@@ -281,5 +277,6 @@ export class ClientService {
     }
     return this.http.post(route, data, config);
   }
+  
 }
 
