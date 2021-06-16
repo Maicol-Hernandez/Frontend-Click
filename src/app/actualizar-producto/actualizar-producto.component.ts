@@ -39,7 +39,7 @@ export class ActualizarProductoComponent implements OnInit {
   OnSubmit(){
     if (this.form.valid) {
       let data = {
-      idProducto :  this.form.value.idProducto,
+      idProducto :  this.productoDatos[0].id,
       nombre :  this.form.value.nombreProducto,
       descripcion : this.form.value.descripcion,
       precio : this.form.value.precio,
