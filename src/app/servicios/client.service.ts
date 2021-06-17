@@ -50,6 +50,20 @@ export class ClientService {
     return this.http.post(route, data, config)
   }
 
+  postRequestPedido(route: string, data?: any, token?: string) {
+    let config: any = {
+      responseType: "json"
+    }
+
+    if (token) {
+      const herder = new HttpHeaders().set('Authorization', `Bearer ${token}`)
+      config['herders'] = herder
+    }
+
+    return this.http.post(route, data, config);
+  }
+
+
 
   getRequestDataEmpresa(route: string, token?: string) {
 

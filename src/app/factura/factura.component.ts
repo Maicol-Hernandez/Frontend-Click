@@ -1,5 +1,9 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { AuthService } from '../servicios/auth.service';
+import { ClientService } from '../servicios/client.service';
+import { Router } from '@angular/router';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
 import { CarritoClickService } from '../servicios/carrito-click.service';
@@ -17,10 +21,17 @@ export class FacturaComponent implements OnInit {
   total : any;
   form: FormGroup;
   idNegocio;
+  nombres;
+  correo;
+  numTelefono;
+  id_usuario;
 
   constructor(
-    public carro : CarritoClickService,
+    public carro: CarritoClickService,
     public fb: FormBuilder,
+    public auth: AuthService,
+    public route: Router,
+    public client: ClientService,
   ) { }
 
   ngOnInit(): void {
@@ -33,15 +44,22 @@ export class FacturaComponent implements OnInit {
     this.carro.sumIva.getValue()
     this.carro.sumProducto.getValue()
     this.idNegocio = localStorage.getItem('id_negocio')
-    console.log("Este es el valor: ", this.carro.sumIva.getValue())
-    
-    console.group(
-      `Iva : ${this.carro.sumIva.getValue()}`,
-      `ValorTotal : ${this.carro.sumProducto.getValue()}`,
-      `Fecha : ${new Date().toLocaleString()}`,
-      `id_negocio : ${this.idNegocio}`
-    )
-
+    this.nombres = localStorage.getItem('courrentUserNombres')
+    this.correo = localStorage.getItem('courrentUserCorreo')
+    this.numTelefono = localStorage.getItem('courrentUserNumeroTelefono')
+    this.id_usuario = localStorage.getItem('courrentUserIdUsuario')  
+/*
+    let data = {
+      iva: this.carro.sumIva.getValue(),
+      ValorTotal: this.carro.sumProducto.getValue(),
+     fecha: new Date().toLocaleString(),
+     id_negocio: this.idNegocio,
+     nombre: this.nombres,
+     correo: this.correo,
+     telefono: this.numTelefono,
+    }
+    console.log("Valor del data: ", data)
+*/
     this.carro.listado.map(a =>{[
         this.tablas.push(
           {
@@ -66,21 +84,50 @@ export class FacturaComponent implements OnInit {
           },
         )
       ]
-    })
+    });
+  }
+
+
+
+ async enviarPedido() {
+       
+  let data = {
+    iva: this.carro.sumIva.getValue(),
+    valorTotal: this.carro.sumProducto.getValue(),
+    fecha: new Date().toLocaleString(),
+    id_negocio: this.idNegocio,
+    id_usuario: this.id_usuario,
   }
   
-  OnSubmit(): void {
-    let data = {
-      iva: this.form.value.iva
-    }
-    console.log("Valor del data: ", data)
+  console.log("ESTE ES EL VALOR DE DATA:", data)
+  this.client.postRequestPedido('http://localhost:5000/api/v02/user/pedido', data).subscribe(
+    (response:any) => {
+  
+      Swal.fire({
+        title: 'Se pago correctamente',
+        imageUrl: 'https://media0.giphy.com/media/ZZYXNDxMcMDXIblV8L/source.gif',
+        imageWidth: 400,
+        imageHeight: 200,
+
+      }).then(() => {
+        this.route.navigate(['/detallesproducto'])
+      });
+
+      console.log(response)
+    },
+    (error) => {
+      console.log(error);
+    });
+
   }
 
 
+  
   pay(){
     this.paid = true;
     this.pays  = false;
   }
+
   generatePdf(options){
     let documentDefinition = { 
       content: [
@@ -109,11 +156,11 @@ export class FacturaComponent implements OnInit {
           columns: [
             [
               {
-                text: "Nombre :Camilo Chico",
+                text: `Nombre: ${this.nombres}`,
                 bold:true,
               },
-              { text: "Correo :aguja.2003@gmail.com" ,bold:true,},
-              { text: "Numero : 3227340759",bold:true,},
+              { text: `Correo: ${this.correo}` ,bold:true,},
+              { text: `Numero: ${this.numTelefono}` ,bold:true,},
             ],
             [
               {
@@ -188,8 +235,5 @@ export class FacturaComponent implements OnInit {
         break;
     }
    }
-
-
-
 
 }

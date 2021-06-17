@@ -1,8 +1,5 @@
-<p>detalleproducto works!</p>
+<app-nav></app-nav>
 
-<div class="logo">
-  <img src="../static/Logoclick125x124.png" alt="">
-</div>
 <section>
   <h3 class="titulo">
     Detalles del pedido
@@ -17,7 +14,6 @@
         <th scope="col">Cantidad</th>
         <th scope="col">Porcentaje del iva</th>
         <th scope="col">Precio</th>
-        <th scope="col">Opciones</th>
         <th scope="col"></th>
       </tr>
     </thead>
@@ -31,9 +27,8 @@
         <td> {{ producto.cantidad }} </td>
         <td>  {{producto.iva}} % </td>
         <td> {{ producto.precio }} </td>
-        <td> {{ producto.id }}  </td>
         <td> {{ totalCantidad }}  </td>
-        <td>  <button type="button" (click)="delente(producto.id)">Eliminar</button> </td>
+        <td>  <button class="delete" type="button" (click)="delente(producto.id)">Eliminar</button> </td>
       </tr>
 
 
@@ -47,4 +42,4 @@
   </div>
 </section>
 
-
+<app-footer></app-footer>
