@@ -75,10 +75,6 @@ export class ClientService {
       const heder = new HttpHeaders().set('Authorization', `Bearer ${token}`)
       config['headers'] = heder
     }
-
-    console.log(config);
-
-
     return this.http.get(route, config);
   }
 
@@ -143,6 +139,32 @@ export class ClientService {
       config['herder'] = herder;
     }
     return this.http.post(route, id, config);
+  }
+
+  //servicio pedir id del pedido
+  getRequestPedirIdPedido(route: string, token?: string) {
+    let config:any = {
+      responseType: "json"
+    }
+    if(token) {
+      const herder = new HttpHeaders().set(`Authorization`, `Bearer ${token}`)
+      config['heders'] = herder
+    }
+    return this.http.get(route, config);
+  }
+
+
+  postRequestEnviarPedidoDetalles(route: string, data?: any, token?: string) {
+    let config: any = {
+      reponseType: "json"
+    }
+
+    if (token) {
+      const header = new HttpHeaders().set('Authorization', `Bearer ${token}`)
+      config['header'] = header;
+
+    }
+    return this.http.post(route, data, config);
   }
 
   //Modulo Negocio
@@ -266,18 +288,14 @@ export class ClientService {
     return this.http.post(route,data,config);
   }
 
-  getRequestEliminarProductoId(route: string, id: number) {
+  //EliminarProductos debo agregar
+  getRequestEliminarProductoId(route: string, data :any) {
     let config: any = {
       responseType: "json"
     }
-    const params = new HttpParams().set('id', `${id}`);
-    config["header"] =  params;
-
-    const header = new HttpHeaders().set('Authorization', '57ydf544ljka559ahjkfgd1');
-    config["header"] =  header;
-
-    return this.http.get(route, config);
+    return this.http.post(route,data, config);
   }
+  //Eliminar todos los productos
   deleteRequestEliminarProductos(route: string, data:any) {
     let config: any = {
       responseType: "json"
@@ -296,5 +314,6 @@ export class ClientService {
     }
     return this.http.post(route, data, config);
   }
+  
 }
 

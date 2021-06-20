@@ -7,6 +7,9 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
 import { CarritoClickService } from '../servicios/carrito-click.service';
+import { element } from 'protractor';
+import { strict } from 'assert';
+import { stringify } from '@angular/compiler/src/util';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 @Component({
   selector: 'app-factura',
@@ -25,6 +28,9 @@ export class FacturaComponent implements OnInit {
   correo;
   numTelefono;
   id_usuario;
+  valorPedido;
+  idPedido;
+  datosDetalles: any = [];
 
   constructor(
     public carro: CarritoClickService,
@@ -35,6 +41,17 @@ export class FacturaComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    
+    this.client.getRequestPedirIdPedido('http://localhost:5000/api/v02/user/pedidoid').subscribe(
+      (data): any => {
+       this.idPedido = data['datos_pedido']
+       console.log("ID DEL PEDIDO: ", this.idPedido)
+      }, 
+      (error: any) => {
+        console.error(error)
+
+      });
+    
     this.form = this.fb.group({
       iva: ['', Validators.required]
     });
@@ -90,16 +107,16 @@ export class FacturaComponent implements OnInit {
 
 
  async enviarPedido() {
-       
+
   let data = {
     iva: this.carro.sumIva.getValue(),
     valorTotal: this.carro.sumProducto.getValue(),
-    fecha: new Date().toLocaleString(),
+    fecha: new Date().toISOString(),
     id_negocio: this.idNegocio,
     id_usuario: this.id_usuario,
   }
   
-  console.log("ESTE ES EL VALOR DE DATA:", data)
+  //console.log("ESTE ES EL VALOR DE DATA:", data)
   this.client.postRequestPedido('http://localhost:5000/api/v02/user/pedido', data).subscribe(
     (response:any) => {
   
@@ -110,18 +127,69 @@ export class FacturaComponent implements OnInit {
         imageHeight: 200,
 
       }).then(() => {
-        this.route.navigate(['/detallesproducto'])
+        //this.route.navigate(['/detallesproducto'])
       });
 
       console.log(response)
     },
     (error) => {
-      console.log(error);
+      console.error(error);
     });
 
   }
 
 
+  async enviarPedidoDetalles() {
+    this.valorPedido = this.carro.carritoUser.getValue()
+     //var iva = this.carro.carritoUser.getValue()
+     /*for (let ivaDetalle of this.valorPedido){
+      this.iva = (ivaDetalle.precio * ivaDetalle.iva )/100
+      console.log("this.iva, dentro del for: ", this.iva)
+     }
+     
+     console.log("this.iva, fuera del for : ", this.iva)
+     */
+
+     this.datosDetalles;
+    for (let item of this.valorPedido) {
+      
+      var iva = (item.precio * item.iva )/100
+      //console.group("Este es el valor del iva detalles :", iva)
+      
+      this.datosDetalles.push(
+        `{` + 
+        `id: ${item.id} ` + 
+        `nombre: ${item.nombre} ` + 
+        `precio: ${item.precio} ` + 
+        `cantidad: ${item.cantidad} ` + 
+        `iva: ${iva} ` +`}` 
+        )
+
+    }
+    
+    console.log(
+      `datosDetalles: ${this.datosDetalles}`
+      )  
+      let data = {
+        pedidoDetalles: this.datosDetalles
+      }      
+
+      console.log(`data: ${data}`) 
+
+      this.client.postRequestEnviarPedidoDetalles('http://localhost:5000/api/v02/user/pedidodetalles', data).subscribe(
+        (response: any) => {
+          console.log(response)
+        },
+        (error) => {
+          console.error(error)
+          
+        }
+      )
+
+
+    //console.log("Este es el valor del pedido:", this.valorPedido)
+    //console.log("Detalle del producto: ")
+  }
   
   pay(){
     this.paid = true;

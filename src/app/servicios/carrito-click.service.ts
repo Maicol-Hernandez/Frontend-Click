@@ -131,6 +131,7 @@ export class CarritoClickService {
       var valorTotal = (iterator.cantidad * iterator.precio);
       var productoIva  = iva * iterator.cantidad;
       ivas.push(productoIva);
+      console.log(`ivas: ${ivas}`)
       cantidades.push(valorTotal);
     }
     for (let i = 0; i < ivas.length; i++) {

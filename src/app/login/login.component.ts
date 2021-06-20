@@ -59,9 +59,9 @@ export class LoginComponent implements OnInit {
           this.loading = false;
 
           Swal.fire({
-            title: 'Bienvenido !',
-            imageUrl: 'https://media0.giphy.com/media/ZZYXNDxMcMDXIblV8L/source.gif',
-            imageWidth: 400,
+            title: 'Bienvenido',
+            imageUrl: '../static/spinner_login.gif',
+            imageWidth: 250,
             imageHeight: 200,
 
           }).then(() => {
