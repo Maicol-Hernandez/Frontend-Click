@@ -18,6 +18,7 @@
         <div class="contenedor_botones">
             <button type="button" class="btn btn-primary" id="boton" routerLinkActive="active" [routerLink]="['/actualizar-negocio']" (click)="actualizarNegocioId(negocio.id)">Actualizar Datos</button>
             <button type="button" class="btn btn-primary" id="boton" routerLinkActive="active"  (click)="deleteEveryOnePN(negocio.id,negocio.logo)">Eliminar Negocio</button>
+            <button type="button" class="btn btn-primary" id="boton" routerLinkActive="active" [routerLink]="['/historialDePedido',negocio.correo]">Historial de pedidos</button>
         </div>
         </div>
     </div>

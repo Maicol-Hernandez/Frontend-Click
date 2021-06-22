@@ -287,15 +287,12 @@ export class ClientService {
     }
     return this.http.post(route,data,config);
   }
-
-  //EliminarProductos debo agregar
   getRequestEliminarProductoId(route: string, data :any) {
     let config: any = {
       responseType: "json"
     }
     return this.http.post(route,data, config);
   }
-  //Eliminar todos los productos
   deleteRequestEliminarProductos(route: string, data:any) {
     let config: any = {
       responseType: "json"
@@ -313,6 +310,13 @@ export class ClientService {
       config['header'] = header;
     }
     return this.http.post(route, data, config);
+  }
+
+  getHistorialPedidos(route: string,data:any){
+    let config:any={
+      responseType:"json"
+    }
+    return this.http.post(route,data,config)
   }
   
 }

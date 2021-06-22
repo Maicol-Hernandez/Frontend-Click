@@ -10,7 +10,7 @@ export class CarritoClickService {
 
   //Aqui vamos a guardar el array mediante un BehaviorSubject
   public carritoUser : BehaviorSubject<Array<any>> = new BehaviorSubject([]);
-  public  pedidos = new BehaviorSubject<Array<IItem>>(null);
+  public pedidos = new BehaviorSubject<Array<IItem>>(null);
   public sumCarritoUser : BehaviorSubject<Number> = new BehaviorSubject(null);
   //Suma que nos permite almacenar el total del iva y la suma de los productos
   public sumIva : BehaviorSubject<Number> = new BehaviorSubject(null);
@@ -131,7 +131,6 @@ export class CarritoClickService {
       var valorTotal = (iterator.cantidad * iterator.precio);
       var productoIva  = iva * iterator.cantidad;
       ivas.push(productoIva);
-      console.log(`ivas: ${ivas}`)
       cantidades.push(valorTotal);
     }
     for (let i = 0; i < ivas.length; i++) {

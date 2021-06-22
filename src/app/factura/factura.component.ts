@@ -30,7 +30,7 @@ export class FacturaComponent implements OnInit {
   id_usuario;
   valorPedido;
   idPedido;
-  datosDetalles: any = [];
+  //datosDetalles: any = [];
 
   constructor(
     public carro: CarritoClickService,
@@ -141,37 +141,32 @@ export class FacturaComponent implements OnInit {
 
   async enviarPedidoDetalles() {
     this.valorPedido = this.carro.carritoUser.getValue()
-     //var iva = this.carro.carritoUser.getValue()
-     /*for (let ivaDetalle of this.valorPedido){
-      this.iva = (ivaDetalle.precio * ivaDetalle.iva )/100
-      console.log("this.iva, dentro del for: ", this.iva)
-     }
-     
-     console.log("this.iva, fuera del for : ", this.iva)
-     */
 
-     this.datosDetalles;
+     var productosDetalles: any=[]
     for (let item of this.valorPedido) {
       
-      var iva = (item.precio * item.iva )/100
+      var iva = (item.precio * item.iva)/100
       //console.group("Este es el valor del iva detalles :", iva)
       
-      this.datosDetalles.push(
-        `{` + 
-        `id: ${item.id} ` + 
-        `nombre: ${item.nombre} ` + 
-        `precio: ${item.precio} ` + 
-        `cantidad: ${item.cantidad} ` + 
-        `iva: ${iva} ` +`}` 
-        )
+      let detalles = {
+       id: item.id,
+       nombre: item.nombre,
+       precio: item.precio,
+       cantidad: item.cantidad,
+        iva: iva 
+      }
+
+      console.log(detalles)
+      productosDetalles.push(detalles)
 
     }
     
     console.log(
-      `datosDetalles: ${this.datosDetalles}`
+      `productosDetalles: ${productosDetalles} `
       )  
+
       let data = {
-        pedidoDetalles: this.datosDetalles
+        pedidoDetalles: productosDetalles
       }      
 
       console.log(`data: ${data}`) 
