@@ -1,4 +1,5 @@
 <app-nav></app-nav>
+
 <div>
   <form [formGroup]="form" (ngSubmit)="OnSubmit()">
     <div class="container">
@@ -9,7 +10,9 @@
           </div>
               <div class="form">
               <input formControlName="nombreProducto" [(ngModel)]="productoDatos[0].nombre" type="text" class="form-field animation a3" placeholder="Nombre del producto">
+
               <input formControlName="descripcion" [(ngModel)]="productoDatos[0].iva" type="number" class="form-field animation a4" placeholder="Descripcion">
+
               <input formControlName="precio" [(ngModel)]="productoDatos[0].precio" type="number" class="form-field animation a4" placeholder="Precio">
               <input  type="file" class="form-field animation a4" placeholder="Logo del producto" (change)="upload($event)">
               <button class="animation a6">Actualizar producto</button>

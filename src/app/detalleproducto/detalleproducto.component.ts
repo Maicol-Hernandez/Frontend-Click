@@ -25,6 +25,7 @@ export class DetalleproductoComponent implements OnInit {
 
   ngOnInit() {
     this.carro.init()
+/*
     this.client.getRequestProductoEmpresa('http://localhost:5000/api/v01/user/productoempresa').subscribe(
         
         (data): any => {
@@ -37,8 +38,10 @@ export class DetalleproductoComponent implements OnInit {
           console.log(error)
         
         });    
-  }
-  
+ */
+      }
+ 
+
   //Metodo para eliminar en un dato del carrito de compras
   delente(id:any){
     //consumo un servicio del carro 

@@ -16,7 +16,7 @@ export class NegociosComponent implements OnInit {
   negocioData1;
   productoData1;
 
-  dataEmpresa: any;
+  dataEmpresaId: any;
   dataProducto: any;
   id;
   form: FormGroup;
@@ -39,26 +39,39 @@ export class NegociosComponent implements OnInit {
   ngOnInit(): void {
     this.carro.init();
 
-    this.client.getRequestDataEmpresa('http://localhost:5000/api/v01/user/datosempresa').subscribe(
+    this.id = localStorage.getItem('id_negocio')
+    console.log("id del localStorage:", this.id)
+
+    this.route.paramMap.subscribe((params: ParamMap) => {
+      this.id += params.get('id')
+      let data = {"id": this.id}
+      console.log("data: ", data)
+
+    this.client.postRequestEmpresaId('http://localhost:5000/api/v01/user/datosempresaid', data).subscribe(
 
     (data): any => {
-      this.dataEmpresa = data["data"]
+      this.dataEmpresaId = data['negocio_id']
+      console.log("Mostrar negocio por id: ", data['negocio_id'])
       },
 
       (error: any) => {
         console.log(error)
       })
 
-      this.client.getRequestProductoEmpresa('http://localhost:5000/api/v01/user/productoempresa').subscribe(
+
+      this.client.postRequestProductosIdEmpresa('http://localhost:5000/api/v01/user/productoempresa', data).subscribe(
 
         (data): any => {
           this.dataProducto = data["data"]
+          console.log("productos empresa por id:", data['data'])
         },
 
         (error: any) => {
           console.log(error)
 
         })
+
+      });
 
         this.negocioService.negociocomprar$.subscribe( dataNegocio => {
           this.negocioData1 = dataNegocio
@@ -72,11 +85,10 @@ export class NegociosComponent implements OnInit {
 
       }
 
-
        //Metodo para agregar en el carrito de compras
        async OnSubmit(id:any){
            //Consumo a un servicio del carro
-           this.carro.addProductCars(id,this.dataProducto,1);
+           this.carro.addProductCars(id, this.dataProducto,1);
        }
     }
 

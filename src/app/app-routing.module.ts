@@ -31,15 +31,15 @@ const routes: Routes = [
   { path: 'registro', component: RegistroComponent },
   { path: 'login', component:LoginComponent},
   { path: 'factura', component:FacturaComponent},
-  {path : 'pagos', component: PagosComponent},
+  { path: 'pagos', component: PagosComponent},
   { path: 'zona-administracion', component:ZonaAdministracionComponent},
   { path: 'gestionar-negocio', component:GestionarNegocioComponent},
   { path: 'actualizar-negocio', component:ActualizarNegocioComponent},
   { path: 'crear-producto', component:CrearProductoComponent},
   { path: 'actualizar-producto', component:ActualizarProductoComponent},
-  {path: 'mi-cuenta', component:MiCuentaComponent},
-  {path:'historialDePedido/:correo',component:HistorialDePedidosComponent},
-  {path:'detallePedidos/:noPedido',component:DetallePedidoComponent}
+  { path: 'mi-cuenta', component:MiCuentaComponent},
+  { path: 'historialDePedido/:correo',component:HistorialDePedidosComponent},
+  { path: 'detallePedidos/:noPedido',component:DetallePedidoComponent}
 ];
 
 
