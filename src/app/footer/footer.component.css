@@ -1,1 +1,3 @@
-#footer{background-color: black;}
+#footer{background-color: black;
+position: sticky;
+top: 0;}

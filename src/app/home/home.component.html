@@ -1,13 +1,10 @@
 <app-nav></app-nav>
-
+<particles [params]="myParams" [style]="myStyle" [width]="width" [height]="height"></particles>
   <div class=" card  border-dark mb-3 text-center " id="presentacion">
     <div class="card-body">
       <img id="ilu1" src="./static/ilu.png" class="rounded float-start" alt="..."width="300px" height="300px">
-      <p class="card-text">Encuentra los mejores productos a un click </p>
-       <!--<a href="#" class="btn btn-dark">Crea tu negocio en nuestra plataforma</a>-->
-       <div id="boton" class="d-grid gap-2 col-6 mx-auto">
-        <button [routerLink]="['/registrarEmpresa']" class="btn btn-" type="button">Crea tu negocio</button>
-      </div>
+      <p class="card-text">Bienvenido {{ auth.getCourrentUser() }}, encuentra los mejores productos a un click </p>
+      
     </div>
   </div>
 
@@ -19,7 +16,6 @@
     <div class="card-body" >
         <p> {{ datos.id }} </p> 
         <p class="card-text"> {{ datos.nombre }} </p>
-       
         <p class="card-text"> {{ datos.tipo }} </p>
         <p class="card-text"> {{ datos.direccion }} </p>
         <p class="card-text"> {{ datos.horarios }} </p>

@@ -13,19 +13,30 @@
           <li class="nav-item ">
             <a  href="#" class="nav-link" [routerLink]="['/nosotros']" >Acerca de nosotros</a>
           </li>
+          
         </ul>
 
-        <a href="#" *ngIf="!(auth.isLoggedIn() | async)" [routerLink]="['/login']" id="botonini" class="btn btn">Iniciar Sesion</a>
-        <a href="#" *ngIf="!(auth.isLoggedIn() | async)" [routerLink]="['/registro']" id="botonini" class="btn btn">Registrarse</a>
+        <a href="#" *ngIf="!(auth.isLoggedIn() | async)" [routerLink]="['/login']" id="botonini" class="nav-link" >Inicia sesion o registrate</a>
+
         <a href="#" *ngIf="(auth.isLoggedIn() | async)"  [routerLink]="['/zona-administracion']" id="regis" class="btn btn">Zona de administracion</a>
-        <li class="btn btn" id="botonini" *ngIf="auth.isLoggedIn() | async" >
-          <a class="btn btn" [routerLink]="['/']" (click)="auth.logout()">Salir</a>
-          
-      </li>
+        
+
       <li class="btn btn" *ngIf="auth.isLoggedIn() | async" >
         <a class="nav-link" *ngIf="auth.isLoggedIn() | async">Bienvenido {{ auth.getCourrentUser() }}</a>
       </li>
-      <a href="#" *ngIf="(auth.isLoggedIn() | async)"  [routerLink]="['/mi-cuenta']" id="regis" class="btn btn">Mi cuenta</a>
+      
+    
+      <div class="btn-group" role="group" width="75px" height="75px">
+        <input id="btnGroupDrop1" type="image" src="../../static/usuario.png" class="btn btn dropdown-toggle rounded-circle" data-bs-toggle="dropdown" aria-expanded="false" width="75px" height="75px">   
+        
+        <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+          <a href="#" *ngIf="(auth.isLoggedIn() | async)"  [routerLink]="['/mi-cuenta']" id="regis" class="btn btn">Mi cuenta</a>
+          <li class="btn btn" id="botonini" *ngIf="auth.isLoggedIn() | async" >
+            <a class="btn btn" [routerLink]="['/']" (click)="auth.logout()">Salir</a>
+        </li> 
+        </ul>
+      </div>
+      
 
       </div>
     </div>

@@ -2,20 +2,15 @@
 /*presentacion*/
 #presentacion{
     /* Arriba | Derecha | Abajo | Izquierda */
-    margin : 60px 35px 20px 30px;
+    margin : 60px 35px 20px 60px;
     padding: 5px; 
     background-color: rgb(235, 239, 243);
 }
 #presentacion p {font-family: cursive;
     font-size: 28px;
     text-align: right;
-    padding: 5px 90px 290px 91px;}
-
-
-#boton{background: #FF512F;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #F09819, #FF512F);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #f09819, #FF512F); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-   /* margin : 0px 5px 0px 0px;*/}
+    padding: 5px 80px 90px 91px;
+    margin : 80px 35px 20px 60px;}
 
 
 /**/
