@@ -3,7 +3,7 @@ import { ActivatedRoute, Data, ParamMap } from '@angular/router';
 import { ClientService } from '../servicios/client.service';
 import { AuthService } from '../servicios/auth.service';
 import { CarritoClickService } from '../servicios/carrito-click.service';
-import { IItem } from '../interfaces/item.interface';
+
 
 @Component({
   selector: 'app-detalleproducto',

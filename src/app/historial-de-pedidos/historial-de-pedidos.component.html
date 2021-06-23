@@ -1,0 +1,43 @@
+<app-nav></app-nav>
+<div *ngIf="(auth.isLoggedIn() | async)">
+  <div class="d-flex justify-content-center">
+    <div class="card" style="width: 75rem;" *ngIf="(auth.isLoggedIn() | async)">
+      <h1 class="card-header">HISTORIAL DE PEDIDOS</h1>
+      <div class="card-body">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">No.Factura</th>
+              <th scope="col">Precio total</th>
+              <th scope="col">Precio del iva</th>
+              <th scope="col">Fecha de la compra</th>
+              <th scope="col">Hora de la compra</th>
+              <th scope="col">Identificacion del usuario</th>
+              <th scope="col">Nombre del usuario</th>
+              <th scope="col">Apellido del usuario</th>
+              <th scope="col">Ver más...</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let info of pedidos">
+              <th scope="row">{{info.noPedido}}</th>
+              <td>${{ info.valor | number: '1.0-0' }}</td>
+              <td>${{info.iva | number: '1.0-0' }}</td>
+              <td>{{info.fecha | date:"shortDate"}}</td>
+              <td>{{info.fecha | date:"shortTime"}}</td>
+              <td>{{info.numeroDoc}}</td>
+              <td>{{info.nombreUser}}</td>
+              <td>{{info.apellidosUser}}</td>
+              <td>
+                <div class="d-grid gap-2 col-6 mx-auto">
+                  <button class="btn btn-outline-success" type="button" [routerLink]="['/detallePedidos',info.noPedido]">Ver más</button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+  </div>
+</div>

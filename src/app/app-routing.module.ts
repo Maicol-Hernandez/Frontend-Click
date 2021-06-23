@@ -17,7 +17,8 @@ import { ActualizarNegocioComponent } from './actualizar-negocio/actualizar-nego
 import { CrearProductoComponent } from './crear-producto/crear-producto.component';
 import { ActualizarProductoComponent } from './actualizar-producto/actualizar-producto.component';
 import { MiCuentaComponent } from './mi-cuenta/mi-cuenta.component';
-
+import {HistorialDePedidosComponent} from'./historial-de-pedidos/historial-de-pedidos.component';
+import {DetallePedidoComponent} from './detalle-pedido/detalle-pedido.component';
 const routes: Routes = [
   { path: 'vernegocio', component:NegociosComponent },
   { path: '',component:HomeComponent}, 
@@ -36,7 +37,9 @@ const routes: Routes = [
   { path: 'actualizar-negocio', component:ActualizarNegocioComponent},
   { path: 'crear-producto', component:CrearProductoComponent},
   { path: 'actualizar-producto', component:ActualizarProductoComponent},
-  {path: 'mi-cuenta', component:MiCuentaComponent}
+  {path: 'mi-cuenta', component:MiCuentaComponent},
+  {path:'historialDePedido/:correo',component:HistorialDePedidosComponent},
+  {path:'detallePedidos/:noPedido',component:DetallePedidoComponent}
 ];
 
 

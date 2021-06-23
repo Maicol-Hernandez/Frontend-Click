@@ -27,6 +27,8 @@ import { ActualizarProductoComponent } from './actualizar-producto/actualizar-pr
 import { CrearProductoComponent } from './crear-producto/crear-producto.component';
 import { MiCuentaComponent } from './mi-cuenta/mi-cuenta.component';
 import { ParticlesModule } from 'angular-particle';/*particulas de fondo */
+import { HistorialDePedidosComponent } from './historial-de-pedidos/historial-de-pedidos.component';
+import { DetallePedidoComponent } from './detalle-pedido/detalle-pedido.component';
 
 
 @NgModule({
@@ -50,9 +52,9 @@ import { ParticlesModule } from 'angular-particle';/*particulas de fondo */
     ActualizarNegocioComponent,
     ActualizarProductoComponent,
     CrearProductoComponent,
-    MiCuentaComponent
-  
-    
+    MiCuentaComponent,
+    HistorialDePedidosComponent,
+    DetallePedidoComponent
   ],
   imports: [
     FormsModule,

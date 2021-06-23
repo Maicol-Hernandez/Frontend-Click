@@ -75,17 +75,17 @@ export class HomeComponent implements OnInit {
   myParams: object = {
     "particles": {
       "number": {
-        "value": 80,
+        "value": 83, /*cantidad*/ 
         "density": {
           "enable": true,
           "value_area": 800
         }
       },
-      "color": {
-        "value": "#010B30"
+      "color": {/*color del circulo*/ 
+        "value": "#ff8000"
       },
       "shape": {
-        "type": "circle",
+        "type": "circle",/*tipo de particula*/
         "polygon": {
           "nb_sides": 7
         },
@@ -106,7 +106,7 @@ export class HomeComponent implements OnInit {
         }
       },
       "size": {
-        "value": 3,
+        "value": 4,/*tamaño de las particulas*/
         "random": true,
         "anim": {
           "enable": false,
@@ -115,8 +115,9 @@ export class HomeComponent implements OnInit {
           "sync": false
         }
       },
+      /*circulos o lineas*/ 
       "line_linked": {
-        "enable": true,
+        "enable": false,
         "distance": 150,
         "color": "#5B566E",
         "opacity": 0.4,
@@ -124,7 +125,7 @@ export class HomeComponent implements OnInit {
       },
       "move": {
         "enable": true,
-        "speed": 4,
+        "speed": 4,/*rapidez */
         "direction": "none",
         "random": false,
         "straight": false,
