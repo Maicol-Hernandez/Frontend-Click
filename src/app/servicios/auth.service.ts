@@ -21,16 +21,6 @@ export class AuthService {
     this.isLogin.next(true);
 
   }
-  //id pedido
-  setCourrentPedido(id_pedido: string): void {
-    localStorage.setItem('courrentUserPedido', id_pedido)
-  }
-  getCourrentPedido(): string {
-    return localStorage.getItem('courrentUserPedido')
-  }
-  private daleteCourrentPedido(): void {
-    localStorage.removeItem('courrentUserPedido')
-  }
 
   setCourrentUser(nombres: string): void {
     localStorage.setItem('courrentUserNombres', nombres);
@@ -38,7 +28,7 @@ export class AuthService {
   getCourrentUser(): string {
     return localStorage.getItem('courrentUserNombres');
   }
-  private deleteCourrentUser(): void {
+  private daleteCourrentUser(): void {
     localStorage.removeItem('courrentUserNombres');
   }
   setCourrentUserApellidos(apellidos: string): void {
@@ -47,7 +37,7 @@ export class AuthService {
   getCouurrentUserApellidos(): string {
     return localStorage.getItem('courrentUserApellidos');
   }
-  private deleteCourrentUserApellidos(): void {
+  private daleteCourrentUserApellidos(): void {
     localStorage.removeItem('courrentUserApellidos');
   }
   setCourrentUserCorreo(correo: string): void {
@@ -56,7 +46,7 @@ export class AuthService {
   getCourrentUserCorreo(): string {
     return localStorage.getItem('courrentUserCorreo');
   }
-  private deleteCourrentUserCorreo(): void {
+  private daleteCourrentUserCorreo(): void {
     localStorage.removeItem('courrentUserCorreo');
   }
   setCourrentUserTipoDocumento(tipo_documento: string): void {
@@ -65,7 +55,7 @@ export class AuthService {
   getCourrentUserTipoDocumento(): string {
     return localStorage.getItem('courrentUserTipoDocumento');
   }
-  private deleteCourrentUserTipoDocumento(): void {
+  private daleteCourrentUserTipoDocumento(): void {
     localStorage.removeItem('courrentUserTipoDocumento');
   }
   setCourrentUserNumeroDocumento(numero_documento: string): void {
@@ -74,7 +64,7 @@ export class AuthService {
   getCourrentUserNumeroDocumento(): string {
     return localStorage.getItem('courrentNumeroDocumento');
   }
-  private deleteCourrentUserNumeroDocumento(): void {
+  private daleteCourrentUserNumeroDocumento(): void {
     localStorage.removeItem('courrentNumeroDocumento');
   }
   setCourrentUserIdUsario(id_usuario: string): void {
@@ -101,7 +91,7 @@ export class AuthService {
   getCourrentUserNumeroTelefono(): string {
     return localStorage.getItem('courrentUserNumeroTelefono');
   }
-  private deleteCourrentUserNumeroTelefono(): void {
+  private daleteCourrentUserNumeroTelefono(): void {
     localStorage.removeItem('courrentUserNumeroTelefono');
   }
 
@@ -109,15 +99,14 @@ export class AuthService {
   
   logout(): void {
     localStorage.removeItem('token');
-    this.deleteCourrentUser();
-    this.deleteCourrentUserApellidos();
-    this.deleteCourrentUserCorreo();
+    this.daleteCourrentUser();
+    this.daleteCourrentUserApellidos();
+    this.daleteCourrentUserCorreo();
     this.daleteCourrentUserFechaNacimiento();
     this.daleteCourrentUserIdUsario();
-    this.deleteCourrentUserTipoDocumento();
-    this.deleteCourrentUserNumeroDocumento();
-    this.deleteCourrentUserNumeroTelefono();
-    this.daleteCourrentPedido();
+    this.daleteCourrentUserTipoDocumento();
+    this.daleteCourrentUserNumeroDocumento();
+    this.daleteCourrentUserNumeroTelefono();
     this.isLogin.next(false);
 
   }

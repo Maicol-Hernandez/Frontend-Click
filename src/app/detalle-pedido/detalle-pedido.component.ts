@@ -26,14 +26,10 @@ export class DetallePedidoComponent implements OnInit {
   this.param.paramMap.subscribe(
     (params:ParamMap)=>{
       let id =+ params.get('noPedido');
-      let idPedido = localStorage.getItem('courrentUserPedido')
- 
-      let data = {"id":idPedido}
+      let data = {"id":id}
       this.client.getHistorialPedidos("http://localhost:5000/api/v02/user/detallesPedidos",data).subscribe(
         (data:any)=>{
-          
           let info = data.data;
-          console.log(`info: ${info}` )
           this.informacion = info;
           this.nombreUser = info[0].nombreUser;
           this.apellidoUser = info[0].apellido;
@@ -42,7 +38,6 @@ export class DetallePedidoComponent implements OnInit {
           this.numeroDoc = info[0].doc
           this.valorIva =info[0].iva
           this.valorTotal = info[0].valor
-          
         },
         (error)=>{
           console.error(error.status);
