@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ClientService } from '../servicios/client.service';
 import { NegociosService } from '../servicios/negocios.service';
 import { Router } from '@angular/router';
+import { AuthService } from '../servicios/auth.service';
 
 @Component({
   selector: 'app-zona-administracion',
@@ -18,11 +19,15 @@ export class ZonaAdministracionComponent implements OnInit {
 
   constructor(
     private client: ClientService,
-    private negocioService: NegociosService
+    private negocioService: NegociosService,
+    private auth : AuthService
   ) { }
 
   ngOnInit(): void {
-    this.client.getRequestMostrarNegocios('http://localhost:5000/api/v02/user/mostrarNegocios').subscribe(
+    let data = {
+      "correo": this.auth.getCourrentUserCorreo()
+    }
+    this.client.getRequestMostrarNegocios('http://localhost:5000/api/v02/user/mostrarNegocios',data).subscribe(
         (data): any => {
           this.datosNegocio = data["Datos"]
           this.ensayo = data["Datos"]
