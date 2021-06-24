@@ -37,18 +37,33 @@ export class ClientService {
   }
 
 
-  postRequestEmpresaId(route: string, id: any, token?: string) {
+  postRequestEmpresaId(route: string, data?: any, token?: string) {
     let config: any = {
       reponseType: "json"
     }
+    
     if (token) {
       const header = new HttpHeaders().set('Authorization', `Bearer ${token}`)
       config['headers'] = header;
-
     }
 
-    return this.http.post(route, id, config)
+    return this.http.post(route, data, config)
   }
+
+  postRequestPedido(route: string, data?: any, token?: string) {
+    let config: any = {
+      responseType: "json"
+    }
+
+    if (token) {
+      const herder = new HttpHeaders().set('Authorization', `Bearer ${token}`)
+      config['herders'] = herder
+    }
+
+    return this.http.post(route, data, config);
+  }
+
+
 
   getRequestDataEmpresa(route: string, token?: string) {
 
@@ -60,10 +75,6 @@ export class ClientService {
       const heder = new HttpHeaders().set('Authorization', `Bearer ${token}`)
       config['headers'] = heder
     }
-
-    console.log(config);
-
-
     return this.http.get(route, config);
   }
 
@@ -83,7 +94,7 @@ export class ClientService {
   } */
 
 
-  getRequestProductoEmpresa(route: string, token?: string) {
+  postRequestProductosIdEmpresa(route: string, data?: any, token?: string) {
     let config: any = {
       responseType: "json"
     }
@@ -93,7 +104,7 @@ export class ClientService {
       config['herders'] = herder
     }
 
-    return this.http.get(route, config);
+    return this.http.post(route, data, config);
   }
 
   postRequestId(route: string, id: any, token?: string) {
@@ -128,6 +139,32 @@ export class ClientService {
       config['herder'] = herder;
     }
     return this.http.post(route, id, config);
+  }
+
+  //servicio pedir id del pedido
+  getRequestPedirIdPedido(route: string, token?: string) {
+    let config:any = {
+      responseType: "json"
+    }
+    if(token) {
+      const herder = new HttpHeaders().set(`Authorization`, `Bearer ${token}`)
+      config['heders'] = herder
+    }
+    return this.http.get(route, config);
+  }
+
+
+  postRequestEnviarPedidoDetalles(route: string, data?: any, token?: string) {
+    let config: any = {
+      reponseType: "json"
+    }
+
+    if (token) {
+      const header = new HttpHeaders().set('Authorization', `Bearer ${token}`)
+      config['header'] = header;
+
+    }
+    return this.http.post(route, data, config);
   }
 
   //Modulo Negocio

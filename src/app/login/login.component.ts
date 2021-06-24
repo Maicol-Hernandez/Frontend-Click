@@ -62,7 +62,7 @@ export class LoginComponent implements OnInit {
             title: '¡ Bienvenido !',
             imageUrl: './static/bienve.svg',
             imageWidth: 400,
-            imageHeight: 200,
+            
 
           }).then(() => {
 
@@ -77,7 +77,7 @@ export class LoginComponent implements OnInit {
           this.auth.setCourrentUser(response.nombres);
 
           this.auth.setCourrentUserApellidos(response.apellidos);
- 
+
           this.auth.setCourrentUserCorreo(response.correo);
 
           this.auth.setCourrentUserNumeroDocumento(response.numero_documento);
@@ -87,8 +87,8 @@ export class LoginComponent implements OnInit {
           this.auth.setCourrentUserFechaNacimiento(response.fecha_nacimiento);
 
           this.auth.setCourrentUserNumeroTelefono(response.numero_telefono);
- 
-          localStorage.setItem('token', response.token);
+
+          localStorage.setItem('token', JSON.stringify(response.token));
           console.log(localStorage.getItem('token'));
 
         },

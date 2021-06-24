@@ -15,8 +15,7 @@ import { ParticlesModule } from 'angular-particle';
 export class HomeComponent implements OnInit {
 
   dataEmpresa;
-  id;
-  
+  id_negocio;
 
   constructor(
     private client: ClientService,
@@ -40,18 +39,20 @@ export class HomeComponent implements OnInit {
     
   }
 
-  async onSubmit() {
+  async mostrarNegocio(id) {
     this.route.paramMap.subscribe((params: ParamMap) => {
-      this.id += params.get('id')
-      let data = {"id ": this.id}
+      id += params.get('id')
+      let data = {"id": id}
+      localStorage.setItem('id_negocio', id)
+      console.log("data:", data)
 
       this.client.postRequestEmpresaId('http://localhost:5000/api/v01/user/datosempresaid',data).subscribe(
       (data): any => {
-        this.id = data['data']
-        console.log("Ok",data['data'])
+        this.id_negocio = data['negocio_id']
+        console.log("Ok, este es el id:", data['negocio_id'])
         
-    
       },
+      
       (error) => {
         console.log(error.status)
       });

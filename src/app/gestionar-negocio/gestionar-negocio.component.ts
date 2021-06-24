@@ -153,6 +153,8 @@ export class GestionarNegocioComponent implements OnInit , OnDestroy{
       }
     )
   }
+
+  
   deleteEveryOnePN(id,filename){
     var data = {"idNegocio":id}
     const swalWithBootstrapButtons = Swal.mixin({

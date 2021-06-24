@@ -2,17 +2,17 @@
 <section class="seccion-perfil-empresa">
     <div class="perfil-empresa-header">
         <div class="perfil-empresa-portada">
-            <div *ngFor="let empresa of dataEmpresa">
+            <div *ngFor="let empresaId of dataEmpresaId">
                 <div  class="datos-img">
-                    <img  [src]="empresa.imgLogo" class="card-img-top"  alt=""></div>
+                    <img src="http://localhost:8000/imagenes/{{empresaId.imgLogo}}" class="card-img-top"  alt=""></div>
                 <div  class="datos-negocio">
-                    <div>Nombre del negocio: {{ empresa.nombre }}</div>
-                    <div>Tipo de negocio: {{ empresa.tipo }} </div>
-                    <div>Direccion: {{ empresa.direccion }}</div>
-                    <div>Horarios: {{ empresa.horarios }} </div>
-                    <div>Telefono1: {{ empresa.telefono1 }}</div>
-                    <div>Telefono2: {{ empresa.telefono2 }}</div>
-                    <div>Correo: {{ empresa.correo }}</div>
+                    <div>Nombre del negocio: {{ empresaId.nombre }}</div>
+                    <div>Tipo de negocio: {{ empresaId.tipo_negocio }} </div>
+                    <div>Direccion: {{ empresaId.direccion }}</div>
+                    <div>Horarios: {{ empresaId.horarios }} </div>
+                    <div>Telefono1: {{ empresaId.telefono1 }}</div>
+                    <div>Telefono2: {{ empresaId.telefono2 }}</div>
+                    <div>Correo: {{ empresaId.correo }}</div>
                 </div>
             </div>
         </div>
@@ -30,19 +30,17 @@
                 <div class="card">
                     <img [src]="producto.foto" class="card-img-top" alt="">
                     <div class="card-body">
-                        <h5 class="card-title">{{ producto.nombre }}  {{producto.id}} </h5>
+                        <h5 class="card-title">{{ producto.nombre }}</h5>
                         <p class="card-text"><small class="text-muted">precio: ${{ producto.precio | number: '1.0-0' }}</small></p>
                         <!--El minimo es de un 1 producto-->
-                        <button type="submit" class="btn btn-danger ml-4" (click)="OnSubmit(producto.id)">Pedir producto {{ producto.id }}</button>
+                        <button type="submit" class="btn btn-danger ml-4" (click)="OnSubmit(producto.id)">Pedir producto</button>
                     </div>
                 </div>
             </div>
 
         </section>
         <app-carrito *ngIf="abrirCart"></app-carrito>
+    </div>
 </div>
-</div>
-
-
 
 <app-footer class="footer"></app-footer>

@@ -39,8 +39,8 @@
             <mat-error *ngIf="errorMessage"> 
                 {{ errorMessage }}
             </mat-error>
-            <div *ngIf="loading" >
-               Spinner! 
+            <div class="container-spinner" *ngIf="loading" >
+                <div class="spinner-grow text-warning"></div>
             </div>
             <div class="container-login-form-btn" *ngIf="!loading">
                 <div class="wrap-login-form-btn">

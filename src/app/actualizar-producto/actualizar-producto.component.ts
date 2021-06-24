@@ -30,7 +30,6 @@ export class ActualizarProductoComponent implements OnInit {
     this.form = this.fb.group({
       idProducto: ['',Validators.required],
       nombreProducto: ['',Validators.required],
-      descripcion: ['',Validators.required],
       precio: ['',Validators.required],
       img: [null,Validators.required],
     })
@@ -41,7 +40,6 @@ export class ActualizarProductoComponent implements OnInit {
       let data = {
       idProducto :  this.productoDatos[0].id,
       nombre :  this.form.value.nombreProducto,
-      descripcion : this.form.value.descripcion,
       precio : this.form.value.precio,
       logo : this.productoDatos[0].foto,
     }

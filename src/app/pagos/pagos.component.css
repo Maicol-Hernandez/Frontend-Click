@@ -1,1 +1,19 @@
-.bordes div{display: inline;}
+.bordes div {
+    display: inline;
+}
+
+.content-magin {
+    
+    margin: 31px 322px 0px 251px;
+
+}
+
+.img-fondo {
+    background-image: url('../../static/ilu.png');   
+    width: 100%;
+    height: 200%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-top: auto;
+    
+}

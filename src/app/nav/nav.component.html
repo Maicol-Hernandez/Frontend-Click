@@ -5,12 +5,14 @@
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+        
+
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">Home</a>
           </li>
-          <li class="nav-item ">
+          <li class="nav-item">
             <a  href="#" class="nav-link" [routerLink]="['/nosotros']" >Acerca de nosotros</a>
           </li>
           
@@ -26,19 +28,30 @@
       </li>
       
     
-      <div class="btn-group" role="group" width="75px" height="75px">
+      <div class="btn-group " role="group" width="75px" height="75px">
        
-        <input id="btnGroupDrop1" type="image" src="../../static/usuariogn.png" class="btn btn dropdown-toggle rounded-circle" data-bs-toggle="dropdown" aria-expanded="false" width="88px" height="88px">   
+        <input id="btnGroupDrop1" type="image" src="../../static/usuario.png" class="btn btn dropdown-toggle btn btn-light rounded-circle" data-bs-toggle="dropdown" aria-expanded="false" width="88px" height="88px">   
         
-        <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+        <ul class="dropdown-menu bg-light" aria-labelledby="btnGroupDrop1">
           <a href="#" *ngIf="(auth.isLoggedIn() | async)"  [routerLink]="['/mi-cuenta']" id="regis" class="btn btn">Mi cuenta</a>
           <li class="btn btn" id="botonini" *ngIf="auth.isLoggedIn() | async" >
             <a class="btn btn" [routerLink]="['/']" (click)="auth.logout()">Salir</a>
         </li> 
         </ul>
       </div>
-      
 
+      <div *ngIf="auth.isLoggedIn() | async" class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+            aria-expanded="false" *ngIf="auth.isLoggedIn() | async">Bienvenido {{auth.getCourrentUser()}}</a>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+            <button class="dropdown-item" type="button" [routerLink]="['/mi-cuenta']">Mi perfil</button>
+            <button class="dropdown-item" type="button" [routerLink]="['/']"(click)="auth.logout()">Salir</button>
+        </ul>
+      </div>
       </div>
     </div>
   </nav>
+
+
+
+  
