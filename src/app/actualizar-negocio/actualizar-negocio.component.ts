@@ -62,9 +62,8 @@ export class ActualizarNegocioComponent implements OnInit {
           'success'
         )
         setTimeout(() => {
-          this.route.navigate(['/zona-administracion']);
+          this.route.navigate(['/gestionar-negocio']);
       }, 1000); 
-        //this.route.navigate(['/zona-administracion'])
       },
       (error)=>{
         Swal.fire({

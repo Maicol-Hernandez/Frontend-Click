@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { ClientService } from '../servicios/client.service';
 import { Router } from '@angular/router';
-
+import { AuthService } from '../servicios/auth.service';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 @Component({
   selector: 'app-registrar-empresa',
@@ -22,7 +22,8 @@ export class RegistrarEmpresaComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private route: Router,
-    private client : ClientService
+    private client : ClientService,
+    private auth : AuthService
   ) { }
 
   ngOnInit(): void {
@@ -68,7 +69,7 @@ export class RegistrarEmpresaComponent implements OnInit {
           showConfirmButton: false,
           timer: 2000
         }).then(() => {
-          this.route.navigate(['/'])
+          this.route.navigate(['zona-administracion'])
         });
       },
       (error)=>{
@@ -94,7 +95,8 @@ export class RegistrarEmpresaComponent implements OnInit {
               numeroS : this.form.value.NumeroSecundario,
               emailE : this.form.value.emailEmpresa,
               horario : this.form.value.Horario,
-              logo : response.img //LO que obtenga de la respuesta
+              logo : response.img, //LO que obtenga de la respuesta
+              correo : this.auth.getCourrentUserCorreo()
               }
               this.registrarEmpresaDB(data);
           },

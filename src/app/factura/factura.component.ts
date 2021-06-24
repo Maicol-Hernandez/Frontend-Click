@@ -59,7 +59,7 @@ export class FacturaComponent implements OnInit {
     
     this.carro.init();
 
-    this.carro.sumIva.getValue()
+    console.log(this.carro.sumIva.getValue());
     this.carro.sumProducto.getValue()
     this.idNegocio = localStorage.getItem('id_negocio')
     this.nombres = localStorage.getItem('courrentUserNombres')
@@ -97,7 +97,7 @@ export class FacturaComponent implements OnInit {
 
 
   async enviarPedido() {
-
+    console.log(this.carro.sumIva.getValue())
     let data = {
       iva: this.carro.sumIva.getValue(),
       valorTotal: this.carro.sumProducto.getValue(),
