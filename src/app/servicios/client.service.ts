@@ -194,17 +194,11 @@ export class ClientService {
     return this.http.get(route, config);
   }
 
-  getRequestMostrarNegocios(route: string, token?: string){
+  getRequestMostrarNegocios(route: string,data? : any){
     let config:any = {
       responseType: "json"
     }
-
-    if(token){
-      const herder = new HttpHeaders().set('Authorization', `Bearer ${token}`)
-      config['heders'] = herder
-    }
-
-    return this.http.get(route, config);
+    return this.http.post(route,data,config);
   }
 
   getRequestMostrarNegocioId(route: string, id: number) {
