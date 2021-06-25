@@ -108,6 +108,7 @@ export class FacturaComponent implements OnInit {
     this.client.postRequestPedido('http://localhost:5000/api/v02/user/pedido', data).subscribe(
       (response: any) => {
         let idPedido = response['id_pedido']
+        this.auth.setCourrentPedido(response.id_pedido)
 
         let valorPedido = this.carro.carritoUser.getValue()
         var productosDetalles: any = []
