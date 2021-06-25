@@ -83,7 +83,7 @@ export class AuthService {
   getCourrentUserIdUsario(): string {
     return localStorage.getItem('courrentUserIdUsuario');
   }
-  private daleteCourrentUserIdUsario(): void {
+  private deleteCourrentUserIdUsario(): void {
     localStorage.removeItem('courrentUserIdUsuario');
   }
   setCourrentUserFechaNacimiento(fecha_nacimiento: string): void {
@@ -92,7 +92,7 @@ export class AuthService {
   getCourrentUserFechaNacimiento(): string {
     return localStorage.getItem('courrentUserFechaNacimiento');
   }
-  private daleteCourrentUserFechaNacimiento(): void {
+  private deleteCourrentUserFechaNacimiento(): void {
     localStorage.removeItem('courrentUserFechaNacimiento');
   }
   setCourrentUserNumeroTelefono(numero_telefono: string): void {
@@ -112,8 +112,8 @@ export class AuthService {
     this.deleteCourrentUser();
     this.deleteCourrentUserApellidos();
     this.deleteCourrentUserCorreo();
-    this.daleteCourrentUserFechaNacimiento();
-    this.daleteCourrentUserIdUsario();
+    this.deleteCourrentUserFechaNacimiento();
+    this.deleteCourrentUserIdUsario();
     this.deleteCourrentUserTipoDocumento();
     this.deleteCourrentUserNumeroDocumento();
     this.deleteCourrentUserNumeroTelefono();

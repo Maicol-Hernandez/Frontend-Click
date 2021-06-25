@@ -50,11 +50,11 @@ export class FacturaComponent implements OnInit {
     const date = new Date()
     const dia = date.getDate()
     const mes = date.getMonth()
-    const ano = date.getFullYear()
+    const year = date.getFullYear()
     const hora = date.getHours()
     const minutos = date.getMinutes()
 
-    this.fecha = `${dia} de ${meses[mes]} del ${ano}` 
+    this.fecha = `${dia} de ${meses[mes]} del ${year}` 
 
     this.carro.init();
 
