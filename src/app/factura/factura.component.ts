@@ -27,6 +27,7 @@ export class FacturaComponent implements OnInit {
   numTelefono;
   id_usuario;
   idPedido;
+  fecha;
 
 
   constructor(
@@ -38,6 +39,22 @@ export class FacturaComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
+    const meses = [
+      "Enero", "Febrero", "Marzo",
+      "Abril", "Mayo", "Junio", "Julio",
+      "Agosto", "Septiembre", "Octubre",
+      "Noviembre", "Diciembre"
+    ]
+    
+    const date = new Date()
+    const dia = date.getDate()
+    const mes = date.getMonth()
+    const ano = date.getFullYear()
+    const hora = date.getHours()
+    const minutos = date.getMinutes()
+
+    this.fecha = `${dia} de ${meses[mes]} del ${ano}` 
 
     this.carro.init();
 
@@ -127,7 +144,7 @@ export class FacturaComponent implements OnInit {
               imageHeight: 200,
 
             }).then(() => {
-              //this.route.navigate(['/detallesproducto'])
+
             });
             console.log(response)
 
@@ -135,8 +152,6 @@ export class FacturaComponent implements OnInit {
           (error) => {
             console.error(error);
           });
-
-        //this.enviarPedidoDetalles(response['id_pedido'])
 
         console.log(response)
 
@@ -188,7 +203,7 @@ export class FacturaComponent implements OnInit {
             ],
             [
               {
-                text: `Fecha : ${new Date().toLocaleString()}`,
+                text: `Fecha : ${this.fecha}`,
                 alignment: 'right',
               },
             ]
