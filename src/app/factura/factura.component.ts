@@ -28,6 +28,7 @@ export class FacturaComponent implements OnInit {
   id_usuario;
   idPedido;
   fecha;
+  horaCompra;
 
 
   constructor(
@@ -51,10 +52,16 @@ export class FacturaComponent implements OnInit {
     const dia = date.getDate()
     const mes = date.getMonth()
     const year = date.getFullYear()
-    const hora = date.getHours()
+    const horas = date.getHours()
     const minutos = date.getMinutes()
+    const segundos = date.getSeconds()
 
     this.fecha = `${dia} de ${meses[mes]} del ${year}` 
+
+    this.horaCompra = `${horas}:${minutos}:${segundos}`
+    
+
+    console.log(this.horaCompra)
 
     this.carro.init();
 
@@ -204,8 +211,13 @@ export class FacturaComponent implements OnInit {
             ],
             [
               {
-                text: `Fecha : ${this.fecha}`,
+                text: `Hora: ${this.horaCompra}`,
                 alignment: 'right',
+              },
+              {
+                text: `Fecha: ${this.fecha}`,
+                alignment: 'right',
+
               },
             ]
           ]
