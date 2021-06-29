@@ -22,7 +22,7 @@
       <!--Estos datos debe traerlos desde localStorage-->
       <tr *ngFor="let producto of carro.carritoUser.getValue()">
         
-        <th scope="row"><img [src]="producto.foto" class="img-productos" alt="productos"></th>     
+        <th scope="row"><img src="http://localhost:8000/imagenesProduct/{{producto.foto}}" class="img-productos" alt="productos"></th>     
         <td> {{ producto.nombre }} </td>
         <td> {{ producto.cantidad }} </td>
         <td>  {{producto.iva}} % </td>

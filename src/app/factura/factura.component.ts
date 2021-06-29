@@ -103,6 +103,7 @@ export class FacturaComponent implements OnInit {
 
 
   async enviarPedido() {
+    this.paid = false;
     console.log(this.carro.sumIva.getValue())
     let data = {
       iva: this.carro.sumIva.getValue(),
@@ -139,21 +140,28 @@ export class FacturaComponent implements OnInit {
         }
 
         let data = {
-          pedidoDetalles: productosDetalles
+          pedidoDetalles: productosDetalles,
+          negocio : localStorage.getItem('correoNegocio'),
+          nombre : localStorage.getItem('courrentUserNombres'),
+          apellidos : localStorage.getItem('courrentUserApellidos'),
+          documento : localStorage.getItem('courrentNumeroDocumento'),
+          iva : this.carro.sumIva.getValue(),
+          total : this.carro.sumCarritoUser.getValue()
         }
 
         this.client.postRequestEnviarPedidoDetalles('http://localhost:5000/api/v02/user/pedidodetalles', data).subscribe(
           (response: any) => {
-
+            this.paid = true;
+            this.pays  = false;
             Swal.fire({
               title: 'Se pago correctamente',
-              imageUrl: 'https://media0.giphy.com/media/ZZYXNDxMcMDXIblV8L/source.gif',
               imageWidth: 400,
               imageHeight: 200,
 
             }).then(() => {
 
             });
+            localStorage.removeItem('carrito')
             console.log(response)
 
           },
@@ -168,11 +176,6 @@ export class FacturaComponent implements OnInit {
         console.error(error);
       });
 
-  }
-
-  pay() {
-    this.paid = true;
-    this.pays = false;
   }
 
   generatePdf(options) {
@@ -262,7 +265,6 @@ export class FacturaComponent implements OnInit {
           margin: [50, 10],
           fontSize: 20,
         },
-        { qr: 'https://www.google.com/', fit: '50' },
         {
           ul: [
             'El pedido se puede devolver en un máximo de 10 días .',

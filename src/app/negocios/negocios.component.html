@@ -28,7 +28,7 @@
         <section class="products-list">
             <div *ngFor="let producto of dataProducto" class="product-item" category="lacteos">
                 <div class="card">
-                    <img [src]="producto.foto" class="card-img-top" alt="">
+                    <img src="http://localhost:8000/imagenesProduct/{{producto.foto}}"  class="card-img-top" alt="">
                     <div class="card-body">
                         <h5 class="card-title">{{ producto.nombre }}</h5>
                         <p class="card-text"><small class="text-muted">precio: ${{ producto.precio | number: '1.0-0' }}</small></p>

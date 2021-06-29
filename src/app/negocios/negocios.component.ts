@@ -52,6 +52,10 @@ export class NegociosComponent implements OnInit {
     (data): any => {
       this.dataEmpresaId = data['negocio_id']
       console.log("Mostrar negocio por id: ", data['negocio_id'])
+      var correo = data['negocio_id']
+      for (const add of correo){
+        localStorage.setItem("correoNegocio",add.correo);
+      }
       },
 
       (error: any) => {
