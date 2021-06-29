@@ -27,7 +27,7 @@ body {
     flex: 1;
     background-color:  rgb(236, 236, 236);
     transition: 1s;
-    background-image: url(../../static/actualizar-negocio.png);
+    background-image: url(../../static/actualizar-negocioV2.png);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
