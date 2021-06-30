@@ -27,6 +27,7 @@ export class FacturaComponent implements OnInit {
   numTelefono;
   id_usuario;
   idPedido;
+  fecha;
 
 
   constructor(
@@ -38,6 +39,22 @@ export class FacturaComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
+    const meses = [
+      "Enero", "Febrero", "Marzo",
+      "Abril", "Mayo", "Junio", "Julio",
+      "Agosto", "Septiembre", "Octubre",
+      "Noviembre", "Diciembre"
+    ]
+    
+    const date = new Date()
+    const dia = date.getDate()
+    const mes = date.getMonth()
+    const year = date.getFullYear()
+    const hora = date.getHours()
+    const minutos = date.getMinutes()
+
+    this.fecha = `${dia} de ${meses[mes]} del ${year}` 
 
     this.carro.init();
 
@@ -83,7 +100,7 @@ export class FacturaComponent implements OnInit {
     let data = {
       iva: this.carro.sumIva.getValue(),
       valorTotal: this.carro.sumProducto.getValue(),
-      fecha: new Date().toISOString(),
+      fecha: new Date().toLocaleString(),
       id_negocio: this.idNegocio,
       id_usuario: this.id_usuario,
     }
@@ -91,6 +108,7 @@ export class FacturaComponent implements OnInit {
     this.client.postRequestPedido('http://localhost:5000/api/v02/user/pedido', data).subscribe(
       (response: any) => {
         let idPedido = response['id_pedido']
+        this.auth.setCourrentPedido(response.id_pedido)
 
         let valorPedido = this.carro.carritoUser.getValue()
         var productosDetalles: any = []
@@ -127,7 +145,7 @@ export class FacturaComponent implements OnInit {
               imageHeight: 200,
 
             }).then(() => {
-              //this.route.navigate(['/detallesproducto'])
+
             });
             console.log(response)
 
@@ -135,8 +153,6 @@ export class FacturaComponent implements OnInit {
           (error) => {
             console.error(error);
           });
-
-        //this.enviarPedidoDetalles(response['id_pedido'])
 
         console.log(response)
 
@@ -146,30 +162,6 @@ export class FacturaComponent implements OnInit {
       });
 
   }
-
-  /*  async enviarPedidoDetalles(idPedido) {
-      console.log("este es el id del pedido: ", idPedido)
-  
-      this.client.postRequestEnviarPedidoDetalles('http://localhost:5000/api/v02/user/pedidodetalles', data).subscribe(
-        (response: any) => {
-  
-          Swal.fire({
-            title: 'Se pago correctamente',
-            imageUrl: 'https://media0.giphy.com/media/ZZYXNDxMcMDXIblV8L/source.gif',
-            imageWidth: 400,
-            imageHeight: 200,
-  
-          }).then(() => {
-            //this.route.navigate(['/detallesproducto'])
-          });
-          console.log(response)
-  
-        },
-        (error) => {
-          console.error(error);
-        });
-  
-    }*/
 
   pay() {
     this.paid = true;
@@ -212,7 +204,7 @@ export class FacturaComponent implements OnInit {
             ],
             [
               {
-                text: `Fecha : ${new Date().toLocaleString()}`,
+                text: `Fecha : ${this.fecha}`,
                 alignment: 'right',
               },
             ]

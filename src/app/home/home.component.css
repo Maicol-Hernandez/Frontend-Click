@@ -15,8 +15,10 @@
 .card-body a {background: #FF512F;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #F09819, #FF512F);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #f09819, #FF512F);}
-.card-body  {   margin : 60px 35px 20px 60px;}
+
+.card-body  { margin : 0px 35px 20px 60px;}
 #efecto{margin :19px 0 0 10px;  }
+
 #efecto a{background: #FF512F;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #F09819, #FF512F);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #f09819, #FF512F); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
