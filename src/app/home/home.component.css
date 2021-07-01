@@ -1,29 +1,94 @@
+@font-face {
+  font-family: Poppins-Regular;
+  src: url('../../fuentes/Poppins-Regular.ttf'); 
+}
 
+@font-face {
+  font-family: Poppins-Medium;
+  src: url('../../fuentes/Poppins-Medium.ttf'); 
+}
+
+@font-face {
+  font-family: Poppins-Bold;
+  src: url('../../fuentes/Poppins-Bold.ttf'); 
+}
+
+@font-face {
+  font-family: Poppins-SemiBold;
+  src: url('../../fuentes/Poppins-SemiBold.ttf'); 
+}
 /*presentacion*/
 #presentacion{
-    /* Arriba | Derecha | Abajo | Izquierda */
-    margin : 60px 35px 20px 30px;
-    padding: 5px; 
     background-color: rgb(235, 239, 243);
 }
-#presentacion p {font-family: cursive;
-    font-size: 28px;
-    text-align: right;
-    padding: 5px 90px 290px 91px;}
+#presentacion p {
+  font-family: Poppins-Medium;
+    font-size: 29px;
+    text-align: center;
+    display:inline-block;
+    padding: 60px 50px 100px 150px;
+   }
 
+#ilu1{margin :19px 0 0 30px;}
+#ilu2{margin : 16px 0 0 -30px;
+  display: inline;}
 
-#boton{background: #FF512F;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #F09819, #FF512F);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #f09819, #FF512F); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-   /* margin : 0px 5px 0px 0px;*/}
+  .contenedor_titulo_negocio {
+    display: block;
+    margin: auto;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    border: 3px solid #000;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    padding-top: -900px;
+    width: 900px;
+  }
+  
+  .negocio_titulo {
+    font-family: Poppins-SemiBold;
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: -30px;
+    font-size: 29px;
+  }
 
+/*.card-body  { margin : 0px 35px 20px 60px;}*/
+/*tarjetas*/
+#negocio{/*margin :19px 0 0 10px;*/
+  display: block;
+  margin: auto;
+  width: 900px;}
 
-/**/
-#efecto{margin :19px 0 0 10px;  }
-#efecto a{background: #FF512F;  /* fallback for old browsers */
+#negocio a{background: #FF512F;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #F09819, #FF512F);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #f09819, #FF512F); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     }
+
+    #contenedor_negocios {
+      display: block;
+      margin: auto;
+    }
+    #informacion_negocio {
+      padding-left: 40px;
+    }
+    .logo {
+      height: 200px;
+      width: 200px;
+    }
+    .card-body{display: inline;}
+    #boton_visitar {
+      font-family: Poppins-SemiBold;
+      display: block;
+      width: 158px ;
+      margin: auto;
+      background: #FF512F;  /* fallback for old browsers */
+      background: -webkit-linear-gradient(to right, #F09819, #FF512F);  /* Chrome 10-25, Safari 5.1-6 */
+      background: linear-gradient(to right, #f09819, #FF512F); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    }
+
+
 
 
 

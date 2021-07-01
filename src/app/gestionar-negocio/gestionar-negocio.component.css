@@ -1,3 +1,22 @@
+@font-face {
+  font-family: Poppins-Regular;
+  src: url('../../fuentes/Poppins-Regular.ttf'); 
+}
+
+@font-face {
+  font-family: Poppins-Medium;
+  src: url('../../fuentes/Poppins-Medium.ttf'); 
+}
+
+@font-face {
+  font-family: Poppins-Bold;
+  src: url('../../fuentes/Poppins-Bold.ttf'); 
+}
+
+@font-face {
+  font-family: Poppins-SemiBold;
+  src: url('../../fuentes/Poppins-SemiBold.ttf'); 
+}
 body{background-color: rgb(236, 236, 236);}
 
 #contenedor_negocio {
@@ -21,14 +40,20 @@ body{background-color: rgb(236, 236, 236);}
 }
 
 #boton {
+  font-family: Poppins-Medium;
   margin: auto;
   margin-top: 10px;
   padding-top: 20;
-  background: #FF512F;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #F09819, #FF512F);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #f09819, #FF512F); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
-
+#boton3{
+  font-family: Poppins-Medium;
+  margin: auto;
+  margin-top: 10px;
+  padding-top: 20;
+   background: #FF512F;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #F09819, #FF512F);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #f09819, #FF512F);}
 .contenedor_botones {
   display: inline;
   padding-left: 30px;
@@ -42,6 +67,8 @@ body{background-color: rgb(236, 236, 236);}
 
 .titulo_productos {
   text-align: center;
+  font-family: Poppins-SemiBold;
+  font-size: 29px;
 }
 
 .separador2 {
@@ -58,9 +85,11 @@ body{background-color: rgb(236, 236, 236);}
   display: block;
   margin: auto;
   padding-top: 30px;
+  font-family: Poppins-Medium;
 }
 
 #botonCrearProducto {
+  font-family: Poppins-Medium;
   display: block;
   margin: auto;
   background: #FF512F;  /* fallback for old browsers */
@@ -76,22 +105,24 @@ body{background-color: rgb(236, 236, 236);}
 
 /*.contenedor_botones_productos {
 }
-
+*/
 .card-title {
-
+ display: inline;
+  padding-left: 30px;
+  margin: auto;
+  width: 250px;
 }
-
+/*
 .card-text {
 
 }*/
 
 #boton1 {
+  font-family: Poppins-Medium;
   display: block;
   margin: auto;
   margin-top: 5px;
-  background: #FF512F;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #F09819, #FF512F);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #f09819, #FF512F); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
 }
 
 .col {

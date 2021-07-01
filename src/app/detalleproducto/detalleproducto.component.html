@@ -1,14 +1,14 @@
 <app-nav></app-nav>
 
 <section>
-  <h3 class="titulo">
+  <h2 class="titulo">
     Detalles del pedido
-  </h3>
-  <span class="main-color-text">Total $ {{carro.sumCarritoUser.getValue() | number}}</span>
-  <table class="table">
+  </h2>
+  <div class="contenedor_titulo_negocio"></div>
+  <span id="total" class=" main-color-text">Total $ {{carro.sumCarritoUser.getValue() | number}}</span>
+  <table class=" bg-white table table-bordered">
     <thead>
       <tr>
-         
         <th scope="col">Producto</th>
         <th scope="col">Nombre</th>
         <th scope="col">Cantidad</th>
@@ -28,18 +28,20 @@
         <td>  {{producto.iva}} % </td>
         <td> {{ producto.precio }} </td>
         <td> {{ totalCantidad }}  </td>
-        <td>  <button class="delete" type="button" (click)="delente(producto.id)">Eliminar</button> </td>
+        <td>  <button class=" btn btn-danger delete" type="button" (click)="delente(producto.id)">Eliminar</button> </td>
       </tr>
 
 
     </tbody>
-  </table>
+  </table >
+  <div class="btn-group-vertical  d-grid gap-2 col-6 mx-auto">
   <div class="boton1">
     <button type="button" class="btn btn-secondary btn-lg" id="boton1" [routerLink]="['/vernegocio']">Seguir Comprando</button>
   </div>
   <div class="boton2">
     <button type="submit" class="btn btn-secondary btn-lg" [routerLink]="['/pagos']" id="boton2" >Pagar</button>
   </div>
+</div>
 </section>
 
 <app-footer></app-footer>

@@ -26,10 +26,8 @@ h3{
   font-family: Poppins-Regular;  
   font-size: 30px;
   text-align: center;
-  color: #FF512F;  /* fallback for old browsers */
-  color: -webkit-linear-gradient(to right, #F09819, #FF512F);  /* Chrome 10-25, Safari 5.1-6 */
-  color: linear-gradient(to right, #f09819, #FF512F)
-  
+  color: #fd9001; 
+ 
 }
 
 .form-select.ng-invalid:focus{

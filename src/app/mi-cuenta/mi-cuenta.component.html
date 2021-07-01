@@ -1,4 +1,5 @@
 <app-nav></app-nav>
+<particles [params]="myParams" [style]="myStyle" [width]="width" [height]="height"></particles>
 
 
 
@@ -34,11 +35,13 @@
             <input [(ngModel)]="correo" formControlName="correo" type="email" class="form-control" id="validationCustom06" value="" required>
           </div>
         </fieldset> 
-         
-          
-          <button  type="submit" class="btn btn-primary">Actualizar</button>
+        <div class="d-grid gap-2 col-6 mx-auto">
+          <button type="submit" id="actualizar" class="btn btn-secondary text-white">Actualizar datos</button>
+          <button (click)="deleteUser(auth.getCourrentUserCorreo())" type="button" class="btn btn-danger ">Eliminar cuenta</button>
+        </div>
+
         </form>
-        <button (click)="deleteUser(auth.getCourrentUserCorreo())" type="button" class="btn btn-danger">Eliminar cuenta</button>
+       
         
 
       </div>

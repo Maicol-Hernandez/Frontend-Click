@@ -1,6 +1,11 @@
-<nav class=" bg-light navbar navbar-expand-lg navbar-light" id="nav" >
+<nav class=" bg-dark navbar navbar-expand-lg navbar-dark" id="nav" >
     <div class="container-fluid " >
-        <img src="./static/Logo.png" [routerLink]="['/']" alt="" width="54px">
+        <img href="http://localhost:60177" src="./static/Logit.png"  alt="" width="64px">
+      
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+        
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -8,22 +13,20 @@
             <a class="nav-link active" aria-current="page" href="#">Home</a>
           </li>
           <li class="nav-item">
-            <a  href="#" class="nav-link" [routerLink]="['/nosotros']" >Acerca de nosotros</a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link active" *ngIf="(auth.isLoggedIn() | async)" [routerLink]="['/zona-administracion']">Zona de administracion</a>
+            <a  href="http://localhost:60177" class="nav-link active"  >Acerca de nosotros</a>
           </li>
         </ul>
+        <a href="#" *ngIf="!(auth.isLoggedIn() | async)" [routerLink]="['/login']" id="botonini" class="nav-link active text-light" >Inicia sesion o registrate</a>
 
-        <a href="#" *ngIf="!(auth.isLoggedIn() | async)" [routerLink]="['/login']" id="botonini" class="btn btn">Iniciar Sesion</a>
-        <a href="#" *ngIf="!(auth.isLoggedIn() | async)" [routerLink]="['/registro']" id="botonini" class="btn btn">Registrarse</a>
-
-      <div *ngIf="auth.isLoggedIn() | async" class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-            aria-expanded="false" *ngIf="auth.isLoggedIn() | async">Bienvenido {{auth.getCourrentUser()}}</a>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-            <button class="dropdown-item" type="button" [routerLink]="['/mi-cuenta']">Mi perfil</button>
-            <button class="dropdown-item" type="button" [routerLink]="['/']"(click)="auth.logout()">Salir</button>
+        
+      <div  *ngIf="auth.isLoggedIn() | async" class="btn-group " role="group" width="64px" height="64px">
+        <input id="btnGroupDrop1" type="image" src="../../static/usuarioo.png" class="btn btn dropdown-toggle btn btn-light rounded-circle" data-bs-toggle="dropdown" aria-expanded="false" width="74px" height="74px">   
+        <ul class="dropdown-menu bg-light" aria-labelledby="btnGroupDrop1">
+          <a href="#" *ngIf="(auth.isLoggedIn() | async)"  [routerLink]="['/mi-cuenta']" id="regis" class="btn btn">Mi cuenta</a>
+          <a href="#" *ngIf="(auth.isLoggedIn() | async)"  [routerLink]="['/zona-administracion']" id="regis" class="btn btn">Mis negocios</a>
+          <li class="btn btn" id="botonini" *ngIf="auth.isLoggedIn() | async" >
+            <a class="btn btn" [routerLink]="['/']" (click)="auth.logout()">Salir</a>
+        </li> 
         </ul>
       </div>
       </div>
