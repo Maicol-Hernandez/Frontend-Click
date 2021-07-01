@@ -30,6 +30,7 @@
     <div class="contenedor_botones1">
         <button type="button" class="btn btn text-white" id="botonCrearProducto" routerLinkActive="active" [routerLink]="['/crear-producto']" (click)="crearProducto(negocioData1[0].id)">Crear nuevo producto</button>
     </div>
+    <!--
         <div class="row row-cols-1 row-cols-md-3 g-4" id="contenedor_productos" *ngFor="let producto of productoData1">
             <div class="col">
                 <div class="card">
@@ -47,23 +48,22 @@
             </div>
         </div>
     </div>
-
+-->
     <div *ngIf="mostrarProductos">
       <div class="wrap">
-          <h1>Productos</h1>
           <div class="store-wrapper">
               <section class="products-list">
                 <div *ngFor="let producto of productoData1" class="product-item" category="lacteos">
                       <div class="card">
                           <img src="http://localhost:8000/imagenesProduct/{{producto.foto}}"  class="card-img-top" alt="">
                           <div class="card-body">
-                              <h5 class="card-title">{{ producto.nombre }}</h5>
-                              <p class="card-text"><small class="text-muted">precio: ${{ producto.precio}}</small></p>
-                              <p class="card-text"><small class="text-muted">iva: {{producto.iva}}</small></p>
+                            <h3 class="card-title">Nombre del producto: {{producto.nombre}}</h3>
+                            <p class="card-text">I.V.A: {{producto.iva}} %</p>
+                            <p class="card-text">Precio: {{producto.precio}}</p>
                               <!--El minimo es de un 1 producto-->
-                              <button type="button" class="btn btn-primary" id="boton1" routerLinkActive="active" [routerLink]="['/actualizar-producto']" (click)="actualizarProducto(producto.id)">Actualizar</button>
-                              <button type="button" class="btn btn-primary" id="boton1" (click)="eliminarProducto(producto.id,producto.foto)">Eliminar</button>
-                          </div>
+                              <button type="button" class="btn btn-secondary" id="boton1" routerLinkActive="active" [routerLink]="['/actualizar-producto']" (click)="actualizarProducto(producto.id)">Actualizar producto</button>
+                              <button type="button" class="btn btn-danger" id="boton1" (click)="eliminarProducto(producto.id,producto.foto)">Eliminar producto</button>
+                          </div> 
                       </div>
                   </div>
               </section>
