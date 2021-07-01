@@ -28,6 +28,7 @@ export class FacturaComponent implements OnInit {
   id_usuario;
   idPedido;
   fecha;
+  horaCompra;
 
 
   constructor(
@@ -51,10 +52,16 @@ export class FacturaComponent implements OnInit {
     const dia = date.getDate()
     const mes = date.getMonth()
     const year = date.getFullYear()
-    const hora = date.getHours()
+    const horas = date.getHours()
     const minutos = date.getMinutes()
+    const segundos = date.getSeconds()
 
     this.fecha = `${dia} de ${meses[mes]} del ${year}` 
+
+    this.horaCompra = `${horas}:${minutos}:${segundos}`
+    
+
+    console.log(this.horaCompra)
 
     this.carro.init();
 
@@ -96,6 +103,7 @@ export class FacturaComponent implements OnInit {
 
 
   async enviarPedido() {
+    this.paid = false;
     console.log(this.carro.sumIva.getValue())
     let data = {
       iva: this.carro.sumIva.getValue(),
@@ -132,21 +140,27 @@ export class FacturaComponent implements OnInit {
         }
 
         let data = {
-          pedidoDetalles: productosDetalles
+          pedidoDetalles: productosDetalles,
+          negocio : localStorage.getItem('correoNegocio'),
+          nombre : localStorage.getItem('courrentUserNombres'),
+          apellidos : localStorage.getItem('courrentUserApellidos'),
+          documento : localStorage.getItem('courrentNumeroDocumento'),
+          iva : this.carro.sumIva.getValue(),
+          total : this.carro.sumCarritoUser.getValue()
         }
 
         this.client.postRequestEnviarPedidoDetalles('http://localhost:5000/api/v02/user/pedidodetalles', data).subscribe(
           (response: any) => {
-
+            this.paid = true;
+            this.pays  = false;
             Swal.fire({
               title: 'Se pago correctamente',
-              imageUrl: 'https://media0.giphy.com/media/ZZYXNDxMcMDXIblV8L/source.gif',
-              imageWidth: 400,
-              imageHeight: 200,
+              icon:'success'
 
             }).then(() => {
 
             });
+            localStorage.removeItem('carrito')
             console.log(response)
 
           },
@@ -163,11 +177,6 @@ export class FacturaComponent implements OnInit {
 
   }
 
-  pay() {
-    this.paid = true;
-    this.pays = false;
-  }
-
   generatePdf(options) {
     let documentDefinition = {
       content: [
@@ -179,7 +188,7 @@ export class FacturaComponent implements OnInit {
           margin: [0, 30]
         },
         {
-          text: 'FACTURA DE LA COMPRA',
+          text: 'Orden del pedido',
           fontSize: 20,
           bold: true,
           alignment: 'center',
@@ -204,8 +213,13 @@ export class FacturaComponent implements OnInit {
             ],
             [
               {
-                text: `Fecha : ${this.fecha}`,
+                text: `Hora: ${this.horaCompra}`,
                 alignment: 'right',
+              },
+              {
+                text: `Fecha: ${this.fecha}`,
+                alignment: 'right',
+
               },
             ]
           ]
@@ -250,7 +264,6 @@ export class FacturaComponent implements OnInit {
           margin: [50, 10],
           fontSize: 20,
         },
-        { qr: 'https://www.google.com/', fit: '50' },
         {
           ul: [
             'El pedido se puede devolver en un máximo de 10 días .',

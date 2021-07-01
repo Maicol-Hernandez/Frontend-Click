@@ -59,8 +59,8 @@ export class LoginComponent implements OnInit {
           this.loading = false;
 
           Swal.fire({
-            title: '¡ Bienvenido !',
-            imageUrl: './static/bienve.svg',
+            title: '¡Bienvenid@ !',
+            imageUrl: './static/saludo.png',
             imageWidth: 400,
             
 

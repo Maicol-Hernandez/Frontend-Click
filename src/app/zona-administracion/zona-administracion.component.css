@@ -1,3 +1,22 @@
+@font-face {
+  font-family: Poppins-Regular;
+  src: url('../../fuentes/Poppins-Regular.ttf'); 
+}
+
+@font-face {
+  font-family: Poppins-Medium;
+  src: url('../../fuentes/Poppins-Medium.ttf'); 
+}
+
+@font-face {
+  font-family: Poppins-Bold;
+  src: url('../../fuentes/Poppins-Bold.ttf'); 
+}
+
+@font-face {
+  font-family: Poppins-SemiBold;
+  src: url('../../fuentes/Poppins-SemiBold.ttf'); 
+}
 #botonini{background: #FF512F;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #F09819, #FF512F);  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to right, #f09819, #FF512F); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
@@ -6,12 +25,14 @@
 .h1 {
   text-align: center;
   padding-top: 30px;
+  font-family: Poppins-SemiBold;
 }
 
 .parrafo {
   font-size: 30px;
   text-align: center;
   padding-top: 30px;
+   
 }
 
 .portada {
@@ -51,8 +72,10 @@
 
 .negocio_titulo {
   text-align: center;
-  padding-top: 20px;
-  padding-bottom: 30px;
+  padding-top: 30px;
+  padding-bottom: 40px;
+  font-family: Poppins-SemiBold;
+  font-size: 29px;
 }
 
 #contenedor_negocios {
@@ -66,6 +89,7 @@
   background: #FF512F;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #F09819, #FF512F);  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to right, #f09819, #FF512F); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  font-family: Poppins-Medium;
 }
 
 .logo {

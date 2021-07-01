@@ -1,3 +1,22 @@
+@font-face {
+    font-family: Poppins-Regular;
+    src: url('../../fuentes/Poppins-Regular.ttf'); 
+  }
+  
+  @font-face {
+    font-family: Poppins-Medium;
+    src: url('../../fuentes/Poppins-Medium.ttf'); 
+  }
+  
+  @font-face {
+    font-family: Poppins-Bold;
+    src: url('../../fuentes/Poppins-Bold.ttf'); 
+  }
+  
+  @font-face {
+    font-family: Poppins-SemiBold;
+    src: url('../../fuentes/Poppins-SemiBold.ttf'); 
+  }
 .img-productos{
     width: 50px;
     height: 50px;
@@ -10,3 +29,27 @@
     margin: 24px 0px 35px 165px;
 
 }
+.titulo{
+    font-family: Poppins-Medium;
+    font-size: 29px;
+    text-align: center;
+    padding: 60px 50px 30px 50px;
+}
+.contenedor_titulo_negocio {
+    display: block;
+    margin: auto;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    border: 3px solid #000;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    padding-top: -600px;
+    width: 900px;
+  }
+  #total{
+    font-family: Poppins-Medium;
+    font-size: 29px;
+    text-align: center;
+  margin-left: 76px;}
+.boton2{margin-left: 46px;}
