@@ -47,4 +47,27 @@
             </div>
         </div>
     </div>
+
+    <div *ngIf="mostrarProductos">
+      <div class="wrap">
+          <h1>Productos</h1>
+          <div class="store-wrapper">
+              <section class="products-list">
+                <div *ngFor="let producto of productoData1" class="product-item" category="lacteos">
+                      <div class="card">
+                          <img src="http://localhost:8000/imagenesProduct/{{producto.foto}}"  class="card-img-top" alt="">
+                          <div class="card-body">
+                              <h5 class="card-title">{{ producto.nombre }}</h5>
+                              <p class="card-text"><small class="text-muted">precio: ${{ producto.precio}}</small></p>
+                              <p class="card-text"><small class="text-muted">iva: {{producto.iva}}</small></p>
+                              <!--El minimo es de un 1 producto-->
+                              <button type="button" class="btn btn-primary" id="boton1" routerLinkActive="active" [routerLink]="['/actualizar-producto']" (click)="actualizarProducto(producto.id)">Actualizar</button>
+                              <button type="button" class="btn btn-primary" id="boton1" (click)="eliminarProducto(producto.id,producto.foto)">Eliminar</button>
+                          </div>
+                      </div>
+                  </div>
+              </section>
+          </div>
+      </div>
+    </div>
 <app-footer></app-footer>
