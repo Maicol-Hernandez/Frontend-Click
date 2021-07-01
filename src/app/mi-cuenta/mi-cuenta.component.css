@@ -1,7 +1,14 @@
+@font-face {
+    font-family: Poppins-Regular;
+    src: url('../../fuentes/Poppins-Regular.ttf'); 
+  }
 #formulario{
     /*Arriba | Derecha | Abajo | Izquierda*/
     display: inline-block;
-   margin : 15px 50px auto 320px;
+   margin : 15px 50px auto 420px;
    padding: 35px; }
  
    #usuario{margin : auto auto 30px auto;}
+  
+    
+  

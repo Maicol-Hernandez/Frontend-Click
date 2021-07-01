@@ -1,12 +1,14 @@
 <app-nav></app-nav>
+<particles [params]="myParams" [style]="myStyle" [width]="width" [height]="height"></particles>
+
 <!--Div de los botones de pagos-->
 <div class="img-fondo">
 <div class="content-magin">
 <div class="d-flex justify-content-center">
-  <div class="card" style="width: 60rem;">
+  <div class="card" style="width: 55rem;">
     <div class="card-body">
-      <h5 class="card-title">Metodos de pagos</h5>
-      <p class="card-text">{{nombre}} selecciona la pasarela de pago que quieras</p>
+      <h3 id="titulo_metodo" class="card-title">Metodos de pagos</h3>
+      <p  id="parrafo" class="card-text">Selecciona la pasarela de pago que quieras</p>
       <div class="bordes">
         <div>
           <button (click)="clickPaypal()">
@@ -33,7 +35,7 @@
   <div class="card" style="width: 30rem;" *ngIf="payUC">
     <div class="card-body">
       <div>
-        <img src="https://image.flaticon.com/icons/png/512/825/825520.png" width="100px" class="img-fluid">
+        <img   src="https://image.flaticon.com/icons/png/512/825/825520.png" width="100px" class="rounded-pill">
           <form [formGroup]="formPayU" (ngSubmit)=" enviarPayU()">
               <div class="mb-3">
                 <input formControlName="numberTarjeta"  type="text" maxlength="16" minlength="16"  class="form-control" placeholder="N.° de la tarjeta">
@@ -81,7 +83,7 @@
   <div class="card" style="width: 30rem;" *ngIf="payPalC">
     <div class="card-body">
       <div>
-        <img src="https://logos-world.net/wp-content/uploads/2020/04/PayPal-Logo-2007-2014.png" width="100px" class="img-fluid">
+        <img src="../../static/paypal.png" width="100px" class="img-fluid">
         <h3>Pagar con PayPal</h3>
         <p>
           Con una cuenta de Paypal, usted reunirá los requisitos para gozar de la Devolución por Nuestra Cuenta, la Protección al Comprador y mucho más.
@@ -104,7 +106,7 @@
 <div class="d-flex justify-content-center">
   <div class="card" style="width: 30rem;" *ngIf="mercadoPagosC">
     <div class="card-body">
-      <img src="https://image.flaticon.com/icons/png/512/60/60378.png" width="200px" class="img-fluid">
+      
       <img src="https://avatars.githubusercontent.com/u/900583?s=280&v=4" width="150px">
       <div>
         <div class="card-body">

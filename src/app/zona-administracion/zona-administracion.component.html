@@ -8,7 +8,7 @@
         </p>
     </div>
     <img src="../../static/zona-administracion.png" alt="administrador" class="portada__imagen">
-    <button [routerLink]="['/registrarEmpresa']" type="button" class="btn btn" id="boton">Crear nuevo negocio</button>
+    <button [routerLink]="['/registrarEmpresa']" type="button" class="btn btn text-white" id="boton">Crear nuevo negocio</button>
     <div class="contenedor_titulo_negocio"></div>
     <h4 class="negocio_titulo">
       Negocios
@@ -21,11 +21,11 @@
           </div>
           <div class="col-md-8" id="informacion_negocio">
             <div class="card-body">
-              <h5 class="card-title">Nombre negocio: {{negocio.nombre}}</h5>
+              <p class="card-text">Nombre negocio: {{negocio.nombre}}</p>
               <p class="card-text">Tipo de negocio: {{negocio.tipo}}</p>
-              <p class="card-text">Tipo de negocio: {{negocio.direccion}}</p>
-              <p class="card-text">Tipo de negocio: {{negocio.horarios}}</p>
-              <button type="button" class="btn btn"  id="boton_gestionar" routerLinkActive="active" [routerLink]="['/gestionar-negocio']" (click)="negocioId(negocio.id)">Gestionar Negocio</button>
+              <p class="card-text">Direccion: {{negocio.direccion}}</p>
+              <p class="card-text">Horarios: {{negocio.horarios}}</p>
+              <button type="button" class="btn btn text-white"  id="boton_gestionar" routerLinkActive="active" [routerLink]="['/gestionar-negocio']" (click)="negocioId(negocio.id)">Gestionar Negocio</button>
             </div>
           </div>
         </div>

@@ -26,6 +26,7 @@ import { ActualizarNegocioComponent } from './actualizar-negocio/actualizar-nego
 import { ActualizarProductoComponent } from './actualizar-producto/actualizar-producto.component';
 import { CrearProductoComponent } from './crear-producto/crear-producto.component';
 import { MiCuentaComponent } from './mi-cuenta/mi-cuenta.component';
+import { ParticlesModule } from 'angular-particle';/*particulas de fondo */
 import { HistorialDePedidosComponent } from './historial-de-pedidos/historial-de-pedidos.component';
 import { DetallePedidoComponent } from './detalle-pedido/detalle-pedido.component';
 
@@ -65,7 +66,8 @@ import { DetallePedidoComponent } from './detalle-pedido/detalle-pedido.componen
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    RouterModule
+    RouterModule,
+    ParticlesModule /*particulas de fondo */
   ],
   providers: [],
   bootstrap: [AppComponent],

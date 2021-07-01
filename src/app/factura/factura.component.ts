@@ -155,8 +155,7 @@ export class FacturaComponent implements OnInit {
             this.pays  = false;
             Swal.fire({
               title: 'Se pago correctamente',
-              imageWidth: 400,
-              imageHeight: 200,
+              icon:'success'
 
             }).then(() => {
 
@@ -189,7 +188,7 @@ export class FacturaComponent implements OnInit {
           margin: [0, 30]
         },
         {
-          text: 'FACTURA DE LA COMPRA',
+          text: 'Orden del pedido',
           fontSize: 20,
           bold: true,
           alignment: 'center',

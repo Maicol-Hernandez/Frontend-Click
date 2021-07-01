@@ -4,15 +4,15 @@
 <div class="container-login" id="">
     <div id="ilu3" class="img-login" alt="...">
         
-            <img id="img-position" src="../../static/login.png"  alt="">
+            <img id="img-position" src="../../static/login1.png"  alt="">
         
         <div class="wrap-login">
 
         <form [formGroup]="form" (ngSubmit)="onSubmit()" class="login-form validate-form" id="formLogin" action="" >
-            <span class="login-form-title">LOGIN</span>
+            <span class="login-form-title">Iniciar sesion</span>
             
             <div class="wrap-input100" >
-                <input class="input100" formControlName="email" matInput type="email" placeholder="Email" [(ngModel)]="correo" name="correo" #email (ngModelChange)="mostrarVar()" />
+                <input class="input100" formControlName="email" matInput type="email" placeholder="Correo electronico" [(ngModel)]="correo" name="correo" #email (ngModelChange)="mostrarVar()" />
 
                 <span class="focus-efecto"></span>
                 
@@ -23,7 +23,7 @@
             </div>
             
             <div class="wrap-input100" >
-                <input class="input100" [type]="hide ? 'password' : 'text'"  formControlName="password" matInput placeholder="Password"/>
+                <input class="input100" [type]="hide ? 'password' : 'text'"  formControlName="password" matInput placeholder="Contraseña"/>
                 
                 <span class="focus-efecto"></span>
                 
