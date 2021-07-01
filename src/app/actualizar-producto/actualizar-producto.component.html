@@ -9,9 +9,9 @@
               <h4 class="animation a2">Reemplace los datos que quiere actualizar</h4>
           </div>
               <div class="form">
-              <input formControlName="nombreProducto" [(ngModel)]="productoDatos[0].nombre" type="text" class="form-field animation a3" placeholder="Nombre del producto">
+              <input formControlName="nombreProducto" [(ngModel)]="nombreProducto" type="text" class="form-field animation a3" placeholder="Nombre del producto">
 
-              <input formControlName="descripcion" [(ngModel)]="productoDatos[0].iva" type="number" class="form-field animation a4" placeholder="Descripcion">
+              <input formControlName="iva" [(ngModel)]="productoDatos[0].iva" type="number" class="form-field animation a4" placeholder="I.V.A">
 
               <input formControlName="precio" [(ngModel)]="productoDatos[0].precio" type="number" class="form-field animation a4" placeholder="Precio">
               <input  type="file" class="form-field animation a4" placeholder="Logo del producto" (change)="upload($event)">

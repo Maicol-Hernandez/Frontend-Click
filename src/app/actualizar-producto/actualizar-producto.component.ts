@@ -13,6 +13,7 @@ export class ActualizarProductoComponent implements OnInit {
 
   form: FormGroup;
   productoDatos;
+  nombreProducto;
   constructor(
     private fb: FormBuilder,
     private route: Router,
@@ -24,13 +25,18 @@ export class ActualizarProductoComponent implements OnInit {
 
     this.negocioService.actualizarProducto$.subscribe(dataProducto => {
       this.productoDatos = dataProducto
-      console.log("Este es el producto que se quiere actualizar", this.productoDatos)
+      this.nombreProducto = this.productoDatos[0].nombre
+      console.log("Este es el producto que se quiere actualizar", 
+      
+      )
     })
+    
 
     this.form = this.fb.group({
       idProducto: ['',Validators.required],
       nombreProducto: ['',Validators.required],
       precio: ['',Validators.required],
+      iva: ['', Validators.required],
       img: [null,Validators.required],
     })
   }
@@ -38,13 +44,15 @@ export class ActualizarProductoComponent implements OnInit {
   OnSubmit(){
     if (this.form.valid) {
       let data = {
-      idProducto :  this.productoDatos[0].id,
-      nombre :  this.form.value.nombreProducto,
-      precio : this.form.value.precio,
-      logo : this.productoDatos[0].foto,
+      idProducto:  this.productoDatos[0].id,
+      nombre:  this.form.value.nombreProducto,
+      precio: this.form.value.precio,
+      iva: this.form.value.iva,
+      logo: this.productoDatos[0].foto,
     }
     this.client.postRequestActualizarProducto('http://localhost:5000/api/v02/user/actualizarProducto',data).subscribe(
       (response:any)=>{
+        console.log()
         this.updateImg(this.productoDatos[0].foto)
       },
       (error)=>{
