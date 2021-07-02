@@ -26,8 +26,8 @@ export class HistorialDePedidosComponent implements OnInit{
           (data:any)=>{
             this.pedidos = data.data;
             console.log(this.pedidos);
-            console.log(this.pedidos[4].fecha)
-            console.log("esta es la hora "+new Date(this.pedidos[5].fecha))
+            //console.log(this.pedidos[4].fecha)
+            //console.log("esta es la hora "+new Date(this.pedidos[5].fecha))
             var event = new Date(this.pedidos[0].fecha)
             this.date = JSON.stringify(event)
             this.date = this.date.slice(1,11);
