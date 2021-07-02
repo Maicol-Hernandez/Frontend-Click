@@ -1,3 +1,22 @@
+@font-face {
+  font-family: Poppins-Regular;
+  src: url('../../fuentes/Poppins-Regular.ttf'); 
+}
+
+@font-face {
+  font-family: Poppins-Medium;
+  src: url('../../fuentes/Poppins-Medium.ttf'); 
+}
+
+@font-face {
+  font-family: Poppins-Bold;
+  src: url('../../fuentes/Poppins-Bold.ttf'); 
+}
+
+@font-face {
+  font-family: Poppins-SemiBold;
+  src: url('../../fuentes/Poppins-SemiBold.ttf'); 
+}
 * {
   margin: 0;
   padding: 0;
@@ -134,11 +153,14 @@
 
 .wrap>h1 {
   color: #494B4D;
-  font-weight: 400;
+  font-weight: 500px;
   display: flex;
   flex-direction: column;
   text-align: center;
-  margin: 15px 0px;
+  margin: 15px 0px 45px 50px ;
+  font-size: 39px;
+  
+  
 
 }
 
@@ -190,4 +212,16 @@
   color: #fff;
   text-align: center;
   text-decoration: none;
+}
+#boton_carrito{
+  height: 130px;
+  width: 150px;
+    
+}
+#boton{
+  height: 90px;
+  width: 100px;
+  margin: 25px 0px 0px 720px;
+  font-family: Poppins-SemiBold;
+  
 }

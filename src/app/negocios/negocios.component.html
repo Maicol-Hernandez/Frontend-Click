@@ -19,9 +19,6 @@
 </div>
 
 
-<ul class="carrito">
-  <button type="button" class="btn btn-primary" id="boton" [routerLink]="['/detallesproducto']">Carrito</button>
-</ul>
 
 <div class="wrap">
 <h1 class="titulo_productos">Productos</h1>
@@ -34,12 +31,26 @@
                   <h5 class="card-title">{{ producto.nombre }}</h5>
                   <p class="card-text"><small class="text-muted">precio: ${{ producto.precio | number: '1.0-0' }}</small></p>
                   <!--El minimo es de un 1 producto-->
-                  <button type="submit" id="boton" class="btn btn-danger ml-4" (click)="OnSubmit(producto.id)">Pedir producto</button>
+                  <button type="submit" id="boton1" class="btn btn-danger ml-4" (click)="OnSubmit(producto.id)">Pedir producto</button>
               </div>
           </div>
       </div>
   </section>
   <app-carrito *ngIf="abrirCart"></app-carrito>
+  
 </div>
 </div>
-
+<footer class="  bg-dark" id="footer">
+    <div class="container text-light">
+      <nav class="row"> 
+            <div id="boton_carrito">
+              
+            <button type="button" class="btn btn btn-lg text-white" id="boton" [routerLink]="['/detallesproducto']"> Mi Carrito
+            
+           
+          </button>
+        </div>     
+        
+      </nav>
+    </div>
+  </footer>
