@@ -26,7 +26,7 @@ export class ActualizarProductoComponent implements OnInit {
     this.negocioService.actualizarProducto$.subscribe(dataProducto => {
       this.productoDatos = dataProducto
       this.nombreProducto = this.productoDatos[0].nombre
-      console.log("Este es el producto que se quiere actualizar", 
+      console.log("Este es el producto que se quiere actualizar",this.productoDatos
       
       )
     })
