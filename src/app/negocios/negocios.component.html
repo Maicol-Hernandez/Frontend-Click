@@ -1,44 +1,45 @@
 <app-nav></app-nav>
-<div class="card mb-3" style="max-width: 950px; max-height: 700px;" id="contenedor_negocio">
-    <div class="row g-0">
-        <div class="col-md-4" id="contenedor_logo">
-            <div *ngFor="let empresaId of dataEmpresaId">
-                    <img src="http://localhost:8000/imagenes/{{empresaId.imgLogo}}" class="card-img-top"  alt="">
-                
-                <div class="col-md-8" id="contenedor_datos">
-                <div class="card-body">
-                    <h4 class="card-title">Nombre del negocio: {{empresaId.nombre}}</h4>
-                </div>
-            </div>
-        </div>  
-        </div>
-    </div>
+<div class="card mb-3" style="max-width: 950px; max-height: 700px;" id="contenedor_negocio" *ngFor="let empresaId of dataEmpresaId">
+  <div class="row g-0" id="contenedor_informacion">
+      <div class="col-md-4" id="contenedor_logo">
+          <img src="http://localhost:8000/imagenes/{{empresaId.imgLogo}}" alt="logo del negocio" width="250px" height="250px">
+      </div>
+  <div class="col-md-8" id="contenedor_datos">
+      <div class="card-body">
+          <h5 class="card-title">Nombre del negocio: {{empresaId.nombre}}</h5>
+          <p class="card-text">Tipo de negocio: {{empresaId.tipo_negocio}}</p>
+          <p class="card-text">Direccion: {{empresaId.direccion}}</p>
+          <p class="card-text">Horarios: {{empresaId.horarios}}</p>
+          <p class="card-text">Telefono principal: {{empresaId.telefono1}}</p>
+          <p class="card-text">Telefono secundario: {{empresaId.telefono2}} </p>
+          <p class="card-text">Correo: {{empresaId.correo}}</p>
+      </div>
+  </div>
+  </div>
 </div>
 
-    <ul class="carrito">
-        <button type="button" class="cart" [routerLink]="['/detallesproducto']"><a><i class="fa fa-shopping-cart"></i>Carrito</a></button>
-    </ul>
+
+<ul class="carrito">
+  <button type="button" class="btn btn-primary" id="boton" [routerLink]="['/detallesproducto']">Carrito</button>
+</ul>
 
 <div class="wrap">
-    <h1>Productos</h1>
-    <div class="store-wrapper">
-        <section class="products-list">
-            <div *ngFor="let producto of dataProducto" class="product-item" category="lacteos">
-                <div class="card">
-                    <img src="http://localhost:8000/imagenesProduct/{{producto.foto}}"  class="card-img-top" alt="">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ producto.nombre }}</h5>
-                        <p class="card-text"><small class="text-muted">precio: ${{ producto.precio | number: '1.0-0' }}</small></p>
-                        <!--El minimo es de un 1 producto-->
-                        <button type="submit" class="btn btn-danger ml-4" (click)="OnSubmit(producto.id)">Pedir producto</button>
-                    </div>
-                </div>
-            </div>
-
-        </section>
-        <app-carrito *ngIf="abrirCart"></app-carrito>
-        
-    </div>
+<h1 class="titulo_productos">Productos</h1>
+<div class="store-wrapper">
+  <section class="products-list">
+      <div *ngFor="let producto of dataProducto" class="product-item" category="lacteos">
+          <div class="card">
+              <img src="http://localhost:8000/imagenesProduct/{{producto.foto}}"  class="card-img-top" alt="">
+              <div class="card-body">
+                  <h5 class="card-title">{{ producto.nombre }}</h5>
+                  <p class="card-text"><small class="text-muted">precio: ${{ producto.precio | number: '1.0-0' }}</small></p>
+                  <!--El minimo es de un 1 producto-->
+                  <button type="submit" id="boton" class="btn btn-danger ml-4" (click)="OnSubmit(producto.id)">Pedir producto</button>
+              </div>
+          </div>
+      </div>
+  </section>
+  <app-carrito *ngIf="abrirCart"></app-carrito>
 </div>
-
+</div>
 
