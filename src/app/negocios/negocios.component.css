@@ -1,0 +1,193 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+
+/*Nueva parte del diseño*/
+
+
+#contenedor_negocio {
+  display: block;
+  margin: auto;
+  margin-top: 30px;
+  padding-top: 50px;
+  height: 350px;
+  width: 700px;
+}
+
+#contenedor_logo {
+  display: inline;
+  height: 250px;
+  width: 250px;
+}
+
+#contenedor_datos {
+  display: inline;
+  margin-left: 45px;
+  width: 400px;
+}
+
+#boton {
+  margin: auto;
+  margin-top: 10px;
+  padding-top: 20;
+  background: #FF512F;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #F09819, #FF512F);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #f09819, #FF512F); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.contenedor_botones {
+  display: inline;
+  padding-left: 30px;
+  margin: auto;
+  width: 250px;
+}
+
+#boton {
+  margin: auto;
+  margin-top: 10px;
+  margin-right: 30px;
+  padding-top: 20;
+  background: #FF512F;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #F09819, #FF512F);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #f09819, #FF512F); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.titulo_productos {
+  text-align: center;
+}
+/*perfil*/
+
+
+.datos-img .card-img-top {
+  width: 600px;
+  margin: 20px;
+  height: 500px;
+  border-radius: 20px 20px 20px 20px;
+
+}
+
+
+.datos-negocio {
+  margin-bottom: 300px;
+  font: oblique bold 120% cursive;
+  box-shadow: 0 0 15px #da340a33;
+  position: absolute;
+  bottom: 47px;
+  width: 515px;
+  left: calc(61% - 80px);
+  border-radius: 20px 20px 20px 20px;
+
+}
+
+
+.seccion-perfil-empresa .perfil-usuario-body,
+.seccion-perfil-empresa {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+}
+
+.seccion-perfil-empresa .perfil-empresa-header {
+  width: 100%;
+  display: flex;
+  justify-content: left;
+  background: linear-gradient(#e4e4e4, transparent);
+  margin-bottom: 1.25rem;
+
+}
+
+.seccion-perfil-empresa .perfil-empresa-portada {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 35rem;
+  margin: 5%;
+  background: linear-gradient(45deg, #9E9797, #EEE8E8);
+  border-radius: 20px 20px 20px 20px;
+}
+
+
+.seccion-perfil-empresa .perfil-usuario-footer,
+.seccion-perfil-empresa .perfil-usuario-bio {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1.5rem 2rem;
+  box-shadow: 0 0 12px rgba(0, 0, 0, .2);
+  background-color: #fff;
+  border-radius: 15px;
+  width: 100%;
+}
+
+
+
+.wrap {
+  max-width: 1280px;
+  width: 75%;
+  margin: 10px;
+}
+
+.wrap>h1 {
+  color: #494B4D;
+  font-weight: 400;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin: 15px 0px;
+
+}
+
+.wrap>h1:after {
+  content: '';
+  width: 104%;
+  height: 2px;
+  background: #C7C7C7;
+  margin: 15px 0;
+}
+
+.store-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+
+
+
+/* PRODUCTOS ============*/
+
+.products-list {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.products-list .product-item {
+  width: 22%;
+  margin-left: 3%;
+  margin-bottom: 25px;
+  box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.22);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: flex-start;
+  transition: all .4s;
+}
+
+.products-list .product-item img {
+  width: 100%;
+}
+
+.products-list .product-item a {
+  display: block;
+  width: 100%;
+  padding: 8px 0;
+  background: #f10b0b;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+}
