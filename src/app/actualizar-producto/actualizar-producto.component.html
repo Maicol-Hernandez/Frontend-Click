@@ -4,19 +4,22 @@
   <form [formGroup]="form" (ngSubmit)="OnSubmit()">
     <div class="container">
       <div class="left">
-          <div class="header">
-              <h2 class="animation a1">Actualizar Producto</h2>
-              <h4 class="animation a2">Reemplace los datos que quiere actualizar</h4>
-          </div>
-              <div class="form">
-              <input formControlName="nombreProducto" [(ngModel)]="nombreProducto" type="text" class="form-field animation a3" placeholder="Nombre del producto">
+        <div class="header">
+          <h2 class="animation a1">Actualizar Producto</h2>
+          <h4 class="animation a2">Reemplace los datos que quiere actualizar</h4>
+        </div>
+        <div class="form" *ngFor="let datos of productoDatos">
+          <input formControlName="nombreProducto" [(ngModel)]="datos.nombre" type="text" class="form-field animation a3"
+            placeholder="Nombre del producto">
 
-              <input formControlName="iva" [(ngModel)]="productoDatos[0].iva" type="number" class="form-field animation a4" placeholder="I.V.A">
+          <input formControlName="iva" [(ngModel)]="datos.iva" type="number" class="form-field animation a4"
+            placeholder="I.V.A">
 
-              <input formControlName="precio" [(ngModel)]="productoDatos[0].precio" type="number" class="form-field animation a4" placeholder="Precio">
-              <input type="file" class="form-field animation a4" placeholder="Logo del producto" (change)="upload($event)">
-              <button class="animation a6">Actualizar producto</button>
-          </div>
+          <input formControlName="precio" [(ngModel)]="datos.precio" type="number" class="form-field animation a4"
+            placeholder="Precio">
+          <input type="file" class="form-field animation a4" placeholder="Logo del producto" (change)="upload($event)">
+          <button type="submit" class="animation a6">Actualizar producto</button>
+        </div>
       </div>
       <div class="right"></div>
     </div>
